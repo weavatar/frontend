@@ -4,3 +4,6 @@
   margin: 0 auto;
   font-weight: normal;
 }
+:deep(.v-binder-follower-content) {
+  z-index: 9999999 !important;
+}

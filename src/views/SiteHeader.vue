@@ -153,7 +153,6 @@ const style = computed(() => {
   padding: 10px 32px !important;
   position: fixed;
   top: 0;
-  z-index: 999999;
 }
 
 :deep(.n-space div:nth-child(1)) {

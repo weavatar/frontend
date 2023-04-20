@@ -11,78 +11,86 @@
           </NSpace>
         </div>
       </div>
-      <div class="footer-nav">
-        <div class="footer-item">
-          <div class="footer-title">
-            <h2>导航标题</h2>
-          </div>
-          <div class="footer-list">
-            <ul>
-              <li>
-                <a href="">列表</a>
-              </li>
-              <li>
-                <a href="">列表</a>
-              </li>
-              <li>
-                <a href="">列表</a>
-              </li>
+      <n-grid x-gap="12" cols="3" item-responsive responsive="screen">
+        <n-grid-item span="3 s:1">
+          <div class="footer-nav">
+            <div class="footer-item">
+              <div class="footer-title">
+                <h2>导航标题</h2>
+              </div>
+              <div class="footer-list">
+                <ul>
+                  <li>
+                    <a href="">列表</a>
+                  </li>
+                  <li>
+                    <a href="">列表</a>
+                  </li>
+                  <li>
+                    <a href="">列表</a>
+                  </li>
 
-              <li>
-                <a href="">列表</a>
-              </li>
-            </ul>
+                  <li>
+                    <a href="">列表</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="footer-nav">
-        <div class="footer-item">
-          <div class="footer-title">
-            <h2>导航标题</h2>
-          </div>
-          <div class="footer-list">
-            <ul>
-              <li>
-                <a href="">列表</a>
-              </li>
-              <li>
-                <a href="">列表</a>
-              </li>
-              <li>
-                <a href="">列表</a>
-              </li>
+        </n-grid-item>
+        <n-grid-item span="3 s:1">
+          <div class="footer-nav">
+            <div class="footer-item">
+              <div class="footer-title">
+                <h2>导航标题</h2>
+              </div>
+              <div class="footer-list">
+                <ul>
+                  <li>
+                    <a href="">列表</a>
+                  </li>
+                  <li>
+                    <a href="">列表</a>
+                  </li>
+                  <li>
+                    <a href="">列表</a>
+                  </li>
 
-              <li>
-                <a href="">列表</a>
-              </li>
-            </ul>
+                  <li>
+                    <a href="">列表</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="footer-nav">
-        <div class="footer-item">
-          <div class="footer-title">
-            <h2>导航标题</h2>
-          </div>
-          <div class="footer-list">
-            <ul>
-              <li>
-                <a href="">列表</a>
-              </li>
-              <li>
-                <a href="">列表</a>
-              </li>
-              <li>
-                <a href="">列表</a>
-              </li>
+        </n-grid-item>
+        <n-grid-item span="3 s:1">
+          <div class="footer-nav">
+            <div class="footer-item">
+              <div class="footer-title">
+                <h2>导航标题</h2>
+              </div>
+              <div class="footer-list">
+                <ul>
+                  <li>
+                    <a href="">列表</a>
+                  </li>
+                  <li>
+                    <a href="">列表</a>
+                  </li>
+                  <li>
+                    <a href="">列表</a>
+                  </li>
 
-              <li>
-                <a href="">列表</a>
-              </li>
-            </ul>
+                  <li>
+                    <a href="">列表</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </n-grid-item>
+      </n-grid>
     </div>
     <p class="copyright">
       Copyright &copy; 2022 - 2023 WeAvatar
@@ -94,7 +102,7 @@
 
 <script setup lang="ts">
 import logo from '@/assets/logo-white.png'
-import { NSpace, NButton } from 'naive-ui'
+import { NSpace, NButton, NGridItem, NGrid } from 'naive-ui'
 </script>
 
 <style scoped>
@@ -124,9 +132,10 @@ import { NSpace, NButton } from 'naive-ui'
 .footer-item img {
   width: 80%;
 }
-
-.footer-logo,
 .footer-nav {
+  width: 100%;
+}
+.footer-logo {
   width: 25%;
 }
 
