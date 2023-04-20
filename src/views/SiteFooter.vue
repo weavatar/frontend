@@ -11,8 +11,8 @@
           </NSpace>
         </div>
       </div>
-      <n-grid x-gap="12" cols="3" item-responsive responsive="screen">
-        <n-grid-item span="3 s:1">
+      <NGrid x-gap="12" cols="3" item-responsive responsive="screen">
+        <NGridItem span="3 s:1">
           <div class="footer-nav">
             <div class="footer-item">
               <div class="footer-title">
@@ -37,8 +37,8 @@
               </div>
             </div>
           </div>
-        </n-grid-item>
-        <n-grid-item span="3 s:1">
+        </NGridItem>
+        <NGridItem span="3 s:1">
           <div class="footer-nav">
             <div class="footer-item">
               <div class="footer-title">
@@ -63,8 +63,8 @@
               </div>
             </div>
           </div>
-        </n-grid-item>
-        <n-grid-item span="3 s:1">
+        </NGridItem>
+        <NGridItem span="3 s:1">
           <div class="footer-nav">
             <div class="footer-item">
               <div class="footer-title">
@@ -89,8 +89,8 @@
               </div>
             </div>
           </div>
-        </n-grid-item>
-      </n-grid>
+        </NGridItem>
+      </NGrid>
     </div>
     <p class="copyright">
       Copyright &copy; 2022 - 2023 WeAvatar

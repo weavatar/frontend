@@ -12,8 +12,8 @@
         <span>WeAvatar 是 Gravatar 的完美替代方案，相比原版 Gravatar 具有以下优势</span>
       </div>
       <div class="product-content">
-        <n-grid x-gap="12" cols="3" item-responsive responsive="screen">
-          <n-grid-item span="3 s:1">
+        <NGrid x-gap="12" cols="3" item-responsive responsive="screen">
+          <NGridItem span="3 s:1">
             <div class="product-content-p">
               <img src="https://weavatar.com/avatar/?d=letter&letter=H" alt="多级头像匹配" />
               <h3>多级头像匹配</h3>
@@ -21,15 +21,15 @@
                 除WeAvatar上传的头像外，还同时支持从Gravatar、QQ进行默认头像获取，尽可能保证每次请求都能得到有效的头像返回
               </p>
             </div>
-          </n-grid-item>
-          <n-grid-item span="3 s:1">
+          </NGridItem>
+          <NGridItem span="3 s:1">
             <div class="product-content-p">
               <img src="https://weavatar.com/avatar/?d=letter&letter=H" alt="手机号头像" />
               <h3>手机号头像</h3>
               <p>WeAvatar支持为你的手机号上传对应的头像，网站可通过手机号的哈希值获取对应的头像</p>
             </div>
-          </n-grid-item>
-          <n-grid-item span="3 s:1">
+          </NGridItem>
+          <NGridItem span="3 s:1">
             <div class="product-content-p">
               <img src="https://weavatar.com/avatar/?d=letter&letter=H" alt="WEBP自适应" />
               <h3>WEBP自适应</h3>
@@ -37,8 +37,8 @@
                 WeAvatar通过判断请求的Accept头，自动为支持WEBP的设备返回WEBP格式的头像，这可减少约80%的流量消耗
               </p>
             </div>
-          </n-grid-item>
-          <n-grid-item span="3 s:1">
+          </NGridItem>
+          <NGridItem span="3 s:1">
             <div class="product-content-p">
               <img src="https://weavatar.com/avatar/?d=letter&letter=H" alt="安全" />
               <h3>安全</h3>
@@ -46,8 +46,8 @@
                 WeAvatar通过对接AI图片审核服务，对每张头像均进行自动化审核，确保不会有违规内容出现
               </p>
             </div>
-          </n-grid-item>
-          <n-grid-item span="3 s:1">
+          </NGridItem>
+          <NGridItem span="3 s:1">
             <div class="product-content-p">
               <img src="https://weavatar.com/avatar/?d=letter&letter=H" alt="更快的速度" />
               <h3>更快的速度</h3>
@@ -55,15 +55,15 @@
                 WeAvatar后端使用Golang开发，天生具有无与伦比的速度优势。同时WeAvatar拥有多级缓存机制，尽可能提高头像的使用体验
               </p>
             </div>
-          </n-grid-item>
-          <n-grid-item span="3 s:1">
+          </NGridItem>
+          <NGridItem span="3 s:1">
             <div class="product-content-p">
               <img src="https://weavatar.com/avatar/?d=letter&letter=H" alt="开放平台" />
               <h3>开放平台（开发中）</h3>
               <p>WeAvatar开放平台支持自己的应用无缝对接WeAvatar，提供配套的SDK供开发者使用</p>
             </div>
-          </n-grid-item>
-        </n-grid>
+          </NGridItem>
+        </NGrid>
       </div>
     </div>
     <!-- 赞助商 -->
@@ -73,24 +73,24 @@
         <span>作为公益性质的项目，WeAvatar的成长离不开它们的帮助</span>
       </div>
       <div class="sponsor-content">
-        <n-grid x-gap="12" cols="2" item-responsive responsive="screen">
-          <n-grid-item span="2 s:1">
+        <NGrid x-gap="12" cols="2" item-responsive responsive="screen">
+          <NGridItem span="2 s:1">
             <a class="url" target="_blank" href="https://www.ddunyun.com/aff/PNYAXMKI">
               <img
                 src="https://img-cdn.haozi.xyz/2022/12/09/54a1b368700423a992789eca4af8b7e2.jpg"
                 alt="盾云安全"
               />
             </a>
-          </n-grid-item>
-          <n-grid-item span="2 s:1">
+          </NGridItem>
+          <NGridItem span="2 s:1">
             <a class="url" target="_blank" href="https://www.jihulab.com/">
               <img
                 src="https://www.jihulab.com/images/icons/logos/logo-121-75.svg"
                 alt="极狐GitLab"
               />
             </a>
-          </n-grid-item>
-        </n-grid>
+          </NGridItem>
+        </NGrid>
       </div>
     </div>
   </main>
