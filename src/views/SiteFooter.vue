@@ -1,18 +1,20 @@
 <template>
   <div class="footer">
     <div class="footer-content">
-      <div class="footer-logo">
-        <div class="footer-item">
-          <img :src="logo" alt="weavatar" />
-          <h4>WeAvatar 是xxxxx</h4>
-          <NSpace>
-            <NButton type="info" size="small">联系我们</NButton>
-            <NButton type="info" size="small">加 QQ 群</NButton>
-          </NSpace>
-        </div>
-      </div>
-      <NGrid x-gap="12" cols="3" item-responsive responsive="screen">
-        <NGridItem span="3 s:1">
+      <NGrid x-gap="12" cols="4" item-responsive responsive="screen">
+        <NGridItem span="4 s:1">
+          <div class="footer-logo">
+            <div class="footer-item">
+              <img :src="logo" alt="weavatar" />
+              <h4>WeAvatar 是xxxxx</h4>
+              <NSpace>
+                <NButton type="info" size="small">联系我们</NButton>
+                <NButton type="info" size="small">加 QQ 群</NButton>
+              </NSpace>
+            </div>
+          </div>
+        </NGridItem>
+        <NGridItem span="4 s:1">
           <div class="footer-nav">
             <div class="footer-item">
               <div class="footer-title">
@@ -38,7 +40,7 @@
             </div>
           </div>
         </NGridItem>
-        <NGridItem span="3 s:1">
+        <NGridItem span="4 s:1">
           <div class="footer-nav">
             <div class="footer-item">
               <div class="footer-title">
@@ -64,7 +66,7 @@
             </div>
           </div>
         </NGridItem>
-        <NGridItem span="3 s:1">
+        <NGridItem span="4 s:1">
           <div class="footer-nav">
             <div class="footer-item">
               <div class="footer-title">
@@ -124,7 +126,7 @@ import { NSpace, NButton, NGridItem, NGrid } from 'naive-ui'
 }
 
 .footer-content {
-  max-width: 1000px;
+  max-width: 1440px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -134,9 +136,10 @@ import { NSpace, NButton, NGridItem, NGrid } from 'naive-ui'
 }
 .footer-nav {
   width: 100%;
+  text-align: right;
 }
 .footer-logo {
-  width: 25%;
+  width: 100%;
 }
 
 .footer-logo,
@@ -170,6 +173,7 @@ import { NSpace, NButton, NGridItem, NGrid } from 'naive-ui'
   .footer-logo,
   .footer-nav {
     width: 100%;
+    text-align: left;
   }
 }
 </style>
