@@ -134,10 +134,12 @@ import { NSpace, NButton, NGridItem, NGrid } from 'naive-ui'
 .footer-item img {
   width: 80%;
 }
+
 .footer-nav {
   width: 100%;
   text-align: right;
 }
+
 .footer-logo {
   width: 100%;
 }
@@ -170,6 +172,7 @@ import { NSpace, NButton, NGridItem, NGrid } from 'naive-ui'
   .footer-content {
     display: block;
   }
+
   .footer-logo,
   .footer-nav {
     width: 100%;

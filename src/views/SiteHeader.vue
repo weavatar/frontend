@@ -32,7 +32,9 @@ import { NMenu, NIcon, NText, NAvatar, NSpace, NDropdown, NLayoutHeader } from '
 import {
   HomeOutline as HomeIcon,
   LogInOutline as LoginIcon,
-  PersonAddOutline as SignupIcon
+  PersonCircleOutline as PersonCircleIcon,
+  DocumentTextOutline as DocumentTextIcon,
+  InformationCircleOutline as InformationCircleIcon
 } from '@vicons/ionicons5'
 
 import logo from '@/assets/logo.png'
@@ -87,10 +89,22 @@ watch(
         show: !login
       },
       {
-        label: '注册',
-        key: 'register',
-        icon: renderIcon(SignupIcon),
-        show: !login
+        label: '头像管理',
+        key: 'user-avatar',
+        icon: renderIcon(PersonCircleIcon),
+        show: login
+      },
+      {
+        label: '文档',
+        key: 'doc',
+        icon: renderIcon(DocumentTextIcon),
+        show: true
+      },
+      {
+        label: '关于',
+        key: 'about',
+        icon: renderIcon(InformationCircleIcon),
+        show: true
       }
     ]
     userOptions.value = [
@@ -100,13 +114,8 @@ watch(
         show: !login
       },
       {
-        label: '注册',
-        key: 'register',
-        show: !login
-      },
-      {
-        label: '我的通行证',
-        key: 'profile',
+        label: '头像管理',
+        key: 'user-avatar',
         show: login
       },
       {

@@ -26,6 +26,7 @@ import { zhCN, dateZhCN } from 'naive-ui'
 
 import { computed } from 'vue'
 import { useOsTheme, darkTheme } from 'naive-ui'
+
 const osTheme = useOsTheme()
 const theme = computed(() => (osTheme.value === 'dark' ? darkTheme : null))
 </script>

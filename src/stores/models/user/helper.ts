@@ -27,6 +27,7 @@ export interface UserState {
   info: Info
   auth: Auth
 }
+
 export function defaultSetting(): UserState {
   return {
     info: {

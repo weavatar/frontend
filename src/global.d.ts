@@ -1,5 +1,5 @@
 // global.d.ts
-import { useMessage, useDialog, useNotification, useLoadingBar } from 'naive-ui'
+import {useMessage, useDialog, useNotification, useLoadingBar} from 'naive-ui'
 
 declare global {
   interface Window {

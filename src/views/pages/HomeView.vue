@@ -106,6 +106,7 @@ import { NGrid, NGridItem } from 'naive-ui'
   width: 100%;
   text-align: center;
 }
+
 .home {
   display: flex;
   flex-direction: column;
@@ -136,19 +137,24 @@ import { NGrid, NGridItem } from 'naive-ui'
   text-align: center;
   margin: 50px;
 }
+
 .product-content {
   flex-wrap: wrap;
 }
+
 .sponsor-content img {
   box-shadow: 0 0 10px 5px #eeeeee;
 }
+
 .sponsor-content .url {
   margin-top: 20px;
 }
+
 .sponsor-content {
   max-width: 800px;
   margin: 0 auto;
 }
+
 .product-content,
 .sponsor-content ul {
   display: flex;
