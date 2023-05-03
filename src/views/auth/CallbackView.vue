@@ -1,41 +1,39 @@
 <template>
   <div class="login-card">
-    <NCard title="登录">
-      <NTabs default-value="haozi-login" size="large" justify-content="space-evenly">
-        <NTabPane name="haozi-login" tab="耗子通行证">
-          <NButton type="primary" style="width: 100%" @click="handleLogin">
-            耗子通行证 登录
-          </NButton>
-        </NTabPane>
-      </NTabs>
-    </NCard>
+    <NCard title="登录中"> 请稍后 </NCard>
   </div>
 </template>
 
 <script setup lang="ts">
-import { NCard, NTabs, NTabPane, NButton } from 'naive-ui'
+import { NCard } from 'naive-ui'
 
 import { useUserStore } from '@/stores'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
-import { login } from '@/api/auth'
+import { oauthCallback } from '@/api/auth'
 
 const userStore = useUserStore()
+const route = useRoute()
 const router = useRouter()
 
-if (userStore.auth.login) {
-  router.push({ name: 'profile' })
-}
+const code = String(route.query.code)
+const state = String(route.query.state)
 
-const handleLogin = () => {
-  login()
-    .then((res) => {
-      window.location.href = res.data.url
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-}
+oauthCallback(code, state)
+  .then((res) => {
+    if (res.code == 0) {
+      window.$message.success(res.message)
+      userStore.updateToken(res.data.token)
+      setTimeout(() => {
+        router.push({ name: 'home' })
+      }, 1000)
+    } else {
+      window.$message.error(res.message)
+    }
+  })
+  .catch((err) => {
+    console.log(err)
+  })
 </script>
 
 <style scoped>

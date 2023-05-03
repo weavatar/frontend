@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/pages/HomeView.vue'
 import LoginView from '../views/auth/LoginView.vue'
 import LogoutView from '../views/auth/LogoutView.vue'
+import CallbackView from '../views/auth/CallbackView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,6 +31,11 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: HomeView
+    },
+    {
+      path: '/oauth/callback',
+      name: 'oauth-callback',
+      component: CallbackView
     },
     {
       path: '/user/avatar',
