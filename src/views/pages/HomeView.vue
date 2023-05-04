@@ -4,63 +4,78 @@
       <h1>WeAvatar</h1>
       <p>每个人的头像</p>
     </div>
-    <!-- 产品介绍 -->
 
+    <!-- 产品介绍 -->
     <div class="product">
       <div class="product-title">
-        <h2>为什么选择 WeAvatar</h2>
-        <span>WeAvatar 是 Gravatar 的完美替代方案，相比原版 Gravatar 具有以下优势</span>
+        <h1>为什么选择 WeAvatar</h1>
+        <span>WeAvatar 可作为增强版的 Gravatar，相比原版 Gravatar 具有以下优势</span>
       </div>
       <div class="product-content">
         <NGrid x-gap="12" cols="3" item-responsive responsive="screen">
           <NGridItem span="3 s:1">
             <div class="product-content-p">
-              <img src="https://weavatar.com/avatar/?d=letter&letter=H" alt="多级头像匹配" />
-              <h3>多级头像匹配</h3>
+              <NIcon size="60">
+                <AlbumsIcon />
+              </NIcon>
+              <h2>多级头像匹配</h2>
               <p>
-                除WeAvatar上传的头像外，还同时支持从Gravatar、QQ进行默认头像获取，尽可能保证每次请求都能得到有效的头像返回
+                除 WeAvatar 上传的头像外，同时支持从 Gravatar、QQ
+                进行默认头像获取，尽可能确保每次请求都能得到有效的头像返回
               </p>
             </div>
           </NGridItem>
           <NGridItem span="3 s:1">
             <div class="product-content-p">
-              <img src="https://weavatar.com/avatar/?d=letter&letter=H" alt="手机号头像" />
-              <h3>手机号头像</h3>
-              <p>WeAvatar支持为你的手机号上传对应的头像，网站可通过手机号的哈希值获取对应的头像</p>
-            </div>
-          </NGridItem>
-          <NGridItem span="3 s:1">
-            <div class="product-content-p">
-              <img src="https://weavatar.com/avatar/?d=letter&letter=H" alt="WEBP自适应" />
-              <h3>WEBP自适应</h3>
+              <NIcon size="60">
+                <PhoneIcon />
+              </NIcon>
+              <h2>手机号头像</h2>
               <p>
-                WeAvatar通过判断请求的Accept头，自动为支持WEBP的设备返回WEBP格式的头像，这可减少约80%的流量消耗
+                WeAvatar 首创支持为你的手机号上传对应的头像，网站可通过手机号的哈希值获取对应的头像
               </p>
             </div>
           </NGridItem>
           <NGridItem span="3 s:1">
             <div class="product-content-p">
-              <img src="https://weavatar.com/avatar/?d=letter&letter=H" alt="安全" />
-              <h3>安全</h3>
+              <NIcon size="60">
+                <ImageIcon />
+              </NIcon>
+              <h2>WEBP 自适应</h2>
               <p>
-                WeAvatar通过对接AI图片审核服务，对每张头像均进行自动化审核，确保不会有违规内容出现
+                WeAvatar 通过判断请求的 Accept 头，自动为支持 WEBP 的设备返回 WEBP
+                格式的头像，这可减少约 80% 的流量消耗
               </p>
             </div>
           </NGridItem>
           <NGridItem span="3 s:1">
             <div class="product-content-p">
-              <img src="https://weavatar.com/avatar/?d=letter&letter=H" alt="更快的速度" />
-              <h3>更快的速度</h3>
+              <NIcon size="60">
+                <ShieldCheckmarkIcon />
+              </NIcon>
+              <h2>安全</h2>
+              <p>WeAvatar 对每张头像均进行 AI 自动化审核，确保不会有违规内容被输出</p>
+            </div>
+          </NGridItem>
+          <NGridItem span="3 s:1">
+            <div class="product-content-p">
+              <NIcon size="60">
+                <SpeedometerIcon />
+              </NIcon>
+              <h2>更快的速度</h2>
               <p>
-                WeAvatar后端使用Golang开发，天生具有无与伦比的速度优势。同时WeAvatar拥有多级缓存机制，尽可能提高头像的使用体验
+                WeAvatar 后端使用 Golang 开发，天生具有无与伦比的速度优势。同时 WeAvatar
+                拥有多级缓存机制，尽可能提高头像的加载速度
               </p>
             </div>
           </NGridItem>
           <NGridItem span="3 s:1">
             <div class="product-content-p">
-              <img src="https://weavatar.com/avatar/?d=letter&letter=H" alt="开放平台" />
-              <h3>开放平台（开发中）</h3>
-              <p>WeAvatar开放平台支持自己的应用无缝对接WeAvatar，提供配套的SDK供开发者使用</p>
+              <NIcon size="60">
+                <CloudOutlineIcon />
+              </NIcon>
+              <h2>开放平台（开发中）</h2>
+              <p>WeAvatar 开放平台支持自己的应用无缝对接 WeAvatar，提供配套的SDK供开发者使用</p>
             </div>
           </NGridItem>
         </NGrid>
@@ -69,8 +84,8 @@
     <!-- 赞助商 -->
     <div class="sponsor">
       <div class="sponsor-title">
-        <h2>我们的赞助商</h2>
-        <span>作为公益性质的项目，WeAvatar的成长离不开它们的帮助</span>
+        <h1>我们的赞助商</h1>
+        <span>作为公益性质的项目，WeAvatar 的稳定运行离不开它们的帮助</span>
       </div>
       <div class="sponsor-content">
         <NGrid x-gap="12" cols="2" item-responsive responsive="screen">
@@ -97,7 +112,16 @@
 </template>
 
 <script setup lang="ts">
-import { NGrid, NGridItem } from 'naive-ui'
+import { NGrid, NGridItem, NIcon } from 'naive-ui'
+
+import {
+  AlbumsOutline as AlbumsIcon,
+  PhonePortraitOutline as PhoneIcon,
+  ImageOutline as ImageIcon,
+  ShieldCheckmarkOutline as ShieldCheckmarkIcon,
+  SpeedometerOutline as SpeedometerIcon,
+  CloudOutline as CloudOutlineIcon
+} from '@vicons/ionicons5'
 </script>
 
 <style scoped>
@@ -113,18 +137,26 @@ import { NGrid, NGridItem } from 'naive-ui'
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-image: url(../../assets/home-cover.jpg);
+  background-size: cover;
+  background-position: center center;
 }
 
 .home h1 {
-  font-size: 8vh;
+  font-size: 8rem;
+  line-height: 120%;
+  letter-spacing: 1rem;
+  color: white;
 }
 
 .home p {
-  font-size: 4vh;
+  font-size: 4rem;
+  letter-spacing: 0.5rem;
+  color: white;
 }
 
 .product {
-  background: #66ccff;
+  background: #f1f4f8;
   padding-top: 80px;
 }
 
@@ -177,12 +209,13 @@ import { NGrid, NGridItem } from 'naive-ui'
   text-align: center;
 }
 
-/*.product-content-p img {
+.product-content-p :deep(.n-icon) {
   padding: 50px;
   margin: 10px;
-  background: rgb(3 169 244 / 59%);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 100px;
-}*/
+  border: 1px solid rgb(84 120 160 / 20%);
+}
 
 .sponsor-content img {
   padding: 20px;

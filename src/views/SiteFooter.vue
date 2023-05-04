@@ -6,10 +6,11 @@
           <div class="footer-logo">
             <div class="footer-item">
               <img :src="logo" alt="weavatar" />
-              <h4>WeAvatar 是xxxxx</h4>
+              <hr />
+              <p>致力于打造多端多元化的统一头像服务</p>
               <NSpace>
-                <NButton type="info" size="small">联系我们</NButton>
-                <NButton type="info" size="small">加 QQ 群</NButton>
+                <NButton type="info" @click="handleJoinGroup">联系我们</NButton>
+                <NButton type="info" @click="handleJoinGroup">加 QQ 群</NButton>
               </NSpace>
             </div>
           </div>
@@ -18,22 +19,21 @@
           <div class="footer-nav">
             <div class="footer-item">
               <div class="footer-title">
-                <h2>导航标题</h2>
+                <h2>WeAvatar</h2>
               </div>
               <div class="footer-list">
                 <ul>
                   <li>
-                    <a href="">列表</a>
+                    <RouterLink :to="{ name: 'home' }">首页</RouterLink>
                   </li>
                   <li>
-                    <a href="">列表</a>
+                    <RouterLink :to="{ name: 'doc' }">文档</RouterLink>
                   </li>
                   <li>
-                    <a href="">列表</a>
+                    <RouterLink :to="{ name: 'help' }">帮助</RouterLink>
                   </li>
-
                   <li>
-                    <a href="">列表</a>
+                    <RouterLink :to="{ name: 'about' }">关于</RouterLink>
                   </li>
                 </ul>
               </div>
@@ -44,22 +44,21 @@
           <div class="footer-nav">
             <div class="footer-item">
               <div class="footer-title">
-                <h2>导航标题</h2>
+                <h2>WePublish</h2>
               </div>
               <div class="footer-list">
                 <ul>
                   <li>
-                    <a href="">列表</a>
+                    <a target="_blank" href="https://wepublish.cn/">社区论坛</a>
                   </li>
                   <li>
-                    <a href="">列表</a>
+                    <a target="_blank" href="https://wepublish.cn/">应用市场</a>
                   </li>
                   <li>
-                    <a href="">列表</a>
+                    <a target="_blank" href="https://wepublish.cn/">协同翻译</a>
                   </li>
-
                   <li>
-                    <a href="">列表</a>
+                    <a target="_blank" href="https://wepublish.cn/">帮助文档</a>
                   </li>
                 </ul>
               </div>
@@ -70,22 +69,27 @@
           <div class="footer-nav">
             <div class="footer-item">
               <div class="footer-title">
-                <h2>导航标题</h2>
+                <h2>耗子开源</h2>
               </div>
               <div class="footer-list">
                 <ul>
                   <li>
-                    <a href="">列表</a>
+                    <a target="_blank" href="https://github.com/HaoZi-Team/WP-China-Plus">
+                      WP-China-Plus
+                    </a>
                   </li>
                   <li>
-                    <a href="">列表</a>
+                    <a target="_blank" href="https://github.com/HaoZi-Team/Panel"> Linux面板 </a>
                   </li>
                   <li>
-                    <a href="">列表</a>
+                    <a target="_blank" href="https://github.com/HaoZi-Team/Laravel-Installer">
+                      Laravel-Installer
+                    </a>
                   </li>
-
                   <li>
-                    <a href="">列表</a>
+                    <a target="_blank" href="https://github.com/HaoZi-Team/wp-setting-api">
+                      WP-Setting-API
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -105,6 +109,10 @@
 <script setup lang="ts">
 import logo from '@/assets/logo-white.png'
 import { NSpace, NButton, NGridItem, NGrid } from 'naive-ui'
+
+const handleJoinGroup = () => {
+  window.open('https://jq.qq.com/?_wv=1027&k=I1oJKSTH')
+}
 </script>
 
 <style scoped>

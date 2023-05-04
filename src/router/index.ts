@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/pages/HomeView.vue'
+import DocView from '../views/pages/DocView.vue'
+import HelpView from '../views/pages/HelpView.vue'
+import AboutView from '../views/pages/AboutView.vue'
 import LoginView from '../views/auth/LoginView.vue'
 import LogoutView from '../views/auth/LogoutView.vue'
 import CallbackView from '../views/auth/CallbackView.vue'
@@ -25,12 +28,17 @@ const router = createRouter({
     {
       path: '/doc',
       name: 'doc',
-      component: HomeView
+      component: DocView
+    },
+    {
+      path: '/help',
+      name: 'help',
+      component: HelpView
     },
     {
       path: '/about',
       name: 'about',
-      component: HomeView
+      component: AboutView
     },
     {
       path: '/oauth/callback',
