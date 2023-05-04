@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 .about h2 {
   font-size: 4rem;
   padding-top: 20vh;

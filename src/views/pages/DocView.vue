@@ -93,7 +93,7 @@
 import { NCard, NCollapse, NCollapseItem } from 'naive-ui'
 </script>
 
-<style>
+<style scoped>
 .doc {
   padding: 100px;
 }

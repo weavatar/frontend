@@ -6,6 +6,7 @@ import AboutView from '../views/pages/AboutView.vue'
 import LoginView from '../views/auth/LoginView.vue'
 import LogoutView from '../views/auth/LogoutView.vue'
 import CallbackView from '../views/auth/CallbackView.vue'
+import AvatarView from '../views/avatar/AvatarView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -48,7 +49,7 @@ const router = createRouter({
     {
       path: '/user/avatar',
       name: 'user-avatar',
-      component: HomeView
+      component: AvatarView
     }
   ]
 })
