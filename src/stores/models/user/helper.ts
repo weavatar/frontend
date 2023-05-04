@@ -6,15 +6,6 @@ export interface Info {
   id: number
   avatar: string
   nickname: string
-  email: string
-  phone: string
-  birthday: string
-  address: string
-  hometown: string
-  profession: string
-  company: string
-  introduction: string
-  is_developer: boolean
   created_at: string
 }
 
@@ -27,21 +18,13 @@ export interface UserState {
   info: Info
   auth: Auth
 }
+
 export function defaultSetting(): UserState {
   return {
     info: {
       id: 0,
       avatar: 'https://weavatar.com/avatar/?d=mp',
       nickname: '未登录',
-      email: '',
-      phone: '',
-      birthday: '',
-      address: '',
-      hometown: '',
-      profession: '',
-      company: '',
-      introduction: '',
-      is_developer: false,
       created_at: ''
     },
     auth: {

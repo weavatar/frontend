@@ -1,8 +1,8 @@
 <template>
   <NLayout class="root-layout">
     <SiteHeader />
-    <RouterView />
-    <SiteFooter />
+    <RouterView :style="{ minHeight: 'calc(100vh - ' + footerHeight + 'px)' }" />
+    <SiteFooter id="footer" />
   </NLayout>
 </template>
 
@@ -10,9 +10,19 @@
 import { NLayout, useMessage, useDialog, useNotification, useLoadingBar } from 'naive-ui'
 import SiteHeader from './SiteHeader.vue'
 import SiteFooter from './SiteFooter.vue'
+import { onMounted, ref } from 'vue'
 
 window.$message = useMessage()
 window.$dialog = useDialog()
 window.$notification = useNotification()
 window.$loadingBar = useLoadingBar()
+const footerHeight = ref()
+const getFooter = () => {
+  const el = document.getElementById('footer') as HTMLElement
+  footerHeight.value = el.clientHeight
+}
+onMounted(() => {
+  getFooter()
+})
 </script>
+<style></style>

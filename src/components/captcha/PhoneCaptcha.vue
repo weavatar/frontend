@@ -1,8 +1,8 @@
 <template>
   <div>
     <NButton :block="block" :type="type" :loading="loading" :disabled="disabled">
-      {{ msg }}</NButton
-    >
+      {{ msg }}
+    </NButton>
   </div>
 </template>
 

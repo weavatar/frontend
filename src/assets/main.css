@@ -1,9 +1,16 @@
 @import './base.css';
 
-#app {
+#app,
+html,
+body,
+.n-config-provider,
+.n-layout {
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
   font-weight: normal;
 }
+
 :deep(.v-binder-follower-content) {
   z-index: 9999999 !important;
 }
