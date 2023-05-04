@@ -18,9 +18,8 @@ window.$notification = useNotification()
 window.$loadingBar = useLoadingBar()
 const footerHeight = ref()
 const getFooter = () => {
-  const el: HTMLElement = document.getElementById('footer')
+  const el = document.getElementById('footer') as HTMLElement
   footerHeight.value = el.clientHeight
-  console.log(footerHeight.value)
 }
 onMounted(() => {
   getFooter()
