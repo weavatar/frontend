@@ -79,7 +79,7 @@
                     </a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://github.com/HaoZi-Team/Panel"> Linux面板 </a>
+                    <a target="_blank" href="https://github.com/HaoZi-Team/Panel"> Linux 面板 </a>
                   </li>
                   <li>
                     <a target="_blank" href="https://github.com/HaoZi-Team/Laravel-Installer">

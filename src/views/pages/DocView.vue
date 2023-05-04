@@ -93,4 +93,8 @@
 import { NCard, NCollapse, NCollapseItem } from 'naive-ui'
 </script>
 
-<style></style>
+<style>
+.doc {
+  padding: 100px;
+}
+</style>

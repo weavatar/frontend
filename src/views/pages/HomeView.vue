@@ -224,6 +224,19 @@ import {
 }
 
 @media only screen and (max-width: 768px) {
+  .home h1 {
+    font-size: 4rem;
+    line-height: 120%;
+    letter-spacing: 0.2rem;
+    color: white;
+  }
+
+  .home p {
+    font-size: 2rem;
+    letter-spacing: 0.4rem;
+    color: white;
+  }
+
   .product-content,
   .sponsor-content ul {
     flex-wrap: wrap;

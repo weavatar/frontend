@@ -41,7 +41,6 @@ import { NCard, NCollapse, NCollapseItem } from 'naive-ui'
 
 <style>
 .help {
-  margin: 100px;
-  min-height: 70vh;
+  padding: 100px;
 }
 </style>

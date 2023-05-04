@@ -41,7 +41,7 @@ const handleLogin = () => {
 <style scoped>
 .login-card {
   width: 400px;
-  margin: 200px auto 0;
+  margin: 100px auto;
 }
 
 @media (max-width: 768px) {
