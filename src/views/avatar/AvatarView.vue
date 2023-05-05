@@ -186,6 +186,7 @@ import {
 } from 'naive-ui'
 import type { DataTableColumns, UploadFileInfo } from 'naive-ui'
 import { computed, h, ref, watch } from 'vue'
+import type { VNode } from 'vue'
 import { fetchAvatarList, deleteAvatar, addAvatar, updateAvatar } from '@/api/avatar'
 import UploadAvatar from '@/components/avatar/UploadAvatar.vue'
 import CropAvatar from '@/components/avatar/CropAvatar.vue'
@@ -244,7 +245,7 @@ const columns: DataTableColumns<Avatar> = [
     key: 'actions',
     width: 200,
     render(row) {
-      let actions = []
+      let actions: VNode[] = []
       actions.push(
         h(
           NButton,
