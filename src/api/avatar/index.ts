@@ -42,8 +42,8 @@ export async function fetchAvatar(hash: string) {
     })
 }
 
-// 上传头像
-export async function uploadAvatar(data: FormData) {
+// 添加头像
+export async function addAvatar(data: FormData) {
   return http({
     url: '/avatars',
     method: 'POST',
