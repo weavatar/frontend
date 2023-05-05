@@ -591,7 +591,6 @@ const handleChangeAvatar = () => {
 
 <style scoped>
 .avatar {
-  margin: ;
   padding: 100px;
 }
 </style>
