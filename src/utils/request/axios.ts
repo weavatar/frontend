@@ -15,8 +15,6 @@ interface Response<T = any> {
 service.interceptors.request.use(
   (config) => {
     const userStore = useUserStore()
-    config.headers['Content-Type'] = 'application/json'
-    config.headers['Accept'] = 'application/json'
     config.headers['Authorization'] = `Bearer ${userStore.auth.token} `
     return config
   },

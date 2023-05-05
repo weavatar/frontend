@@ -26,6 +26,13 @@ function http({
 
   const params = Object.assign(typeof data === 'function' ? data() : data ?? {}, {})
 
+  // 判断是否是FormData
+  if (data instanceof FormData) {
+    headers = Object.assign(headers ?? {}, {
+      'Content-Type': 'multipart/form-data'
+    })
+  }
+
   switch (method) {
     case 'GET':
       return request.get(url, {
