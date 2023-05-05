@@ -516,6 +516,7 @@ const handlePhoneAddAvatar = () => {
   addAvatar(formData)
     .then((res) => {
       window.$message.success(res.message)
+      addShow.value = false
       phoneAddModel.value.raw = ''
       phoneAddModel.value.avatar = new Blob()
       phoneAddModel.value.verify_code = ''
@@ -574,6 +575,11 @@ const handleChangeAvatar = () => {
   updateAvatar(changeModel.value.hash, formData)
     .then((res) => {
       window.$message.success(res.message)
+      changeModel.value.hash = ''
+      changeModel.value.avatar = new Blob()
+      changeModel.value.captcha_id = ''
+      changeModel.value.captcha = ''
+      changeShow.value = false
       fetchAvatarList()
         .then((res) => {
           data.value = res.data as Avatar[]
