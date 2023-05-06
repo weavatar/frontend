@@ -204,7 +204,7 @@ interface Avatar {
   updated_at: string
 }
 
-const loading = ref(false)
+const loading = ref(true)
 const data = ref([] as Avatar[])
 const addShow = ref(false)
 const changeShow = ref(false)
@@ -460,6 +460,7 @@ const handleEmailAddAvatar = () => {
     return
   }
   loading.value = true
+  window.$loadingBar.start()
   const formData = new FormData()
   formData.append('raw', emailAddModel.value.raw)
   formData.append('avatar', emailAddModel.value.avatar, 'avatar.png')
@@ -478,14 +479,18 @@ const handleEmailAddAvatar = () => {
         .then((res) => {
           data.value = res.data as Avatar[]
           loading.value = false
+          window.$loadingBar.finish()
         })
         .catch((res) => {
           window.$message.error(res.message)
           loading.value = false
+          window.$loadingBar.finish()
         })
     })
     .catch((err) => {
       console.log(err)
+      loading.value = false
+      window.$loadingBar.finish()
     })
 }
 // 添加手机头像
@@ -507,6 +512,7 @@ const handlePhoneAddAvatar = () => {
     return
   }
   loading.value = true
+  window.$loadingBar.start()
   const formData = new FormData()
   formData.append('raw', phoneAddModel.value.raw)
   formData.append('avatar', phoneAddModel.value.avatar, 'avatar.png')
@@ -526,19 +532,25 @@ const handlePhoneAddAvatar = () => {
         .then((res) => {
           data.value = res.data as Avatar[]
           loading.value = false
+          window.$loadingBar.finish()
         })
         .catch((res) => {
           window.$message.error(res.message)
           loading.value = false
+          window.$loadingBar.finish()
         })
     })
     .catch((err) => {
       console.log(err)
+      loading.value = false
+      window.$loadingBar.finish()
     })
 }
 
 // 删除头像
 const handleAvatarDelete = (hash: string) => {
+  loading.value = true
+  window.$loadingBar.start()
   deleteAvatar(hash)
     .then((res) => {
       window.$message.success(res.message)
@@ -546,14 +558,18 @@ const handleAvatarDelete = (hash: string) => {
         .then((res) => {
           data.value = res.data as Avatar[]
           loading.value = false
+          window.$loadingBar.finish()
         })
         .catch((res) => {
           window.$message.error(res.message)
           loading.value = false
+          window.$loadingBar.finish()
         })
     })
     .catch((res) => {
       window.$message.error(res.message)
+      loading.value = false
+      window.$loadingBar.finish()
     })
 }
 
@@ -567,6 +583,9 @@ const handleChangeAvatar = () => {
     window.$message.error('头像哈希为空')
     return
   }
+
+  loading.value = true
+  window.$loadingBar.start()
 
   const formData = new FormData()
   formData.append('avatar', changeModel.value.avatar, 'avatar.png')
@@ -584,14 +603,18 @@ const handleChangeAvatar = () => {
         .then((res) => {
           data.value = res.data as Avatar[]
           loading.value = false
+          window.$loadingBar.finish()
         })
         .catch((res) => {
           window.$message.error(res.message)
           loading.value = false
+          window.$loadingBar.finish()
         })
     })
     .catch((res) => {
       window.$message.error(res.message)
+      loading.value = false
+      window.$loadingBar.finish()
     })
 }
 </script>
@@ -605,35 +628,9 @@ const handleChangeAvatar = () => {
   .avatar {
     padding: 100px 0 100px 0;
   }
-  :deep(.n-data-table .n-data-table-table) {
-    display: flex;
-  }
 
-  :deep(.n-data-table .n-data-table-thead) {
-    width: 30%;
-  }
-
-  :deep(.n-data-table-tbody) {
-    width: 70%;
-  }
-
-  :deep(.n-data-table .n-data-table-tr) {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  :deep(.n-data-table .n-data-table-th) {
-    height: 50px;
-    width: 100%;
-  }
-
-  :deep(.n-data-table .n-data-table-td) {
-    height: 50px;
-    width: 100%;
-  }
-
-  :deep(.n-data-table-table colgroup) {
-    display: none;
+  :deep(.n-data-table-td button) {
+    margin: 0;
   }
 }
 </style>

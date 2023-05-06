@@ -54,4 +54,12 @@ const router = createRouter({
   ]
 })
 
+// 加载进度条
+router.beforeEach(() => {
+  window.$loadingBar.start()
+})
+router.afterEach(() => {
+  window.$loadingBar.finish()
+})
+
 export default router
