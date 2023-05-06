@@ -15,7 +15,31 @@
             </p>
           </div>
         </NCollapseItem>
-        <NCollapseItem title="邮箱 / 手机号的哈希方法" name="2">
+        <NCollapseItem title="在 CMS 中使用 WeAvatar" name="2">
+          <div>
+            <p>对于常见的 CMS 系统，我们提供了插件可以轻松地接入 WeAvatar。</p>
+            <ul>
+              <li>
+                <b>WordPress : </b>
+                安装启用
+                <a target="_blank" href="https://github.com/HaoZi-Team/WP-China-Plus">
+                  WP-China-Plus
+                </a>
+                插件
+              </li>
+              <li>
+                <b>Typecho : </b>添加
+                <code>define('__TYPECHO_GRAVATAR_PREFIX__', 'https://weavatar.com/avatar/');</code>
+                到站点根目录的 config.inc.php 中
+              </li>
+              <li><b>Emlog : </b>待更新</li>
+              <li><b>Zblog : </b>待更新</li>
+              <li><b>Discuz : </b>待更新</li>
+              <li><b>Flarum : </b>待更新</li>
+            </ul>
+          </div>
+        </NCollapseItem>
+        <NCollapseItem title="邮箱 / 手机号的哈希方法" name="3">
           <div>
             <ul>
               <li>去除首位两边的空格</li>
@@ -24,7 +48,7 @@
             </ul>
           </div>
         </NCollapseItem>
-        <NCollapseItem title="指定图片格式" name="3">
+        <NCollapseItem title="指定图片格式" name="4">
           <div>
             <p>我们当前支持五种图片返回格式，分别是：jpg、jpeg、png、gif、webp。</p>
             <p>
@@ -34,7 +58,7 @@
             <p>https://weavatar.com/avatar/ff3dcd55b299b96db5e2ed195af50817.jpg</p>
           </div>
         </NCollapseItem>
-        <NCollapseItem title="额外的参数" name="4">
+        <NCollapseItem title="额外的参数" name="5">
           <div>
             <h3><b>调整头像大小</b></h3>
             <p>
