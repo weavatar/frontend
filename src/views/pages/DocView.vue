@@ -97,4 +97,10 @@ import { NCard, NCollapse, NCollapseItem } from 'naive-ui'
 .doc {
   padding: 100px;
 }
+
+@media screen and (max-width: 719px) {
+  .doc {
+    padding: 100px 0 100px 0;
+  }
+}
 </style>

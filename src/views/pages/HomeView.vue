@@ -20,7 +20,7 @@
               </NIcon>
               <h2>多级头像匹配</h2>
               <p>
-                除 WeAvatar 上传的头像外，同时支持从 Gravatar、QQ
+                WeAvatar 除上传的头像外，还支持从 Gravatar、QQ
                 进行默认头像获取，尽可能确保每次请求都能得到有效的头像返回
               </p>
             </div>
@@ -30,9 +30,10 @@
               <NIcon size="60">
                 <PhoneIcon />
               </NIcon>
-              <h2>手机号头像</h2>
+              <h2>手机号、字母头像</h2>
               <p>
-                WeAvatar 首创支持为你的手机号上传对应的头像，网站可通过手机号的哈希值获取对应的头像
+                WeAvatar
+                首家支持手机号头像及字母默认头像，手机号头像更符合国内用户的使用习惯，字母头像可为没有头像的用户提供更好的体验
               </p>
             </div>
           </NGridItem>
@@ -64,8 +65,8 @@
               </NIcon>
               <h2>更快的速度</h2>
               <p>
-                WeAvatar 后端使用 Golang 开发，天生具有无与伦比的速度优势。同时 WeAvatar
-                拥有多级缓存机制，尽可能提高头像的加载速度
+                WeAvatar 后端使用 Golang 开发，具有无与伦比的速度优势。同时 WeAvatar
+                拥有多级缓存机制，以尽可能提高头像的加载速度
               </p>
             </div>
           </NGridItem>
@@ -75,7 +76,7 @@
                 <CloudOutlineIcon />
               </NIcon>
               <h2>开放平台（开发中）</h2>
-              <p>WeAvatar 开放平台支持自己的应用无缝对接 WeAvatar，提供配套的SDK供开发者使用</p>
+              <p>WeAvatar 开放平台支持自己的应用无缝对接 WeAvatar，提供配套的 SDK 供开发者使用</p>
             </div>
           </NGridItem>
         </NGrid>
