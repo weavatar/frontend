@@ -605,5 +605,35 @@ const handleChangeAvatar = () => {
   .avatar {
     padding: 100px 0 100px 0;
   }
+  :deep(.n-data-table .n-data-table-table) {
+    display: flex;
+  }
+
+  :deep(.n-data-table .n-data-table-thead) {
+    width: 30%;
+  }
+
+  :deep(.n-data-table-tbody) {
+    width: 70%;
+  }
+
+  :deep(.n-data-table .n-data-table-tr) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  :deep(.n-data-table .n-data-table-th) {
+    height: 50px;
+    width: 100%;
+  }
+
+  :deep(.n-data-table .n-data-table-td) {
+    height: 50px;
+    width: 100%;
+  }
+
+  :deep(.n-data-table-table colgroup) {
+    display: none;
+  }
 }
 </style>
