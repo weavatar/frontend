@@ -1,17 +1,26 @@
 <template>
   <div class="avatar">
     <NCard title="头像管理">
-      <NDataTable :columns="columns" :data="data" :loading="loading" :row-key="(row) => row.id" />
-      <NCard :bordered="false">
-        <NButton
-          type="primary"
-          size="large"
-          style="display: block; margin-left: auto; margin-right: auto"
-          @click="() => (addModal = true)"
-        >
-          添加头像
-        </NButton>
-      </NCard>
+      <NSpace vertical>
+        <NAlert type="info" class="avatar-notice">
+          你可以通过
+          <b>https://weavatar.com/avatar/地址MD5值</b> 的方式访问自己的头像。
+          <RouterLink :to="{ name: 'help' }"> 查看帮助 </RouterLink>
+          /
+          <RouterLink :to="{ name: 'doc' }"> 查看文档 </RouterLink>
+        </NAlert>
+        <NDataTable :columns="columns" :data="data" :loading="loading" :row-key="(row) => row.id" />
+        <NCard :bordered="false">
+          <NButton
+            type="primary"
+            size="large"
+            style="display: block; margin-left: auto; margin-right: auto"
+            @click="() => (addModal = true)"
+          >
+            添加头像
+          </NButton>
+        </NCard>
+      </NSpace>
     </NCard>
     <NModal v-model:show="addModal" title="添加头像">
       <NCard closable @close="() => (addModal = false)" title="添加头像" style="width: 60vh">
@@ -104,6 +113,8 @@
 <script setup lang="ts">
 import {
   NCard,
+  NAlert,
+  NSpace,
   NButton,
   NDataTable,
   NPopconfirm,
@@ -515,5 +526,9 @@ const handleChangeAvatar = () => {
   .avatar {
     padding: 100px 0 100px 0;
   }
+}
+
+:deep(.avatar-notice a) {
+  text-decoration: none;
 }
 </style>
