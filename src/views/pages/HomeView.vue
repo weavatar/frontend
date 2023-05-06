@@ -54,7 +54,7 @@
           <NGridItem span="3 s:1">
             <div class="product-content-p" v-motion-slide-visible-bottom>
               <NIcon size="60">
-                <PhoneIcon />
+                <IdCardIcon />
               </NIcon>
               <h2>手机号、字母头像</h2>
               <p>
@@ -215,7 +215,7 @@ import type { NumberAnimationInst } from 'naive-ui'
 
 import {
   AlbumsOutline as AlbumsIcon,
-  PhonePortraitOutline as PhoneIcon,
+  IdCardOutline as IdCardIcon,
   ImageOutline as ImageIcon,
   ShieldCheckmarkOutline as ShieldCheckmarkIcon,
   SpeedometerOutline as SpeedometerIcon,
@@ -297,6 +297,7 @@ fetchCdnUsage()
 
 .product-content {
   flex-wrap: wrap;
+  padding: 0 240px;
 }
 
 .user-content .url,
@@ -370,6 +371,7 @@ fetchCdnUsage()
   .user-content ul,
   .sponsor-content ul {
     flex-wrap: wrap;
+    padding: 10px;
   }
 
   .product-content-p {
