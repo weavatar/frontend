@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import NotFoundView from '../views/pages/NotFoundView.vue'
 import HomeView from '../views/pages/HomeView.vue'
 import DocView from '../views/pages/DocView.vue'
 import HelpView from '../views/pages/HelpView.vue'
@@ -50,6 +51,17 @@ const router = createRouter({
       path: '/user/avatar',
       name: 'user-avatar',
       component: AvatarView
+    },
+    {
+      name: '404',
+      path: '/404',
+      component: NotFoundView
+    },
+    {
+      path: '/:catchAll(.*)',
+      redirect: {
+        name: '404'
+      }
     }
   ]
 })

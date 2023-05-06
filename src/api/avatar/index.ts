@@ -1,4 +1,4 @@
-import http from '@/utils/request'
+import http, { echoMessage } from '@/utils/request'
 
 // 获取头像列表
 export async function fetchAvatarList() {
@@ -10,13 +10,7 @@ export async function fetchAvatarList() {
       return res.data
     })
     .catch((err) => {
-      if (err.code == 422) {
-        for (const key in err.message) {
-          for (const subKey in err.message[key]) {
-            window.$message.error(err.message[key][subKey])
-          }
-        }
-      }
+      echoMessage(err)
       return Promise.reject(err)
     })
 }
@@ -31,13 +25,7 @@ export async function fetchAvatar(hash: string) {
       return res.data
     })
     .catch((err) => {
-      if (err.code == 422) {
-        for (const key in err.message) {
-          for (const subKey in err.message[key]) {
-            window.$message.error(err.message[key][subKey])
-          }
-        }
-      }
+      echoMessage(err)
       return Promise.reject(err)
     })
 }
@@ -53,13 +41,7 @@ export async function addAvatar(data: FormData) {
       return res.data
     })
     .catch((err) => {
-      if (err.code == 422) {
-        for (const key in err.message) {
-          for (const subKey in err.message[key]) {
-            window.$message.error(err.message[key][subKey])
-          }
-        }
-      }
+      echoMessage(err)
       return Promise.reject(err)
     })
 }
@@ -74,13 +56,7 @@ export async function deleteAvatar(hash: string) {
       return res.data
     })
     .catch((err) => {
-      if (err.code == 422) {
-        for (const key in err.message) {
-          for (const subKey in err.message[key]) {
-            window.$message.error(err.message[key][subKey])
-          }
-        }
-      }
+      echoMessage(err)
       return Promise.reject(err)
     })
 }
@@ -96,13 +72,7 @@ export async function updateAvatar(hash: string, data: FormData) {
       return res.data
     })
     .catch((err) => {
-      if (err.code == 422) {
-        for (const key in err.message) {
-          for (const subKey in err.message[key]) {
-            window.$message.error(err.message[key][subKey])
-          }
-        }
-      }
+      echoMessage(err)
       return Promise.reject(err)
     })
 }
