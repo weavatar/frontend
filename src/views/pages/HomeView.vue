@@ -113,7 +113,7 @@
     <div class="user">
       <div class="user-title" v-motion-slide-visible-bottom>
         <h1>他们都在用</h1>
-        <span>一些你可能认识的人都在使用 WeAvatar</span>
+        <span>一些你可能认识的人也在使用 WeAvatar，不妨来试试？</span>
       </div>
       <div class="user-content">
         <NGrid x-gap="12" cols="4" item-responsive responsive="screen">
@@ -154,7 +154,7 @@
             </a>
           </NGridItem>
           <NGridItem span="4 s:1" v-motion-slide-visible-bottom>
-            <a class="url" target="_blank" href="https://seoyh.com/">
+            <a class="url" target="_blank" href="http://www.seoyh.net/">
               <NImage
                 src="https://img-cdn.haozi.xyz/2023/05/06/bf62c7776043081ecf05596211e5177c.png"
                 alt="一点优化"
