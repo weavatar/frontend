@@ -600,4 +600,10 @@ const handleChangeAvatar = () => {
 .avatar {
   padding: 100px;
 }
+
+@media screen and (max-width: 719px) {
+  .avatar {
+    padding: 100px 0 100px 0;
+  }
+}
 </style>
