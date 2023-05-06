@@ -20,7 +20,7 @@
               </NIcon>
               <h2>多级头像匹配</h2>
               <p>
-                除 WeAvatar 上传的头像外，同时支持从 Gravatar、QQ
+                WeAvatar 除上传的头像外，还支持从 Gravatar、QQ
                 进行默认头像获取，尽可能确保每次请求都能得到有效的头像返回
               </p>
             </div>

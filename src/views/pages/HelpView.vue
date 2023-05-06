@@ -9,10 +9,10 @@
             头像，最后会返回我们为你准备的一组默认头像。
           </div>
         </NCollapseItem>
-        <NCollapseItem title=">为什么我的头像显示违禁？" name="2">
+        <NCollapseItem title=">为什么我的头像是红色的 WeAvatar 标志？" name="2">
           <div>
-            为了符合有关法律规定要求，WeAvatar 上的全部头像均会进行一次 AI
-            检测，如果您认为这是误报，请与我们联系。
+            为了符合有关法律规定要求，WeAvatar 上的全部头像均会进行 AI 检测，您的头像被 AI
+            判定违规。如果您认为这是误报，请与我们联系。
           </div>
         </NCollapseItem>
         <NCollapseItem title="WeAvatar 所支持的额外功能？" name="3">
