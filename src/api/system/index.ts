@@ -20,3 +20,18 @@ export async function fetchCdnUsage() {
       return Promise.reject(err)
     })
 }
+
+// 检查绑定
+export async function checkBind(raw: string) {
+  return http({
+    url: `/system/checkBind`,
+    data: { raw },
+    method: 'GET'
+  })
+    .then((res) => {
+      return res.data
+    })
+    .catch((err) => {
+      return Promise.reject(err)
+    })
+}
