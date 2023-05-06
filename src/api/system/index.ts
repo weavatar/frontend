@@ -1,4 +1,4 @@
-import http from '@/utils/request'
+import http, { echoMessage } from '@/utils/request'
 
 // 获取CDN用量
 export async function fetchCdnUsage() {
@@ -10,13 +10,7 @@ export async function fetchCdnUsage() {
       return res.data
     })
     .catch((err) => {
-      if (err.code == 422) {
-        for (const key in err.message) {
-          for (const subKey in err.message[key]) {
-            window.$message.error(err.message[key][subKey])
-          }
-        }
-      }
+      echoMessage(err)
       return Promise.reject(err)
     })
 }
@@ -32,6 +26,7 @@ export async function checkBind(raw: string) {
       return res.data
     })
     .catch((err) => {
+      echoMessage(err)
       return Promise.reject(err)
     })
 }

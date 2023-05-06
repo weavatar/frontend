@@ -1,4 +1,4 @@
-import http from '@/utils/request'
+import http, { echoMessage } from '@/utils/request'
 
 // 图片验证码
 export async function image() {
@@ -10,13 +10,7 @@ export async function image() {
       return res.data
     })
     .catch((err) => {
-      if (err.code == 422) {
-        for (const key in err.message) {
-          for (const subKey in err.message[key]) {
-            window.$message.error(err.message[key][subKey])
-          }
-        }
-      }
+      echoMessage(err)
       return Promise.reject(err)
     })
 }
@@ -37,13 +31,7 @@ export async function phone(
       return res.data
     })
     .catch((err) => {
-      if (err.code == 422) {
-        for (const key in err.message) {
-          for (const subKey in err.message[key]) {
-            window.$message.error(err.message[key][subKey])
-          }
-        }
-      }
+      echoMessage(err)
       return Promise.reject(err)
     })
 }
@@ -64,13 +52,7 @@ export async function email(
       return res.data
     })
     .catch((err) => {
-      if (err.code == 422) {
-        for (const key in err.message) {
-          for (const subKey in err.message[key]) {
-            window.$message.error(err.message[key][subKey])
-          }
-        }
-      }
+      echoMessage(err)
       return Promise.reject(err)
     })
 }
