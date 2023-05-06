@@ -28,7 +28,7 @@ const block = ref(true)
 const emit = defineEmits(['updateImageCaptchaValue'])
 
 const getEmailCaptcha = (use_for: string) => {
-  // 发送手机验证码
+  // 发送邮件验证码
   if (email?.value && captcha_id?.value && captcha?.value) {
     loading.value = true
     // 防止重复点击
