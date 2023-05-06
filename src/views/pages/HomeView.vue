@@ -1,17 +1,17 @@
 <template>
   <main>
-    <div class="home">
+    <div class="home" v-motion-fade>
       <h1>WeAvatar</h1>
       <p>每个人的头像</p>
     </div>
 
     <!-- 产品介绍 -->
     <div class="product">
-      <div class="product-title">
+      <div class="product-title" v-motion-slide-visible-bottom>
         <h1>为什么选择 WeAvatar</h1>
         <span>WeAvatar 可作为增强版的 Gravatar，相比原版 Gravatar 具有以下优势</span>
       </div>
-      <div class="product-content">
+      <div class="product-content" v-motion-slide-visible-bottom>
         <NGrid x-gap="12" cols="3" item-responsive responsive="screen">
           <NGridItem span="3 s:1">
             <div class="product-content-p">
@@ -84,11 +84,11 @@
     </div>
     <!-- 赞助商 -->
     <div class="sponsor">
-      <div class="sponsor-title">
+      <div class="sponsor-title" v-motion-slide-visible-bottom>
         <h1>我们的赞助商</h1>
         <span>作为公益性质的项目，WeAvatar 的稳定运行离不开它们的帮助</span>
       </div>
-      <div class="sponsor-content">
+      <div class="sponsor-content" v-motion-slide-visible-bottom>
         <NGrid x-gap="12" cols="2" item-responsive responsive="screen">
           <NGridItem span="2 s:1">
             <a class="url" target="_blank" href="https://www.ddunyun.com/aff/PNYAXMKI">
