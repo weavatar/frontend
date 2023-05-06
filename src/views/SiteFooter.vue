@@ -1,5 +1,5 @@
 <template>
-  <div class="footer" v-motion-fade-visible>
+  <div class="footer">
     <div class="footer-content">
       <NGrid x-gap="12" cols="4" item-responsive responsive="screen">
         <NGridItem span="4 s:1">

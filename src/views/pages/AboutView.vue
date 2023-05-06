@@ -7,10 +7,16 @@
 <style scoped>
 .about h2 {
   font-size: 4rem;
-  padding-top: 20vh;
-  margin: 0;
+  padding: 20vh 0;
   letter-spacing: 1rem;
   color: black;
   text-align: center;
+}
+
+@media screen and (max-width: 719px) {
+  .about h2 {
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+  }
 }
 </style>

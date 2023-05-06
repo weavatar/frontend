@@ -391,7 +391,7 @@ const handleAddAvatar = () => {
                     window.$loadingBar.finish()
                   })
                   .catch((res) => {
-                    window.$message.error(res.message)
+                    console.log(res)
                     loading.value = false
                     window.$loadingBar.finish()
                   })
@@ -427,7 +427,7 @@ const handleAddAvatar = () => {
                 window.$loadingBar.finish()
               })
               .catch((res) => {
-                window.$message.error(res.message)
+                console.log(res)
                 loading.value = false
                 window.$loadingBar.finish()
               })
@@ -441,7 +441,8 @@ const handleAddAvatar = () => {
     })
     .catch((err) => {
       console.log(err)
-      window.$message.error(err.message)
+      loading.value = false
+      window.$loadingBar.finish()
     })
 }
 
@@ -459,13 +460,13 @@ const handleAvatarDelete = (hash: string) => {
           window.$loadingBar.finish()
         })
         .catch((res) => {
-          window.$message.error(res.message)
+          console.log(res)
           loading.value = false
           window.$loadingBar.finish()
         })
     })
     .catch((res) => {
-      window.$message.error(res.message)
+      console.log(res)
       loading.value = false
       window.$loadingBar.finish()
     })
@@ -504,13 +505,13 @@ const handleChangeAvatar = () => {
           window.$loadingBar.finish()
         })
         .catch((res) => {
-          window.$message.error(res.message)
+          console.log(res)
           loading.value = false
           window.$loadingBar.finish()
         })
     })
     .catch((res) => {
-      window.$message.error(res.message)
+      console.log(res)
       loading.value = false
       window.$loadingBar.finish()
     })
@@ -530,5 +531,6 @@ const handleChangeAvatar = () => {
 
 :deep(.avatar-notice a) {
   text-decoration: none;
+  color: #409eff;
 }
 </style>
