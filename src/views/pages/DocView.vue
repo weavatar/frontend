@@ -51,7 +51,7 @@
                 <NCode code="https://weavatar.com" inline />
                 接入 WeAvatar，你可以参考下方 额外的参数 部分来修改默认头像
                 <br />
-                <b>Pro之后(6.x): </b> 修改
+                <b>Pro之后(2.x): </b> 修改
                 <NCode code="include/lib/common.php" inline />
                 中
                 <NCode code="getGravatar" inline />
