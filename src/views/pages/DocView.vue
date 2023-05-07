@@ -9,18 +9,18 @@
               一样请求，具体格式是：https://weavatar.com/avatar/HASH
             </p>
             <p>
-              其中 HASH 部分是你的电子邮箱/手机号的哈希值，此电子邮箱/手机号必须在 weavatar.com
-              上注册并绑定头像，否则会尝试返回 Gravatar 头像和 QQ
-              头像，如果都不存在，则返回默认头像。
+              其中 HASH 部分是 邮箱/手机号 的 MD5 哈希值，此电子邮箱/手机号必须在 weavatar.com
+              上添加头像，否则会尝试返回 Gravatar 头像和 QQ 头像，如果都不存在，则返回默认头像。
             </p>
           </div>
         </NCollapseItem>
         <NCollapseItem title="在 CMS 中使用 WeAvatar" name="2">
           <div>
-            <p>对于常见的 CMS 系统，我们提供了插件可以轻松地接入 WeAvatar。</p>
+            <p>对于常见的 CMS 系统，可通过以下方式轻松地接入 WeAvatar。</p>
             <ul>
               <li>
                 <b>WordPress : </b>
+                <br />
                 安装启用
                 <a target="_blank" href="https://github.com/HaoZi-Team/WP-China-Plus">
                   WP-China-Plus
@@ -28,12 +28,40 @@
                 插件
               </li>
               <li>
-                <b>Typecho : </b>添加
-                <code>define('__TYPECHO_GRAVATAR_PREFIX__', 'https://weavatar.com/avatar/');</code>
-                到站点根目录的 config.inc.php 中
+                <b>Typecho : </b>
+                <br />
+                添加
+                <NCode
+                  code="define('__TYPECHO_GRAVATAR_PREFIX__', 'https://weavatar.com/avatar/');"
+                  language="php"
+                  inline
+                />
+                到站点根目录的 <NCode code="config.inc.php" inline /> 中
               </li>
-              <li><b>Emlog : </b>待更新</li>
-              <li><b>Zblog : </b>待更新</li>
+              <li>
+                <b>Emlog : </b>
+                <br />
+                <b>Pro之前(5.x 6.x民间): </b> 通过修改
+                <NCode code="include/lib/function.base.php" inline />
+                中
+                <NCode code="getGravatar" inline />
+                函数中的
+                <NCode code="http://www.gravatar.com" inline />
+                为
+                <NCode code="https://weavatar.com" inline />
+                接入 WeAvatar，你可以参考下方 额外的参数 部分来修改默认头像
+                <br />
+                <b>Pro之后(6.x): </b> 修改
+                <NCode code="include/lib/common.php" inline />
+                中
+                <NCode code="getGravatar" inline />
+                函数中的
+                <NCode code="cravatar.cn" inline />
+                为
+                <NCode code="weavatar.com" inline />
+                接入 WeAvatar，你可以参考下方 <b>额外的参数</b> 部分来修改默认头像
+              </li>
+              <li><b>Zblog : </b>插件官方审核中，暂时可通过加入交流群获取（入口见页脚）</li>
               <li><b>Discuz : </b>待更新</li>
               <li><b>Flarum : </b>待更新</li>
             </ul>
@@ -68,7 +96,16 @@
             <hr />
             <h3><b>自定义默认头像</b></h3>
             <p>
-              如果你提供的哈希无法匹配到任何头像，则将会返回我们的默认头像，你可以通过
+              如果你提供的哈希无法匹配到任何头像，则将会返回我们的默认头像。
+              <br />
+              <NImage
+                src="https://weavatar.com/avatar/?f=y&s=60"
+                alt="默认头像"
+                width="60"
+                height="60"
+              />
+              <br />
+              当然，你也可以通过
               <code>d</code> 或 <code>default</code> 参数指定需要返回的默认头像：
             </p>
             <p>https://weavatar.com/avatar/ff3dcd55b299b96db5e2ed195af50817.jpg?d=你的URL</p>
@@ -91,12 +128,66 @@
               </li>
               <li><code>d=blank</code>：返回一个透明的 PNG 图片</li>
             </ul>
+            <NSpace>
+              <NImage
+                src="https://weavatar.com/avatar/?d=mp&f=y&s=60"
+                alt="人物轮廓"
+                width="60"
+                height="60"
+              />
+              <NImage
+                src="https://weavatar.com/avatar/?d=identicon&f=y&s=60"
+                alt="几何图案"
+                width="60"
+                height="60"
+              />
+              <NImage
+                src="https://weavatar.com/avatar/?d=monsterid&f=y&s=60"
+                alt="人头1"
+                width="60"
+                height="60"
+              />
+              <NImage
+                src="https://weavatar.com/avatar/?d=wavatar&f=y&s=60"
+                alt="人脸"
+                width="60"
+                height="60"
+              />
+              <NImage
+                src="https://weavatar.com/avatar/?d=retro&f=y&s=60"
+                alt="像素人脸"
+                width="60"
+                height="60"
+              />
+              <NImage
+                src="https://weavatar.com/avatar/?d=robohash&f=y&s=60"
+                alt="人头2"
+                width="60"
+                height="60"
+              />
+              <NImage
+                src="https://weavatar.com/avatar/demo?d=letter&letter=WeAvatar&f=y&s=60"
+                alt="字母头像"
+                width="60"
+                height="60"
+              />
+              <NImage
+                src="https://weavatar.com/avatar/?d=blank&f=y&s=60"
+                alt="透明图片"
+                width="60"
+                height="60"
+              />
+            </NSpace>
+            <p>为方便演示，以上图片均通过 CSS 添加了边框</p>
             <hr />
             <h3><b>强制加载默认头像</b></h3>
             <p>
               如果由于某种原因你想强制始终返回默认头像，您可以使用 <code>f</code> 或
               <code>forcedefault</code> 参数并将其值设置为 <code>y</code>。
             </p>
+            <hr />
+            <h3><b>指定要显示的头像级别</b></h3>
+            <p>为符合中国法律要求，该参数暂不提供支持。</p>
             <hr />
             <h3><b>组合参数</b></h3>
             <p>
@@ -114,12 +205,21 @@
 </template>
 
 <script setup lang="ts">
-import { NCard, NCollapse, NCollapseItem } from 'naive-ui'
+import { NCard, NCode, NCollapse, NCollapseItem, NSpace, NImage } from 'naive-ui'
 </script>
 
 <style scoped>
 .doc {
   padding: 100px;
+}
+
+a {
+  text-decoration: none;
+  color: #409eff;
+}
+
+.n-image {
+  border: 1px solid black;
 }
 
 @media screen and (max-width: 719px) {
