@@ -1,5 +1,5 @@
 <template>
-  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme="theme">
+  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme="theme" :hljs="hljs">
     <NLoadingBarProvider>
       <NMessageProvider>
         <NNotificationProvider>
@@ -23,6 +23,10 @@ import {
   NDialogProvider
 } from 'naive-ui'
 import { zhCN, dateZhCN } from 'naive-ui'
+import hljs from 'highlight.js/lib/core'
+import php from 'highlight.js/lib/languages/php'
+
+hljs.registerLanguage('php', php)
 
 //import { computed } from 'vue'
 //import { useOsTheme, darkTheme } from 'naive-ui'

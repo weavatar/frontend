@@ -136,6 +136,8 @@ import CropAvatar from '@/components/avatar/CropAvatar.vue'
 import ImageCaptcha from '@/components/captcha/ImageCaptcha.vue'
 import VerifyCode from '@/components/captcha/VerifyCode.vue'
 import { isEmail, isPhone } from '@/utils/is'
+import { useUserStore } from '@/stores'
+import { useRouter } from 'vue-router'
 
 interface Avatar {
   hash: string
@@ -154,6 +156,14 @@ const changeModal = ref(false)
 
 const addSetAvatar = ref('设置头像')
 const changeSetAvatar = ref('设置头像')
+
+const userStore = useUserStore()
+const router = useRouter()
+
+if (!userStore.auth.login) {
+  userStore.clearToken()
+  router.push({ name: 'login' })
+}
 
 fetchAvatarList()
   .then((res) => {
