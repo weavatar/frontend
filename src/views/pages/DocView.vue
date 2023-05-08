@@ -61,7 +61,13 @@
                 <NCode code="weavatar.com" inline />
                 接入 WeAvatar，你可以参考下方 <b>额外的参数</b> 部分来修改默认头像
               </li>
-              <li><b>Zblog : </b>插件官方审核中，暂时可通过加入交流群获取（入口见页脚）</li>
+              <li>
+                <b>Z-Blog : </b>后台应用中心搜索 "WeAvatar" 安装插件或前往
+                <a target="_blank" href="https://app.zblogcn.com/?id=38455">
+                  https://app.zblogcn.com/?id=38455
+                </a>
+                下载插件并手动安装
+              </li>
               <li><b>Discuz : </b>待更新</li>
               <li><b>Flarum : </b>待更新</li>
             </ul>

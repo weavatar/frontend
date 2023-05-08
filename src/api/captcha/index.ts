@@ -16,16 +16,11 @@ export async function image() {
 }
 
 // 手机验证码
-export async function phone(
-  phone: string,
-  use_for: string,
-  captcha_id: string,
-  captcha: string
-): Promise<any> {
+export async function phone(phone: string, use_for: string, captcha: string): Promise<any> {
   return http({
     url: '/captcha/sms',
     method: 'POST',
-    data: { phone, use_for, captcha_id, captcha }
+    data: { phone, use_for, captcha }
   })
     .then((res) => {
       return res.data
@@ -37,16 +32,11 @@ export async function phone(
 }
 
 // 邮箱验证码
-export async function email(
-  email: string,
-  use_for: string,
-  captcha_id: string,
-  captcha: string
-): Promise<any> {
+export async function email(email: string, use_for: string, captcha: string): Promise<any> {
   return http({
     url: '/captcha/email',
     method: 'POST',
-    data: { email, use_for, captcha_id, captcha }
+    data: { email, use_for, captcha }
   })
     .then((res) => {
       return res.data
