@@ -1,6 +1,12 @@
 <template>
   <div>
-    <NButton :block="block" :type="type" :loading="loading" :disabled="disabled">
+    <NButton
+      :block="block"
+      :type="type"
+      :loading="loading"
+      :disabled="disabled"
+      @click="sendEmailCaptcha"
+    >
       {{ msg }}
     </NButton>
   </div>
