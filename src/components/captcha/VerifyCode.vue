@@ -1,6 +1,12 @@
 <template>
   <div>
-    <NButton :block="block" :type="type" :loading="loading" :disabled="disabled">
+    <NButton
+      :block="block"
+      :type="type"
+      :loading="loading"
+      :disabled="disabled"
+      @click="sendVerifyCode"
+    >
       {{ msg }}
     </NButton>
   </div>
@@ -12,31 +18,39 @@ import { NButton } from 'naive-ui'
 import { phone as phoneCaptcha, email as emailCaptcha } from '@/api/captcha'
 import type { Type } from 'naive-ui/lib/button/src/interface'
 import { isPhone, isEmail } from '@/utils/is'
+import { useReCaptcha } from 'vue-recaptcha-v3'
+
+const reCaptchaInstance = useReCaptcha()
+
+// recaptcha
+async function getRecaptcha(action: string = 'email') {
+  await reCaptchaInstance?.recaptchaLoaded()
+  return reCaptchaInstance?.executeRecaptcha(action) as Promise<string>
+}
 
 const props = defineProps({
   to: String,
-  captcha_id: String,
-  captcha: String
+  use_for: String
 })
 
-const { to, captcha_id, captcha } = toRefs(props)
+const { to, use_for } = toRefs(props)
 const loading = ref(false)
 const msg = ref('发送')
 const type = ref('primary' as Type)
 const disabled = ref(false)
 const block = ref(true)
 
-const emit = defineEmits(['updateImageCaptchaValue'])
-
-const sendVerifyCode = (use_for: string) => {
-  if (to?.value && captcha_id?.value && captcha?.value) {
+const sendVerifyCode = async () => {
+  if (to?.value && use_for?.value) {
     loading.value = true
     // 防止重复点击
     if (disabled.value) {
       return
     }
+
     if (isPhone(to.value)) {
-      phoneCaptcha(to.value, use_for, captcha_id.value, captcha.value)
+      const captcha = await getRecaptcha('sms')
+      phoneCaptcha(to.value, use_for.value, captcha)
         .then((res) => {
           if (res.code == 0) {
             window.$message.success(res.message)
@@ -62,7 +76,8 @@ const sendVerifyCode = (use_for: string) => {
           console.log(err)
         })
     } else if (isEmail(to.value)) {
-      emailCaptcha(to.value, use_for, captcha_id.value, captcha.value)
+      const captcha = await getRecaptcha('email')
+      emailCaptcha(to.value, use_for.value, captcha)
         .then((res) => {
           if (res.code == 0) {
             window.$message.success(res.message)
@@ -90,9 +105,8 @@ const sendVerifyCode = (use_for: string) => {
     } else {
       window.$message.error('请输入正确的手机号或邮箱')
     }
-    emit('updateImageCaptchaValue', '')
   } else {
-    window.$message.error('请先完成图形验证码')
+    window.$message.error('参数错误')
   }
 }
 

@@ -38,17 +38,6 @@
               {{ addSetAvatar }}
             </NButton>
           </NFormItem>
-          <NFormItem path="captcha" label="验证码">
-            <NRow :gutter="[0, 24]">
-              <NCol :span="14">
-                <NInput v-model:value="addModel.captcha" type="text" @keydown.enter.prevent />
-              </NCol>
-              <NCol :span="2"></NCol>
-              <NCol :span="8">
-                <ImageCaptcha ref="ImageCaptchaRef" @UpdateCaptcha="handleUpdateCaptcha" />
-              </NCol>
-            </NRow>
-          </NFormItem>
           <NFormItem path="verify_code" label="验证码">
             <NRow :gutter="[0, 24]">
               <NCol :span="14">
@@ -56,15 +45,7 @@
               </NCol>
               <NCol :span="2"></NCol>
               <NCol :span="8">
-                <VerifyCode
-                  ref="VerifyCodeRef"
-                  :block="true"
-                  :to="addModel.raw"
-                  :captcha="addModel.captcha"
-                  :captcha_id="addModel.captcha_id"
-                  @click="handleVerifyCodeSend"
-                  @updateImageCaptchaValue="handleUpdateImageCaptchaValue"
-                />
+                <VerifyCode :block="true" :to="addModel.raw" use_for="avatar" />
               </NCol>
             </NRow>
           </NFormItem>
@@ -84,17 +65,6 @@
             <NButton type="info" style="width: 100%" @click="handleSetAvatar('change')">
               {{ changeSetAvatar }}
             </NButton>
-          </NFormItem>
-          <NFormItem path="captcha" label="验证码">
-            <NRow :gutter="[0, 24]">
-              <NCol :span="14">
-                <NInput v-model:value="changeModel.captcha" type="text" @keydown.enter.prevent />
-              </NCol>
-              <NCol :span="2"></NCol>
-              <NCol :span="8">
-                <ImageCaptcha ref="ImageCaptchaRef" @UpdateCaptcha="handleUpdateCaptcha" />
-              </NCol>
-            </NRow>
           </NFormItem>
         </NForm>
         <NDivider />
@@ -133,11 +103,11 @@ import { fetchAvatarList, deleteAvatar, addAvatar, updateAvatar } from '@/api/av
 import { checkBind } from '@/api/system'
 import UploadAvatar from '@/components/avatar/UploadAvatar.vue'
 import CropAvatar from '@/components/avatar/CropAvatar.vue'
-import ImageCaptcha from '@/components/captcha/ImageCaptcha.vue'
 import VerifyCode from '@/components/captcha/VerifyCode.vue'
 import { isEmail, isPhone } from '@/utils/is'
 import { useUserStore } from '@/stores'
 import { useRouter } from 'vue-router'
+import { useReCaptcha } from 'vue-recaptcha-v3'
 
 interface Avatar {
   hash: string
@@ -159,6 +129,14 @@ const changeSetAvatar = ref('设置头像')
 
 const userStore = useUserStore()
 const router = useRouter()
+
+const reCaptchaInstance = useReCaptcha()
+
+// recaptcha
+async function getRecaptcha() {
+  await reCaptchaInstance?.recaptchaLoaded()
+  return reCaptchaInstance?.executeRecaptcha('avatar') as Promise<string>
+}
 
 if (!userStore.auth.login) {
   userStore.clearToken()
@@ -254,14 +232,12 @@ const uploadAt = ref('add')
 const addModel = ref({
   raw: '',
   avatar: new Blob(),
-  captcha_id: '',
   captcha: '',
   verify_code: ''
 })
 const changeModel = ref({
   hash: '',
   avatar: new Blob(),
-  captcha_id: '',
   captcha: ''
 })
 
@@ -297,32 +273,8 @@ watch(
   }
 )
 
-const ImageCaptchaRef = ref()
-const VerifyCodeRef = ref()
 const uploadAvatarRef = ref()
 const cropAvatarRef = ref()
-
-function handleVerifyCodeSend() {
-  if (addModel.value.captcha == '') {
-    window.$message.error('请先完成图形验证码')
-    return
-  }
-
-  // 发送验证码
-  VerifyCodeRef.value.sendVerifyCode('avatar')
-  // 刷新图形验证码
-  ImageCaptchaRef.value.getCaptcha()
-}
-
-function handleUpdateCaptcha(captchaId: string) {
-  addModel.value.captcha_id = captchaId
-  changeModel.value.captcha_id = captchaId
-}
-
-function handleUpdateImageCaptchaValue(captcha: string) {
-  addModel.value.captcha = captcha
-  changeModel.value.captcha = captcha
-}
 
 const handleSetAvatar = (type: string) => {
   uploadAt.value = type
@@ -346,7 +298,7 @@ const handleCropAvatar = (avatar: any) => {
 }
 
 // 添加头像
-const handleAddAvatar = () => {
+const handleAddAvatar = async () => {
   if (addModel.value.avatar.size === 0) {
     window.$message.error('请先上传头像')
     return
@@ -359,16 +311,14 @@ const handleAddAvatar = () => {
     window.$message.error('请输入正确的手机号或邮箱')
     return
   }
-  if (addModel.value.captcha === '') {
-    window.$message.error('请先完成图形验证码')
-    return
-  }
   if (addModel.value.verify_code === '') {
     window.$message.error('请先输入验证码')
     return
   }
   loading.value = true
   window.$loadingBar.start()
+
+  addModel.value.captcha = await getRecaptcha()
 
   checkBind(addModel.value.raw)
     .then((res) => {
@@ -383,7 +333,6 @@ const handleAddAvatar = () => {
             formData.append('raw', addModel.value.raw)
             formData.append('avatar', addModel.value.avatar, 'avatar.png')
             formData.append('verify_code', addModel.value.verify_code)
-            formData.append('captcha_id', addModel.value.captcha_id)
             formData.append('captcha', addModel.value.captcha)
             addAvatar(formData)
               .then((res) => {
@@ -392,7 +341,6 @@ const handleAddAvatar = () => {
                 addModel.value.raw = ''
                 addModel.value.avatar = new Blob()
                 addModel.value.verify_code = ''
-                addModel.value.captcha_id = ''
                 addModel.value.captcha = ''
                 fetchAvatarList()
                   .then((res) => {
@@ -419,7 +367,6 @@ const handleAddAvatar = () => {
         formData.append('raw', addModel.value.raw)
         formData.append('avatar', addModel.value.avatar, 'avatar.png')
         formData.append('verify_code', addModel.value.verify_code)
-        formData.append('captcha_id', addModel.value.captcha_id)
         formData.append('captcha', addModel.value.captcha)
         addAvatar(formData)
           .then((res) => {
@@ -428,7 +375,6 @@ const handleAddAvatar = () => {
             addModel.value.raw = ''
             addModel.value.avatar = new Blob()
             addModel.value.verify_code = ''
-            addModel.value.captcha_id = ''
             addModel.value.captcha = ''
             fetchAvatarList()
               .then((res) => {
@@ -483,7 +429,7 @@ const handleAvatarDelete = (hash: string) => {
 }
 
 // 修改头像
-const handleChangeAvatar = () => {
+const handleChangeAvatar = async () => {
   if (changeModel.value.avatar.size === 0) {
     window.$message.error('请先选择头像')
     return
@@ -496,9 +442,10 @@ const handleChangeAvatar = () => {
   loading.value = true
   window.$loadingBar.start()
 
+  changeModel.value.captcha = await getRecaptcha()
+
   const formData = new FormData()
   formData.append('avatar', changeModel.value.avatar, 'avatar.png')
-  formData.append('captcha_id', changeModel.value.captcha_id)
   formData.append('captcha', changeModel.value.captcha)
   updateAvatar(changeModel.value.hash, formData)
     .then((res) => {
@@ -506,7 +453,6 @@ const handleChangeAvatar = () => {
       changeModal.value = false
       changeModel.value.hash = ''
       changeModel.value.avatar = new Blob()
-      changeModel.value.captcha_id = ''
       changeModel.value.captcha = ''
       fetchAvatarList()
         .then((res) => {
