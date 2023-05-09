@@ -34,7 +34,7 @@
             />
           </NFormItem>
           <NFormItem path="avatar" label="头像">
-            <NButton type="info" style="width: 100%" @click="handleSetAvatar('add')">
+            <NButton type="info" block @click="handleSetAvatar('add')">
               {{ addSetAvatar }}
             </NButton>
           </NFormItem>
@@ -53,7 +53,15 @@
         <NDivider />
         <NRow :gutter="[0, 24]">
           <NCol :span="24">
-            <NButton type="primary" style="width: 100%" @click="handleAddAvatar"> 添加 </NButton>
+            <NButton
+              type="primary"
+              block
+              :loading="buttonLoading"
+              :disabled="buttonDisabled"
+              @click="handleAddAvatar"
+            >
+              添加
+            </NButton>
           </NCol>
         </NRow>
       </NCard>
@@ -62,7 +70,7 @@
       <NCard closable @close="() => (changeModal = false)" title="修改头像" style="width: 60vh">
         <NForm :model="changeModel">
           <NFormItem path="avatar" label="头像">
-            <NButton type="info" style="width: 100%" @click="handleSetAvatar('change')">
+            <NButton type="info" block @click="handleSetAvatar('change')">
               {{ changeSetAvatar }}
             </NButton>
           </NFormItem>
@@ -70,7 +78,15 @@
         <NDivider />
         <NRow :gutter="[0, 24]">
           <NCol :span="24">
-            <NButton type="primary" style="width: 100%" @click="handleChangeAvatar"> 修改 </NButton>
+            <NButton
+              type="primary"
+              block
+              :loading="buttonLoading"
+              :disabled="buttonDisabled"
+              @click="handleChangeAvatar"
+            >
+              修改
+            </NButton>
           </NCol>
         </NRow>
       </NCard>
@@ -123,6 +139,8 @@ const loading = ref(true)
 const data = ref([] as Avatar[])
 const addModal = ref(false)
 const changeModal = ref(false)
+const buttonLoading = ref(false)
+const buttonDisabled = ref(false)
 
 const addSetAvatar = ref('设置头像')
 const changeSetAvatar = ref('设置头像')
@@ -315,12 +333,15 @@ const handleAddAvatar = async () => {
     window.$message.error('请先输入验证码')
     return
   }
+
+  buttonLoading.value = true
+  buttonDisabled.value = true
   loading.value = true
   window.$loadingBar.start()
 
   addModel.value.captcha = await getRecaptcha()
 
-  checkBind(addModel.value.raw)
+  await checkBind(addModel.value.raw)
     .then((res) => {
       if (res.data.bind == true) {
         window.$dialog.warning({
@@ -328,7 +349,7 @@ const handleAddAvatar = async () => {
           content: '该地址已被其他用户添加，是否继续添加？',
           positiveText: '是',
           negativeText: '否',
-          onPositiveClick: () => {
+          onPositiveClick: async () => {
             const formData = new FormData()
             formData.append('raw', addModel.value.raw)
             formData.append('avatar', addModel.value.avatar, 'avatar.png')
@@ -345,19 +366,13 @@ const handleAddAvatar = async () => {
                 fetchAvatarList()
                   .then((res) => {
                     data.value = res.data as Avatar[]
-                    loading.value = false
-                    window.$loadingBar.finish()
                   })
                   .catch((res) => {
                     console.log(res)
-                    loading.value = false
-                    window.$loadingBar.finish()
                   })
               })
               .catch((err) => {
                 console.log(err)
-                loading.value = false
-                window.$loadingBar.finish()
               })
           },
           onNegativeClick: () => {}
@@ -379,27 +394,24 @@ const handleAddAvatar = async () => {
             fetchAvatarList()
               .then((res) => {
                 data.value = res.data as Avatar[]
-                loading.value = false
-                window.$loadingBar.finish()
               })
               .catch((res) => {
                 console.log(res)
-                loading.value = false
-                window.$loadingBar.finish()
               })
           })
           .catch((err) => {
             console.log(err)
-            loading.value = false
-            window.$loadingBar.finish()
           })
       }
     })
     .catch((err) => {
       console.log(err)
-      loading.value = false
-      window.$loadingBar.finish()
     })
+
+  buttonLoading.value = false
+  buttonDisabled.value = false
+  loading.value = false
+  window.$loadingBar.finish()
 }
 
 // 删除头像
@@ -439,6 +451,8 @@ const handleChangeAvatar = async () => {
     return
   }
 
+  buttonLoading.value = true
+  buttonDisabled.value = true
   loading.value = true
   window.$loadingBar.start()
 
@@ -447,7 +461,7 @@ const handleChangeAvatar = async () => {
   const formData = new FormData()
   formData.append('avatar', changeModel.value.avatar, 'avatar.png')
   formData.append('captcha', changeModel.value.captcha)
-  updateAvatar(changeModel.value.hash, formData)
+  await updateAvatar(changeModel.value.hash, formData)
     .then((res) => {
       window.$message.success(res.message)
       changeModal.value = false
@@ -457,20 +471,19 @@ const handleChangeAvatar = async () => {
       fetchAvatarList()
         .then((res) => {
           data.value = res.data as Avatar[]
-          loading.value = false
-          window.$loadingBar.finish()
         })
         .catch((res) => {
           console.log(res)
-          loading.value = false
-          window.$loadingBar.finish()
         })
     })
     .catch((res) => {
       console.log(res)
-      loading.value = false
-      window.$loadingBar.finish()
     })
+
+  buttonLoading.value = false
+  buttonDisabled.value = false
+  loading.value = false
+  window.$loadingBar.finish()
 }
 </script>
 
