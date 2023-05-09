@@ -3,9 +3,7 @@
     <NCard title="登录">
       <NTabs default-value="haozi-login" size="large" justify-content="space-evenly">
         <NTabPane name="haozi-login" tab="耗子通行证">
-          <NButton type="primary" style="width: 100%" @click="handleLogin">
-            耗子通行证 登录
-          </NButton>
+          <NButton type="primary" block @click="handleLogin"> 耗子通行证 登录 </NButton>
         </NTabPane>
       </NTabs>
     </NCard>
@@ -24,7 +22,7 @@ const userStore = useUserStore()
 const router = useRouter()
 
 if (userStore.auth.login) {
-  router.push({ name: 'profile' })
+  router.push({ name: 'user-avatar' })
 }
 
 const handleLogin = () => {

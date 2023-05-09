@@ -1,11 +1,14 @@
 <template>
   <div class="login-card">
-    <NCard title="登录中"> 请稍后 </NCard>
+    <NCard title="登录中">
+      <NSpin :size="20" />
+      <NText>请稍后...</NText>
+    </NCard>
   </div>
 </template>
 
 <script setup lang="ts">
-import { NCard } from 'naive-ui'
+import { NCard, NSpin, NText } from 'naive-ui'
 
 import { useUserStore } from '@/stores'
 import { useRoute, useRouter } from 'vue-router'
