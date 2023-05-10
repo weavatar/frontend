@@ -17,7 +17,7 @@
       <p>每个人的头像</p>
       <span>
         <del>
-          我们昨天共卑微地响应了
+          我们昨天共响应了
           <NTag :bordered="false" size="small">
             <NNumberAnimation
               ref="usageRef"
@@ -30,7 +30,7 @@
           </NTag>
           次请求
         </del>
-        （接口调整中，数据无效）
+        （CDN 调整中，暂无数据）
       </span>
     </div>
 
@@ -125,8 +125,8 @@
               <NImage
                 src="https://img-cdn.haozi.xyz/2023/05/06/79604f30163a61113dd2c1b4bc356f5d.png"
                 alt="龙笑天下"
-                height="60"
-                width="240"
+                height="80"
+                width="180"
                 lazy
                 preview-disabled
               />
@@ -137,8 +137,8 @@
               <NImage
                 src="https://img-cdn.haozi.xyz/2023/05/06/50d03b2516a1305af371877095c7444e.png"
                 alt="Sakurairo"
-                height="60"
-                width="240"
+                height="80"
+                width="180"
                 lazy
                 preview-disabled
               />
@@ -149,8 +149,8 @@
               <NImage
                 src="https://img-cdn.haozi.xyz/2019/12/08/823ba0e9886920ebd4d4e97b0f407162.png"
                 alt="耗子博客"
-                height="60"
-                width="240"
+                height="80"
+                width="180"
                 lazy
                 preview-disabled
               />
@@ -161,8 +161,8 @@
               <NImage
                 src="https://img-cdn.haozi.xyz/2023/05/06/bf62c7776043081ecf05596211e5177c.png"
                 alt="一点优化"
-                height="60"
-                width="240"
+                height="80"
+                width="180"
                 lazy
                 preview-disabled
               />
@@ -181,26 +181,38 @@
         <span>作为公益性质的项目，WeAvatar 的稳定运行离不开它们的帮助</span>
       </div>
       <div class="sponsor-content">
-        <NGrid x-gap="12" cols="2" item-responsive responsive="screen">
-          <NGridItem span="6 s:1" v-motion-slide-visible-bottom>
+        <NGrid x-gap="12" cols="3" item-responsive responsive="screen">
+          <NGridItem span="4 s:1" v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://www.ddunyun.com/aff/PNYAXMKI">
               <NImage
-                src="https://img-cdn.haozi.xyz/2022/12/09/54a1b368700423a992789eca4af8b7e2.jpg"
+                :src="logo_dunyun"
                 alt="盾云安全"
-                height="60"
-                width="240"
+                height="80"
+                width="180"
                 lazy
                 preview-disabled
               />
             </a>
           </NGridItem>
-          <NGridItem span="6 s:1" v-motion-slide-visible-bottom>
+          <NGridItem span="4 s:1" v-motion-slide-visible-bottom>
+            <a class="url" target="_blank" href="https://www.upyun.com/">
+              <NImage
+                :src="logo_upyun"
+                alt="又拍云"
+                height="80"
+                width="180"
+                lazy
+                preview-disabled
+              />
+            </a>
+          </NGridItem>
+          <NGridItem span="4 s:1" v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://www.jihulab.com/">
               <NImage
-                src="https://www.jihulab.com/images/icons/logos/logo-121-75.svg"
+                :src="logo_jihu"
                 alt="极狐GitLab"
-                height="60"
-                width="240"
+                height="80"
+                width="180"
                 lazy
                 preview-disabled
               />
@@ -226,6 +238,9 @@ import {
 } from '@vicons/ionicons5'
 import { nextTick, ref } from 'vue'
 import { fetchCdnUsage } from '@/api/system'
+import logo_dunyun from '@/assets/logo-dunyun.png'
+import logo_upyun from '@/assets/logo-upyun.png'
+import logo_jihu from '@/assets/logo-jihu.svg'
 
 const usage = ref(0)
 const usageRef = ref<NumberAnimationInst | null>(null)
