@@ -24,16 +24,16 @@
               <div class="footer-list">
                 <ul>
                   <li>
-                    <RouterLink :to="{ name: 'home' }">首页</RouterLink>
+                    <RouterLink :to="{ name: 'home' }">网站首页</RouterLink>
                   </li>
                   <li>
-                    <RouterLink :to="{ name: 'doc' }">文档</RouterLink>
+                    <RouterLink :to="{ name: 'user-avatar' }">头像管理</RouterLink>
                   </li>
                   <li>
-                    <RouterLink :to="{ name: 'help' }">帮助</RouterLink>
+                    <a target="_blank" href="https://stats.uptimerobot.com/EZnOgFlv29">服务状态</a>
                   </li>
                   <li>
-                    <RouterLink :to="{ name: 'about' }">关于</RouterLink>
+                    <RouterLink :to="{ name: 'about' }">关于我们</RouterLink>
                   </li>
                 </ul>
               </div>

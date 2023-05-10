@@ -16,18 +16,21 @@
       <h1>WeAvatar</h1>
       <p>每个人的头像</p>
       <span>
-        我们昨天共卑微地响应了
-        <NTag :bordered="false" size="small">
-          <NNumberAnimation
-            ref="usageRef"
-            :from="0"
-            :to="usage"
-            :active="false"
-            :duration="3000"
-            show-separator
-          />
-        </NTag>
-        次请求
+        <del>
+          我们昨天共卑微地响应了
+          <NTag :bordered="false" size="small">
+            <NNumberAnimation
+              ref="usageRef"
+              :from="0"
+              :to="usage"
+              :active="false"
+              :duration="3000"
+              show-separator
+            />
+          </NTag>
+          次请求
+        </del>
+        （接口调整中，数据无效）
       </span>
     </div>
 
