@@ -167,7 +167,7 @@ const handleJoinGroup = () => {
 }
 
 .footer-list li {
-  margin: 10px 0;
+  margin: 14px 0;
 }
 
 .footer-content {
