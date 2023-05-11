@@ -343,6 +343,7 @@ const handleStartUse = () => {
 
 .home h1 {
   font-size: 4rem;
+  line-height: 0;
   letter-spacing: 1rem;
   color: white;
 }
@@ -442,7 +443,7 @@ const handleStartUse = () => {
 
   .home h1 {
     font-size: 1.6rem;
-    line-height: 120%;
+    line-height: 40%;
     letter-spacing: 0.2rem;
   }
 
