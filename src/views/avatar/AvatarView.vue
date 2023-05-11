@@ -9,7 +9,13 @@
           /
           <RouterLink :to="{ name: 'doc' }"> 查看文档 </RouterLink>
         </NAlert>
-        <NDataTable :columns="columns" :data="data" :loading="loading" :row-key="(row) => row.id" />
+        <NDataTable
+          striped
+          :columns="columns"
+          :data="data"
+          :loading="loading"
+          :row-key="(row) => row.id"
+        />
         <NCard :bordered="false">
           <NButton
             type="primary"
@@ -186,12 +192,14 @@ const columns: DataTableColumns<Avatar> = [
   },
   {
     title: '地址',
-    key: 'raw'
+    key: 'raw',
+    ellipsis: {
+      tooltip: true
+    }
   },
   {
     title: '操作',
     key: 'actions',
-    width: 200,
     render(row) {
       let actions: VNode[] = []
       actions.push(
@@ -239,7 +247,13 @@ const columns: DataTableColumns<Avatar> = [
           }
         )
       )
-      return actions
+      return h(
+        NSpace,
+        {},
+        {
+          default: () => actions
+        }
+      )
     }
   }
 ]
