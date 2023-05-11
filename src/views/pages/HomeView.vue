@@ -195,7 +195,11 @@
             </a>
           </NGridItem>
           <NGridItem span="4 s:1" v-motion-slide-visible-bottom>
-            <a class="url" target="_blank" href="https://www.upyun.com/">
+            <a
+              class="url"
+              target="_blank"
+              href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
+            >
               <NImage
                 :src="logo_upyun"
                 alt="又拍云"
