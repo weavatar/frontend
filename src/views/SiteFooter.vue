@@ -7,7 +7,7 @@
             <div class="footer-item">
               <img :src="logo" alt="weavatar" />
               <hr />
-              <p>致力于打造多端多元化的统一头像服务</p>
+              <p>打造多端多元化的统一头像服务</p>
               <NSpace>
                 <NButton type="info" @click="handleJoinGroup">联系我们</NButton>
                 <NButton type="info" @click="handleJoinGroup">加 QQ 群</NButton>

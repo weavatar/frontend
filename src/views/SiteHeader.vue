@@ -1,7 +1,7 @@
 <template>
   <NLayoutHeader bordered class="nav">
-    <NText tag="div" class="ui-logo" :depth="1">
-      <img :src="logo" alt="logo" />
+    <NText tag="div" :depth="1">
+      <NImage :src="logo" alt="logo" :height="32" />
     </NText>
     <div class="right">
       <div :style="{ display: 'flex', alignItems: 'center' }">
@@ -28,7 +28,7 @@
 import { h, computed, watch, ref } from 'vue'
 import type { Component } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { NMenu, NIcon, NText, NAvatar, NSpace, NDropdown, NLayoutHeader } from 'naive-ui'
+import { NMenu, NIcon, NImage, NText, NAvatar, NSpace, NDropdown, NLayoutHeader } from 'naive-ui'
 import {
   HomeOutline as HomeIcon,
   LogInOutline as LoginIcon,
@@ -161,18 +161,6 @@ function handleSelect(key: string): void {
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(4px);
   --n-border-color: rgba(0, 0, 0, 0) !important;
-}
-
-.ui-logo {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.ui-logo > img {
-  margin-right: 12px;
-  height: 42px;
-  width: 232px;
 }
 
 .nav-end {
