@@ -104,12 +104,15 @@
     </p>
     <p class="info">
       自豪地采用 Golang + Vue3 + Vite + Naive UI 驱动
-      <NImage
-        :src="upyun_logo"
-        alt="又拍云"
-        height="30"
-        style="display: inline-block; vertical-align: middle"
-      />
+      <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">
+        <NImage
+          :src="upyun_logo"
+          alt="又拍云"
+          height="30"
+          preview-disabled
+          style="display: inline-block; vertical-align: middle"
+        />
+      </a>
       提供 CDN 加速 / 云存储服务
     </p>
   </div>
