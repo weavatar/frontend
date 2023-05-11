@@ -1,7 +1,13 @@
 <template>
   <NLayoutHeader bordered class="nav">
     <NText tag="div" :depth="1">
-      <NImage :src="logo" alt="logo" :height="32" />
+      <NImage
+        :src="logo"
+        alt="logo"
+        :height="32"
+        preview-disabled
+        @click="router.push({ name: 'home' })"
+      />
     </NText>
     <div class="right">
       <div :style="{ display: 'flex', alignItems: 'center' }">
