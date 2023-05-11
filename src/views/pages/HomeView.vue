@@ -16,21 +16,18 @@
       <h1>WeAvatar</h1>
       <p>每个人的头像</p>
       <span>
-        <del>
-          我们昨天共响应了
-          <NTag :bordered="false" size="small">
-            <NNumberAnimation
-              ref="usageRef"
-              :from="0"
-              :to="usage"
-              :active="false"
-              :duration="3000"
-              show-separator
-            />
-          </NTag>
-          次请求
-        </del>
-        （CDN 调整中，暂无数据）
+        我们昨天共响应了
+        <NTag :bordered="false" size="small">
+          <NNumberAnimation
+            ref="usageRef"
+            :from="0"
+            :to="usage"
+            :active="false"
+            :duration="3000"
+            show-separator
+          />
+        </NTag>
+        次请求
       </span>
     </div>
 
@@ -119,11 +116,11 @@
         <span>一些你可能认识的人也在使用 WeAvatar，不妨来试试？</span>
       </div>
       <div class="user-content">
-        <NGrid x-gap="12" cols="4" item-responsive responsive="screen">
-          <NGridItem span="4 s:1" v-motion-slide-visible-bottom>
+        <NGrid x-gap="12" cols="5" item-responsive responsive="screen">
+          <NGridItem span="3 s:1" v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://www.ilxtx.com/">
               <NImage
-                src="https://img-cdn.haozi.xyz/2023/05/06/79604f30163a61113dd2c1b4bc356f5d.png"
+                :src="logo_lxtx"
                 alt="龙笑天下"
                 height="80"
                 width="180"
@@ -132,10 +129,10 @@
               />
             </a>
           </NGridItem>
-          <NGridItem span="4 s:1" v-motion-slide-visible-bottom>
+          <NGridItem span="3 s:1" v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://github.com/mirai-mamori/Sakurairo">
               <NImage
-                src="https://img-cdn.haozi.xyz/2023/05/06/50d03b2516a1305af371877095c7444e.png"
+                :src="logo_iro"
                 alt="Sakurairo"
                 height="80"
                 width="180"
@@ -144,10 +141,10 @@
               />
             </a>
           </NGridItem>
-          <NGridItem span="4 s:1" v-motion-slide-visible-bottom>
+          <NGridItem span="3 s:1" v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://hzbk.net/">
               <NImage
-                src="https://img-cdn.haozi.xyz/2019/12/08/823ba0e9886920ebd4d4e97b0f407162.png"
+                :src="logo_hzbk"
                 alt="耗子博客"
                 height="80"
                 width="180"
@@ -156,16 +153,21 @@
               />
             </a>
           </NGridItem>
-          <NGridItem span="4 s:1" v-motion-slide-visible-bottom>
+          <NGridItem span="3 s:1" v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="http://www.seoyh.net/">
               <NImage
-                src="https://img-cdn.haozi.xyz/2023/05/06/bf62c7776043081ecf05596211e5177c.png"
+                :src="logo_ydyh"
                 alt="一点优化"
                 height="80"
                 width="180"
                 lazy
                 preview-disabled
               />
+            </a>
+          </NGridItem>
+          <NGridItem span="3 s:1" v-motion-slide-visible-bottom>
+            <a class="url" target="_blank" href="https://jq.qq.com/?_wv=1027&k=I1oJKSTH">
+              <NImage :src="logo_up" alt="我要上榜" height="80" width="180" lazy preview-disabled />
             </a>
           </NGridItem>
         </NGrid>
@@ -245,6 +247,11 @@ import { fetchCdnUsage } from '@/api/system'
 import logo_dunyun from '@/assets/logo-dunyun.png'
 import logo_upyun from '@/assets/logo-upyun.png'
 import logo_jihu from '@/assets/logo-jihu.svg'
+import logo_hzbk from '@/assets/logo-hzbk.png'
+import logo_ydyh from '@/assets/logo-ydyh.png'
+import logo_iro from '@/assets/logo-iro.png'
+import logo_lxtx from '@/assets/logo-lxtx.png'
+import logo_up from '@/assets/logo-up.png'
 
 const usage = ref(0)
 const usageRef = ref<NumberAnimationInst | null>(null)
