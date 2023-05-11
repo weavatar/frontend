@@ -302,7 +302,7 @@ fetchCdnUsage()
   })
 
 const handleStartUse = () => {
-  router.push({ name: 'user-avatar' })
+  router.push({ name: 'login' })
 }
 </script>
 
