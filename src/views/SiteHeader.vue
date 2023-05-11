@@ -1,5 +1,5 @@
 <template>
-  <NLayoutHeader bordered class="nav" :style="style">
+  <NLayoutHeader bordered class="nav">
     <NText tag="div" class="ui-logo" :depth="1">
       <img :src="logo" alt="logo" />
     </NText>
@@ -133,38 +133,9 @@ function handleSelect(key: string): void {
     name: key
   })
 }
-
-const style = computed(() => {
-  return {
-    '--side-padding': '32px',
-    'grid-template-columns': 'calc(272px - var(--side-padding)) 1fr auto'
-  }
-})
 </script>
 
 <style scoped>
-@media screen and (max-width: 719px) {
-  .nav {
-    display: flex !important;
-    flex-flow: column !important;
-  }
-
-  :deep(.n-menu-item-content-header) {
-    display: none;
-  }
-
-  :deep(.n-space div:nth-child(2)) {
-    display: none;
-  }
-}
-
-.nav {
-  padding: 10px 32px !important;
-  position: fixed;
-  top: 0;
-  z-index: 1;
-}
-
 :deep(.n-space div:nth-child(1)) {
   display: flex !important;
   justify-content: center !important;
@@ -179,9 +150,17 @@ const style = computed(() => {
 }
 
 .nav {
+  padding: 10px 32px;
+  position: fixed;
+  top: 0;
+  z-index: 1;
   display: grid;
   align-items: center;
-  padding: 0 32px;
+  --side-padding: 32px;
+  grid-template-columns: calc(272px - var(--side-padding)) 1fr auto;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+  --n-border-color: rgba(0, 0, 0, 0) !important;
 }
 
 .ui-logo {
@@ -199,5 +178,20 @@ const style = computed(() => {
 .nav-end {
   display: flex;
   align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    display: flex !important;
+    flex-flow: column !important;
+  }
+
+  :deep(.n-menu-item-content-header) {
+    display: none;
+  }
+
+  :deep(.n-space div:nth-child(2)) {
+    display: none;
+  }
 }
 </style>

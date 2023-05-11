@@ -62,7 +62,9 @@
                 接入 WeAvatar，你可以参考下方 <b>额外的参数</b> 部分来修改默认头像
               </li>
               <li>
-                <b>Z-Blog : </b>后台应用中心搜索 "WeAvatar" 安装插件或前往
+                <b>Z-Blog : </b>
+                <br />
+                后台应用中心搜索 "WeAvatar" 安装插件或前往
                 <a target="_blank" href="https://app.zblogcn.com/?id=38455">
                   https://app.zblogcn.com/?id=38455
                 </a>

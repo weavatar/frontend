@@ -13,24 +13,37 @@
         }
       }"
     >
-      <h1>WeAvatar</h1>
-      <p>每个人的头像</p>
+      <h2>
+        WeAvatar
+        <span style="display: inline-block; vertical-align: middle">
+          <NTag type="warning"> 2.0 </NTag>
+        </span>
+      </h2>
+      <h1>多端多元化的统一头像服务</h1>
+      <p>WeAvatar — 每个人的头像</p>
+      <div class="home-button">
+        <NButton type="info" size="large" round @click="handleStartUse">
+          <template #icon>
+            <NIcon>
+              <RocketIcon />
+            </NIcon>
+          </template>
+          开始使用
+        </NButton>
+      </div>
       <span>
-        <del>
-          我们昨天共响应了
-          <NTag :bordered="false" size="small">
-            <NNumberAnimation
-              ref="usageRef"
-              :from="0"
-              :to="usage"
-              :active="false"
-              :duration="3000"
-              show-separator
-            />
-          </NTag>
-          次请求
-        </del>
-        （CDN 调整中，暂无数据）
+        我们昨天共响应了
+        <NTag :bordered="false" size="small">
+          <NNumberAnimation
+            ref="usageRef"
+            :from="0"
+            :to="usage"
+            :active="false"
+            :duration="3000"
+            show-separator
+          />
+        </NTag>
+        次请求
       </span>
     </div>
 
@@ -49,8 +62,9 @@
               </NIcon>
               <h2>多级头像匹配</h2>
               <p>
-                WeAvatar 除上传的头像外，还支持从 Gravatar、QQ
-                进行默认头像获取，尽可能确保每次请求都能得到有效的头像返回
+                WeAvatar 除用户上传的头像外 ，同时支持从 Gravatar、QQ 获取头像，这可为
+                <b>70%</b>
+                以上的请求提供准确的头像
               </p>
             </div>
           </NGridItem>
@@ -74,7 +88,9 @@
               <h2>WEBP 自适应</h2>
               <p>
                 WeAvatar 通过判断请求的 Accept 头，自动为支持 WEBP 的设备返回 WEBP
-                格式的头像，这可减少约 80% 的流量消耗
+                格式的头像，这可减少约
+                <b>80%</b>
+                的流量消耗
               </p>
             </div>
           </NGridItem>
@@ -94,7 +110,7 @@
               </NIcon>
               <h2>更快的速度</h2>
               <p>
-                WeAvatar 后端使用 Golang 开发，具有无与伦比的速度优势。同时 WeAvatar
+                WeAvatar 使用 GO 开发，具有无与伦比的速度优势。同时 WeAvatar
                 拥有多级缓存机制，以尽可能提高头像的加载速度
               </p>
             </div>
@@ -119,11 +135,11 @@
         <span>一些你可能认识的人也在使用 WeAvatar，不妨来试试？</span>
       </div>
       <div class="user-content">
-        <NGrid x-gap="12" cols="4" item-responsive responsive="screen">
-          <NGridItem span="4 s:1" v-motion-slide-visible-bottom>
+        <NGrid cols="1 s:3 m:4 l:5 xl:5 2xl:5" item-responsive responsive="screen">
+          <NGridItem v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://www.ilxtx.com/">
               <NImage
-                src="https://img-cdn.haozi.xyz/2023/05/06/79604f30163a61113dd2c1b4bc356f5d.png"
+                :src="logo_lxtx"
                 alt="龙笑天下"
                 height="80"
                 width="180"
@@ -132,10 +148,10 @@
               />
             </a>
           </NGridItem>
-          <NGridItem span="4 s:1" v-motion-slide-visible-bottom>
+          <NGridItem v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://github.com/mirai-mamori/Sakurairo">
               <NImage
-                src="https://img-cdn.haozi.xyz/2023/05/06/50d03b2516a1305af371877095c7444e.png"
+                :src="logo_iro"
                 alt="Sakurairo"
                 height="80"
                 width="180"
@@ -144,10 +160,10 @@
               />
             </a>
           </NGridItem>
-          <NGridItem span="4 s:1" v-motion-slide-visible-bottom>
+          <NGridItem v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://hzbk.net/">
               <NImage
-                src="https://img-cdn.haozi.xyz/2019/12/08/823ba0e9886920ebd4d4e97b0f407162.png"
+                :src="logo_hzbk"
                 alt="耗子博客"
                 height="80"
                 width="180"
@@ -156,16 +172,21 @@
               />
             </a>
           </NGridItem>
-          <NGridItem span="4 s:1" v-motion-slide-visible-bottom>
+          <NGridItem v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="http://www.seoyh.net/">
               <NImage
-                src="https://img-cdn.haozi.xyz/2023/05/06/bf62c7776043081ecf05596211e5177c.png"
+                :src="logo_ydyh"
                 alt="一点优化"
                 height="80"
                 width="180"
                 lazy
                 preview-disabled
               />
+            </a>
+          </NGridItem>
+          <NGridItem v-motion-slide-visible-bottom>
+            <a class="url" target="_blank" href="https://jq.qq.com/?_wv=1027&k=I1oJKSTH">
+              <NImage :src="logo_up" alt="我要上榜" height="80" width="180" lazy preview-disabled />
             </a>
           </NGridItem>
         </NGrid>
@@ -181,8 +202,8 @@
         <span>作为公益性质的项目，WeAvatar 的稳定运行离不开它们的帮助</span>
       </div>
       <div class="sponsor-content">
-        <NGrid x-gap="12" cols="3" item-responsive responsive="screen">
-          <NGridItem span="4 s:1" v-motion-slide-visible-bottom>
+        <NGrid cols="1 s:3 m:3 l:3 xl:3 2xl:3" item-responsive responsive="screen">
+          <NGridItem v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://www.ddunyun.com/aff/PNYAXMKI">
               <NImage
                 :src="logo_dunyun"
@@ -194,7 +215,7 @@
               />
             </a>
           </NGridItem>
-          <NGridItem span="4 s:1" v-motion-slide-visible-bottom>
+          <NGridItem v-motion-slide-visible-bottom>
             <a
               class="url"
               target="_blank"
@@ -210,7 +231,7 @@
               />
             </a>
           </NGridItem>
-          <NGridItem span="4 s:1" v-motion-slide-visible-bottom>
+          <NGridItem v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://www.jihulab.com/">
               <NImage
                 :src="logo_jihu"
@@ -229,7 +250,16 @@
 </template>
 
 <script setup lang="ts">
-import { NGrid, NGridItem, NIcon, NTag, NNumberAnimation, NImage, NDivider } from 'naive-ui'
+import {
+  NGrid,
+  NGridItem,
+  NIcon,
+  NTag,
+  NNumberAnimation,
+  NImage,
+  NDivider,
+  NButton
+} from 'naive-ui'
 import type { NumberAnimationInst } from 'naive-ui'
 
 import {
@@ -238,14 +268,22 @@ import {
   ImageOutline as ImageIcon,
   ShieldCheckmarkOutline as ShieldCheckmarkIcon,
   SpeedometerOutline as SpeedometerIcon,
-  CloudOutline as CloudOutlineIcon
+  CloudOutline as CloudOutlineIcon,
+  RocketOutline as RocketIcon
 } from '@vicons/ionicons5'
 import { nextTick, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { fetchCdnUsage } from '@/api/system'
 import logo_dunyun from '@/assets/logo-dunyun.png'
 import logo_upyun from '@/assets/logo-upyun.png'
 import logo_jihu from '@/assets/logo-jihu.svg'
+import logo_hzbk from '@/assets/logo-hzbk.png'
+import logo_ydyh from '@/assets/logo-ydyh.png'
+import logo_iro from '@/assets/logo-iro.png'
+import logo_lxtx from '@/assets/logo-lxtx.png'
+import logo_up from '@/assets/logo-up.png'
 
+const router = useRouter()
 const usage = ref(0)
 const usageRef = ref<NumberAnimationInst | null>(null)
 
@@ -262,6 +300,10 @@ fetchCdnUsage()
     }
     console.log(err)
   })
+
+const handleStartUse = () => {
+  router.push({ name: 'login' })
+}
 </script>
 
 <style scoped>
@@ -277,20 +319,41 @@ fetchCdnUsage()
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url(../../assets/home-cover.jpg);
+  background-image: url('@/assets/home-background.jpg');
   background-size: cover;
   background-position: center center;
 }
 
+.home:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6));
+  z-index: -1;
+}
+
+.home h2 {
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
+  color: white;
+}
+
 .home h1 {
-  font-size: 8rem;
+  font-size: 4rem;
   letter-spacing: 1rem;
   color: white;
 }
 
+.home .home-button {
+  padding: 20px;
+}
+
 .home p {
-  font-size: 4rem;
-  letter-spacing: 0.5rem;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
   color: white;
 }
 
@@ -370,17 +433,22 @@ fetchCdnUsage()
   padding: 20px;
 }
 
-@media only screen and (max-width: 768px) {
-  .home h1 {
-    font-size: 4rem;
-    line-height: 120%;
+@media screen and (max-width: 768px) {
+  .home h2 {
+    font-size: 1.2rem;
     letter-spacing: 0.2rem;
     color: white;
   }
 
+  .home h1 {
+    font-size: 1.6rem;
+    line-height: 120%;
+    letter-spacing: 0.2rem;
+  }
+
   .home p {
-    font-size: 2rem;
-    letter-spacing: 0.4rem;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
     color: white;
   }
 
@@ -398,6 +466,48 @@ fetchCdnUsage()
 
   .product-content-p {
     width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .home h2 {
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+    color: white;
+  }
+
+  .home h1 {
+    font-size: 2.5rem;
+    line-height: 120%;
+    letter-spacing: 0.2rem;
+  }
+
+  .home p {
+    font-size: 1.5rem;
+    letter-spacing: 0.1rem;
+    color: white;
+  }
+
+  .home span {
+    font-size: 0.8rem;
+    letter-spacing: 0.1rem;
+  }
+
+  .product-content,
+  .user-content ul,
+  .sponsor-content ul {
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+
+  .product-content-p {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  :deep(.home-button .n-button) {
+    padding: 30px;
   }
 }
 </style>
