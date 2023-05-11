@@ -13,62 +13,11 @@
     </div>
     <NSpin :show="show">
       <NForm :model="model">
-        <NFormItem path="nick" label="昵称">
+        <NFormItem path="nickname" label="昵称">
           <NInput placeholder="请输入昵称" v-model:value="model.nickname" @keydown.enter.prevent />
         </NFormItem>
-        <NFormItem path="birthday" label="生日">
-          <NDatePicker
-            v-model:formatted-value="model.birthday"
-            value-format="yyyy-MM-dd"
-            type="date"
-          />
-        </NFormItem>
-        <NFormItem path="password" label="地址">
-          <NCascader
-            v-model:value="model.address.code"
-            value-field="code"
-            label-field="name"
-            placeholder="选择地址"
-            check-strategy="child"
-            :options="areas"
-          />
-        </NFormItem>
-        <NFormItem path="detail" label="详细地址">
-          <NInput
-            placeholder="可选输入详细地址"
-            v-model:value="model.address.detail"
-            @keydown.enter.prevent
-          />
-        </NFormItem>
-        <NFormItem path="hometown" label="家乡">
-          <NCascader
-            v-model:value="model.hometown.code"
-            value-field="code"
-            label-field="name"
-            placeholder="选择家乡"
-            check-strategy="child"
-            :options="areas"
-          />
-        </NFormItem>
-        <NFormItem path="detail" label="家乡详细地址">
-          <NInput
-            placeholder="可选输入家乡详细地址"
-            v-model:value="model.hometown.detail"
-            @keydown.enter.prevent
-          />
-        </NFormItem>
-        <NFormItem path="nick" label="职业">
-          <NInput
-            placeholder="请输入职业"
-            v-model:value="model.profession"
-            @keydown.enter.prevent
-          />
-        </NFormItem>
-        <NFormItem path="nick" label="公司">
-          <NInput placeholder="请输入公司" v-model:value="model.company" @keydown.enter.prevent />
-        </NFormItem>
-        <NFormItem placeholder="请输入简介" path="nick" label="简介">
-          <NInput v-model:value="model.introduction" type="textarea" @keydown.enter.prevent />
+        <NFormItem path="avatar" label="头像">
+          <NInput placeholder="请输入公司" v-model:value="model.avatar" @keydown.enter.prevent />
         </NFormItem>
 
         <NRow :gutter="[0, 24]">
@@ -90,24 +39,11 @@
 </template>
 
 <script setup lang="ts">
-import {
-  NCard,
-  NImage,
-  NButton,
-  NInput,
-  NFormItem,
-  NForm,
-  NRow,
-  NDatePicker,
-  NCol,
-  NCascader,
-  NSpin
-} from 'naive-ui'
+import { NCard, NImage, NButton, NInput, NFormItem, NForm, NRow, NCol, NSpin } from 'naive-ui'
 import { ref } from 'vue'
 import { useUserStore } from '@/stores'
-import areas from 'china-division/dist/pca-code.json'
 import { useRouter } from 'vue-router'
-import { fetchUserInfo, updateUserInfo } from '@/api/user'
+import { fetchUserInfo } from '@/api/user'
 
 const router = useRouter()
 const userStore = useUserStore()
@@ -122,31 +58,15 @@ if (!userStore.auth.login) {
 }
 
 const model = ref({
-  company: '',
-  birthday: '2023-01-01',
   nickname: '',
-  profession: '',
-  address: {
-    detail: '',
-    code: ''
-  },
-  hometown: {
-    detail: '',
-    code: ''
-  },
-  introduction: ''
+  avatar: ''
 })
 
 fetchUserInfo()
   .then((res) => {
     model.value = {
-      company: res.data.company,
-      birthday: res.data.birthday,
       nickname: res.data.nickname,
-      profession: res.data.profession,
-      address: res.data.address,
-      hometown: res.data.hometown,
-      introduction: res.data.introduction
+      avatar: res.data.avatar
     }
     show.value = false
   })
@@ -160,7 +80,7 @@ fetchUserInfo()
 function handleSave() {
   loading.value = true
   disabled.value = true
-  updateUserInfo(model.value)
+  /*updateUserInfo(model.value)
     .then((res) => {
       userStore.freshUserInfo()
       window.$message.success(res.message)
@@ -174,7 +94,7 @@ function handleSave() {
       if (err.code !== 422) {
         window.$message.error(err.message)
       }
-    })
+    })*/
   loading.value = false
   disabled.value = false
 }
