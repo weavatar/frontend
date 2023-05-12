@@ -1,8 +1,8 @@
 <template>
-  <NCard title="我的资料" class="my-profile">
+  <NCard title="我的资料" class="my-info">
     <div class="user-info">
       <div class="user-avatar">
-        <NImage width="50" :src="userStore.info.avatar" />
+        <NImage width="50" :src="userStore.info.avatar" preview-disabled lazy />
       </div>
       <div>
         <h1 style="font-size: 23px">{{ userStore.info.nickname }}</h1>
@@ -11,13 +11,22 @@
         </h4>
       </div>
     </div>
+    <h4>下面的设置目前仅在 WeAvatar 平台显示使用</h4>
     <NSpin :show="show">
       <NForm :model="model">
         <NFormItem path="nickname" label="昵称">
-          <NInput placeholder="请输入昵称" v-model:value="model.nickname" @keydown.enter.prevent />
+          <NInput
+            placeholder="输入一个昵称"
+            v-model:value="model.nickname"
+            @keydown.enter.prevent
+          />
         </NFormItem>
         <NFormItem path="avatar" label="头像">
-          <NInput placeholder="请输入公司" v-model:value="model.avatar" @keydown.enter.prevent />
+          <NInput
+            placeholder="输入一个图片地址"
+            v-model:value="model.avatar"
+            @keydown.enter.prevent
+          />
         </NFormItem>
 
         <NRow :gutter="[0, 24]">
@@ -43,7 +52,7 @@ import { NCard, NImage, NButton, NInput, NFormItem, NForm, NRow, NCol, NSpin } f
 import { ref } from 'vue'
 import { useUserStore } from '@/stores'
 import { useRouter } from 'vue-router'
-import { fetchUserInfo } from '@/api/user'
+import { fetchUserInfo, updateUserInfo } from '@/api/user'
 
 const router = useRouter()
 const userStore = useUserStore()
@@ -75,12 +84,13 @@ fetchUserInfo()
       userStore.clearToken()
       router.push({ name: 'login' })
     }
+    console.log(err)
   })
 
 function handleSave() {
   loading.value = true
   disabled.value = true
-  /*updateUserInfo(model.value)
+  updateUserInfo(model.value)
     .then((res) => {
       userStore.freshUserInfo()
       window.$message.success(res.message)
@@ -91,10 +101,8 @@ function handleSave() {
         userStore.clearToken()
         router.push({ name: 'login' })
       }
-      if (err.code !== 422) {
-        window.$message.error(err.message)
-      }
-    })*/
+      console.log(err)
+    })
   loading.value = false
   disabled.value = false
 }
@@ -106,21 +114,9 @@ h1 {
   padding: 0 0 0 20px;
 }
 
-.n-date-picker {
-  width: 100%;
-}
-
 h3 {
   color: #444;
   margin-top: 60px;
-}
-
-.checkbox {
-  width: 100%;
-  background-color: #f4f4f4;
-  margin: 10px 0 30px;
-  padding: 20px 10px;
-  box-sizing: border-box;
 }
 
 .user-avatar {
@@ -136,13 +132,13 @@ h3 {
   margin: 30px 0;
 }
 
-.my-profile {
+.my-info {
   width: 400px;
-  margin: 40px auto;
+  margin: 80px auto;
 }
 
 @media (max-width: 768px) {
-  .my-profile {
+  .my-info {
     width: 100%;
   }
 }

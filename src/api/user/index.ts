@@ -1,4 +1,4 @@
-import http from '@/utils/request'
+import http, { echoMessage } from '@/utils/request'
 
 // 获取用户信息
 export async function fetchUserInfo() {
@@ -10,13 +10,23 @@ export async function fetchUserInfo() {
       return res.data
     })
     .catch((err) => {
-      if (err.code == 422) {
-        for (const key in err.message) {
-          for (const subKey in err.message[key]) {
-            window.$message.error(err.message[key][subKey])
-          }
-        }
-      }
+      echoMessage(err)
+      return Promise.reject(err)
+    })
+}
+
+// 更新用户资料
+export async function updateUserInfo(data: any) {
+  return http({
+    url: '/user/info',
+    method: 'PUT',
+    data
+  })
+    .then((res) => {
+      return res.data
+    })
+    .catch((err) => {
+      echoMessage(err)
       return Promise.reject(err)
     })
 }
