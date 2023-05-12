@@ -7,7 +7,8 @@ import AboutView from '../views/pages/AboutView.vue'
 import LoginView from '../views/auth/LoginView.vue'
 import LogoutView from '../views/auth/LogoutView.vue'
 import CallbackView from '../views/auth/CallbackView.vue'
-import AvatarView from '../views/avatar/AvatarView.vue'
+import AvatarView from '../views/user/AvatarView.vue'
+import InfoView from '../views/user/InfoView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -51,6 +52,11 @@ const router = createRouter({
       path: '/user/avatar',
       name: 'user-avatar',
       component: AvatarView
+    },
+    {
+      path: '/user/info',
+      name: 'user-info',
+      component: InfoView
     },
     {
       name: '404',

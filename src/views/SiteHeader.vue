@@ -125,6 +125,11 @@ watch(
         show: login
       },
       {
+        label: '我的资料',
+        key: 'user-info',
+        show: login
+      },
+      {
         label: '登出',
         key: 'logout',
         show: login
