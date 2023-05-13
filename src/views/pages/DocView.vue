@@ -42,23 +42,23 @@
                 <b>Emlog : </b>
                 <br />
                 <b>Pro之前(5.x 6.x民间): </b> 通过修改
-                <NCode code="include/lib/function.base.php" inline />
+                <NText code>include/lib/function.base.php</NText>
                 中
-                <NCode code="getGravatar" inline />
+                <NText code>getGravatar</NText>
                 函数中的
-                <NCode code="http://www.gravatar.com" inline />
+                <NText code>http://www.gravatar.com</NText>
                 为
-                <NCode code="https://weavatar.com" inline />
+                <NText code>https://weavatar.com</NText>
                 接入 WeAvatar，你可以参考下方 额外的参数 部分来修改默认头像
                 <br />
                 <b>Pro之后(2.x): </b> 修改
-                <NCode code="include/lib/common.php" inline />
+                <NText code>include/lib/common.php</NText>
                 中
-                <NCode code="getGravatar" inline />
+                <NText code>getGravatar</NText>
                 函数中的
-                <NCode code="cravatar.cn" inline />
+                <NText code>cravatar.cn</NText>
                 为
-                <NCode code="weavatar.com" inline />
+                <NText code>weavatar.com</NText>
                 接入 WeAvatar，你可以参考下方 <b>额外的参数</b> 部分来修改默认头像
               </li>
               <li>
@@ -213,7 +213,7 @@
 </template>
 
 <script setup lang="ts">
-import { NCard, NCode, NCollapse, NCollapseItem, NSpace, NImage } from 'naive-ui'
+import { NCard, NCode, NText, NCollapse, NCollapseItem, NSpace, NImage } from 'naive-ui'
 </script>
 
 <style scoped>

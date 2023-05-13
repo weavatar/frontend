@@ -10,7 +10,7 @@
       />
     </NText>
     <div class="right">
-      <div :style="{ display: 'flex', alignItems: 'center' }">
+      <div class="pcmenu" :style="{ display: 'flex', alignItems: 'center' }">
         <NMenu
           v-model:value="activeKey"
           mode="horizontal"
@@ -26,6 +26,11 @@
           </NSpace>
         </NDropdown>
       </div>
+      <div class="menu">
+        <NDropdown trigger="click" :options="menuOptions" @select="handleSelect">
+          <NIcon :component="MenuIcon" color="#2080f0" size="40" :depth="1" />
+        </NDropdown>
+      </div>
     </div>
   </NLayoutHeader>
 </template>
@@ -36,6 +41,7 @@ import type { Component } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { NMenu, NIcon, NImage, NText, NAvatar, NSpace, NDropdown, NLayoutHeader } from 'naive-ui'
 import {
+  Menu as MenuIcon,
   HomeOutline as HomeIcon,
   LogInOutline as LoginIcon,
   PersonCircleOutline as PersonCircleIcon,
@@ -170,7 +176,7 @@ function handleSelect(key: string): void {
   --side-padding: 32px;
   grid-template-columns: calc(272px - var(--side-padding)) 1fr auto;
   background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(30px);
   --n-border-color: rgba(0, 0, 0, 0) !important;
 }
 
@@ -178,12 +184,28 @@ function handleSelect(key: string): void {
   display: flex;
   align-items: center;
 }
-
+.menu {
+  display: none;
+}
 @media screen and (max-width: 768px) {
-  .nav {
+  .right {
+    justify-content: flex-end;
+  }
+  .pcmenu {
+    display: none !important;
+  }
+  .nav-end {
+    margin-right: 20px;
+    /* display: none !important; */
+  }
+  .menu {
+    display: flex;
+    align-items: center;
+  }
+  /* .nav {
     display: flex !important;
     flex-flow: column !important;
-  }
+  } */
 
   :deep(.n-menu-item-content-header) {
     display: none;
