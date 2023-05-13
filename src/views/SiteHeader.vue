@@ -28,7 +28,7 @@
       </div>
       <div class="menu">
         <NDropdown trigger="click" :options="menuOptions" @select="handleSelect">
-          <n-icon :component="Menu" color="#36ad6a" size="40" :depth="1" />
+          <NIcon :component="MenuIcon" color="#2080f0" size="40" :depth="1" />
         </NDropdown>
       </div>
     </div>
@@ -41,8 +41,7 @@ import type { Component } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { NMenu, NIcon, NImage, NText, NAvatar, NSpace, NDropdown, NLayoutHeader } from 'naive-ui'
 import {
-  MenuSharp,
-  Menu,
+  Menu as MenuIcon,
   HomeOutline as HomeIcon,
   LogInOutline as LoginIcon,
   PersonCircleOutline as PersonCircleIcon,
