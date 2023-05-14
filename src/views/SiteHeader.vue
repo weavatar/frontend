@@ -10,7 +10,7 @@
       />
     </NText>
     <div class="right">
-      <div class="pcmenu" :style="{ display: 'flex', alignItems: 'center' }">
+      <div class="pc-menu">
         <NMenu
           v-model:value="activeKey"
           mode="horizontal"
@@ -26,7 +26,7 @@
           </NSpace>
         </NDropdown>
       </div>
-      <div class="menu">
+      <div class="mobile-menu">
         <NDropdown trigger="click" :options="menuOptions" @select="handleSelect">
           <NIcon :component="MenuIcon" color="#2080f0" size="40" :depth="1" />
         </NDropdown>
@@ -184,28 +184,30 @@ function handleSelect(key: string): void {
   display: flex;
   align-items: center;
 }
-.menu {
+
+.pc-menu {
+  display: flex;
+  align-items: center;
+}
+
+.mobile-menu {
   display: none;
 }
+
 @media screen and (max-width: 768px) {
   .right {
     justify-content: flex-end;
   }
-  .pcmenu {
-    display: none !important;
+
+  .pc-menu {
+    display: none;
   }
-  .nav-end {
-    margin-right: 20px;
-    /* display: none !important; */
-  }
-  .menu {
+
+  .mobile-menu {
     display: flex;
     align-items: center;
+    padding-left: 10px;
   }
-  /* .nav {
-    display: flex !important;
-    flex-flow: column !important;
-  } */
 
   :deep(.n-menu-item-content-header) {
     display: none;
