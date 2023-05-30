@@ -49,10 +49,10 @@
               <div class="footer-list">
                 <ul>
                   <li>
-                    <a target="_blank" href="https://wepublish.cn/">社区论坛</a>
+                    <a target="_blank" href="https://wepublish.cn/forum">社区论坛</a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://wepublish.cn/">应用市场</a>
+                    <a target="_blank" href="https://wepublish.cn/store">应用市场</a>
                   </li>
                   <li>
                     <a target="_blank" href="https://wepublish.cn/">协同翻译</a>
@@ -113,7 +113,7 @@
           style="display: inline-block; vertical-align: middle"
         />
       </a>
-      提供 CDN 加速 / 云存储服务
+      提供 CDN 加速服务
     </p>
   </div>
 </template>

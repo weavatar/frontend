@@ -25,7 +25,7 @@
                 <a target="_blank" href="https://github.com/HaoZi-Team/WP-China-Plus">
                   WP-China-Plus
                 </a>
-                插件
+                插件，你可能还需要关闭主题、其他插件中自带的 Gravatar 头像加速功能。
               </li>
               <li>
                 <b>Typecho : </b>

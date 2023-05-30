@@ -4,7 +4,7 @@
       <NDivider />
       <NH4>WeAvatar 的前生</NH4>
       <NText>
-        <NBlockquote> WeAvatar 本不应该存在，它的身世亦充满坎坷。 </NBlockquote>
+        <NBlockquote> WeAvatar 本不应该存在，它的诞生纯属意外。 </NBlockquote>
         <br />
         时间回溯至 2022 年 3 月，彼时的我还是 LitePress 和 Cravatar
         的团队成员之一，和团长在平台重构的意见上存在分歧。
