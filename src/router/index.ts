@@ -16,52 +16,82 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta: {
+        title: '首页'
+      }
     },
     {
       path: '/login',
       name: 'login',
-      component: LoginView
+      component: LoginView,
+      meta: {
+        title: '登录'
+      }
     },
     {
       path: '/logout',
       name: 'logout',
-      component: LogoutView
+      component: LogoutView,
+      meta: {
+        title: '退出'
+      }
     },
     {
       path: '/doc',
       name: 'doc',
-      component: DocView
+      component: DocView,
+      meta: {
+        title: '文档'
+      }
     },
     {
       path: '/help',
       name: 'help',
-      component: HelpView
+      component: HelpView,
+      meta: {
+        title: '帮助'
+      }
     },
     {
       path: '/about',
       name: 'about',
-      component: AboutView
+      component: AboutView,
+      meta: {
+        title: '关于'
+      }
     },
     {
       path: '/oauth/callback',
       name: 'oauth-callback',
-      component: CallbackView
+      component: CallbackView,
+      meta: {
+        title: '登录中'
+      }
     },
     {
       path: '/user/avatar',
       name: 'user-avatar',
-      component: AvatarView
+      component: AvatarView,
+      meta: {
+        title: '头像'
+      }
     },
     {
       path: '/user/info',
       name: 'user-info',
-      component: InfoView
+      component: InfoView,
+      meta: {
+        title: '账号信息'
+      }
     },
     {
       name: '404',
       path: '/404',
-      component: NotFoundView
+      component: NotFoundView,
+      meta: {
+        title: '404'
+      }
     },
     {
       path: '/:catchAll(.*)',
@@ -73,8 +103,12 @@ const router = createRouter({
 })
 
 // 加载进度条
-router.beforeEach(() => {
+router.beforeEach((to) => {
   window.$loadingBar.start()
+
+  if (to.meta.title) {
+    document.title = String(to.meta.title + ' - WeAvatar')
+  }
 })
 router.afterEach(() => {
   window.$loadingBar.finish()
