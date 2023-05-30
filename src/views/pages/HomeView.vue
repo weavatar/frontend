@@ -85,10 +85,9 @@
               <NIcon size="60">
                 <ImageIcon />
               </NIcon>
-              <h2>WEBP 自适应</h2>
+              <h2>WEBP 支持</h2>
               <p>
-                WeAvatar 通过判断请求的 Accept 头，自动为支持 WEBP 的设备返回 WEBP
-                格式的头像，这可减少约
+                WeAvatar 支持新一代图片格式 WEBP 且默认返回 WEBP 格式的头像，这可减少约
                 <b>80%</b>
                 的流量消耗
               </p>
