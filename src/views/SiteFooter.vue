@@ -49,13 +49,13 @@
               <div class="footer-list">
                 <ul>
                   <li>
-                    <a target="_blank" href="https://wepublish.cn/forum">社区论坛</a>
+                    <a target="_blank" href="https://wepublish.cn/forums">社区论坛</a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://wepublish.cn/store">应用市场</a>
+                    <a target="_blank" href="https://wepublish.cn/stores">应用市场</a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://wepublish.cn/">协同翻译</a>
+                    <a target="_blank" href="https://wepublish.cn/translates">协同翻译</a>
                   </li>
                   <li>
                     <a target="_blank" href="https://wepublish.cn/">帮助文档</a>
