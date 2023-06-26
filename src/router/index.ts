@@ -9,6 +9,7 @@ import LogoutView from '../views/auth/LogoutView.vue'
 import CallbackView from '../views/auth/CallbackView.vue'
 import AvatarView from '../views/user/AvatarView.vue'
 import InfoView from '../views/user/InfoView.vue'
+import PrivacyView from '@/views/pages/PrivacyView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -59,6 +60,14 @@ const router = createRouter({
       component: AboutView,
       meta: {
         title: '关于'
+      }
+    },
+    {
+      path: '/privacy',
+      name: 'privacy',
+      component: PrivacyView,
+      meta: {
+        title: '隐私'
       }
     },
     {
