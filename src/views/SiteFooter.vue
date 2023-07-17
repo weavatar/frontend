@@ -119,7 +119,7 @@
 </template>
 
 <script setup lang="ts">
-import { NSpace, NButton, NGridItem, NGrid, NImage } from 'naive-ui'
+import { NButton, NGrid, NGridItem, NImage, NSpace } from 'naive-ui'
 import logo from '@/assets/logo-white.png'
 import upyun_logo from '@/assets/logo-upyun.png'
 
@@ -130,13 +130,11 @@ const handleJoinGroup = () => {
 
 <style scoped>
 .footer {
-  position: absolute;
-  bottom: 0;
+  margin-top: auto;
   width: 100%;
   background-color: #333;
   color: #fff;
   padding: 10px;
-  z-index: 999;
 }
 
 .footer a {
