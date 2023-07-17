@@ -196,6 +196,30 @@
             </a>
           </NGridItem>
           <NGridItem v-motion-slide-visible-bottom>
+            <a class="url" target="_blank" href="https://cravatar.cn/">
+              <NImage
+                :src="logo_cravatar"
+                alt="Cravatar"
+                height="80"
+                width="180"
+                lazy
+                preview-disabled
+              />
+            </a>
+          </NGridItem>
+          <NGridItem v-motion-slide-visible-bottom>
+            <a class="url" target="_blank" href="https://justmyblog.net/">
+              <NImage
+                :src="logo_bai"
+                alt="白の博客"
+                height="80"
+                width="180"
+                lazy
+                preview-disabled
+              />
+            </a>
+          </NGridItem>
+          <NGridItem v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://jq.qq.com/?_wv=1027&k=I1oJKSTH">
               <NImage :src="logo_up" alt="我要上榜" height="80" width="180" lazy preview-disabled />
             </a>
@@ -307,6 +331,8 @@ import logo_lxtx from '@/assets/logo-lxtx.png'
 import logo_up from '@/assets/logo-up.png'
 import logo_dami from '@/assets/logo-dami.png'
 import logo_wuwei from '@/assets/logo-wuwei.png'
+import logo_cravatar from '@/assets/logo-cravatar.png'
+import logo_bai from '@/assets/logo-bai.png'
 
 const router = useRouter()
 const usage = ref(0)
