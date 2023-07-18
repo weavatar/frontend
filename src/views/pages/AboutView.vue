@@ -42,6 +42,8 @@
         <br />
         2023 年的五一假期，重构后的 WeAvatar 2.0
         正式上线，这是一个里程碑式的版本，宣告着国内最完善的头像服务的诞生。
+        <br />
+        2023 年 7 月 25 日，WeAvatar 度过了它的 1 周岁生日，这是一个值得纪念的日子。
       </NText>
       <NDivider />
       <NH4>WeAvatar 的未来</NH4>
@@ -65,7 +67,7 @@
 </template>
 
 <script setup lang="ts">
-import { NCard, NH4, NText, NDivider, NBlockquote } from 'naive-ui'
+import { NBlockquote, NCard, NDivider, NH4, NText } from 'naive-ui'
 </script>
 
 <style scoped>

@@ -16,7 +16,7 @@
       <h2>
         WeAvatar
         <span style="display: inline-block; vertical-align: middle">
-          <NTag type="warning"> 2.0 </NTag>
+          <NTag type="warning"> 一周年 </NTag>
         </span>
       </h2>
       <h1>多端多元化的统一头像服务</h1>
@@ -134,7 +134,7 @@
         <span>一些你可能认识的人也在使用 WeAvatar，不妨来试试？</span>
       </div>
       <div class="user-content">
-        <NGrid cols="1 s:3 m:4 l:5 xl:5 2xl:5" item-responsive responsive="screen">
+        <NGrid cols="1 s:3 m:4 l:4 xl:4 2xl:4" item-responsive responsive="screen">
           <NGridItem v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://www.ilxtx.com/">
               <NImage
@@ -172,10 +172,46 @@
             </a>
           </NGridItem>
           <NGridItem v-motion-slide-visible-bottom>
+            <a class="url" target="_blank" href="https://blog.qqsuu.cn/">
+              <NImage
+                :src="logo_dami"
+                alt="大米博客"
+                height="80"
+                width="180"
+                lazy
+                preview-disabled
+              />
+            </a>
+          </NGridItem>
+          <NGridItem v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="http://www.seoyh.net/">
               <NImage
                 :src="logo_ydyh"
                 alt="一点优化"
+                height="80"
+                width="180"
+                lazy
+                preview-disabled
+              />
+            </a>
+          </NGridItem>
+          <NGridItem v-motion-slide-visible-bottom>
+            <a class="url" target="_blank" href="https://cravatar.cn/">
+              <NImage
+                :src="logo_cravatar"
+                alt="Cravatar"
+                height="80"
+                width="180"
+                lazy
+                preview-disabled
+              />
+            </a>
+          </NGridItem>
+          <NGridItem v-motion-slide-visible-bottom>
+            <a class="url" target="_blank" href="https://justmyblog.net/">
+              <NImage
+                :src="logo_bai"
+                alt="白の博客"
                 height="80"
                 width="180"
                 lazy
@@ -201,12 +237,24 @@
         <span>作为公益性质的项目，WeAvatar 的稳定运行离不开它们的帮助</span>
       </div>
       <div class="sponsor-content">
-        <NGrid cols="1 s:3 m:3 l:3 xl:3 2xl:3" item-responsive responsive="screen">
+        <NGrid cols="1 s:3 m:4 l:4 xl:4 2xl:4" item-responsive responsive="screen">
           <NGridItem v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://www.ddunyun.com/aff/PNYAXMKI">
               <NImage
                 :src="logo_dunyun"
                 alt="盾云安全"
+                height="80"
+                width="180"
+                lazy
+                preview-disabled
+              />
+            </a>
+          </NGridItem>
+          <NGridItem v-motion-slide-visible-bottom>
+            <a class="url" target="_blank" href="https://su.sctes.com/register?code=8st689ujpmm2p">
+              <NImage
+                :src="logo_wuwei"
+                alt="无畏云科技"
                 height="80"
                 width="180"
                 lazy
@@ -249,26 +297,26 @@
 </template>
 
 <script setup lang="ts">
+import type { NumberAnimationInst } from 'naive-ui'
 import {
+  NButton,
+  NDivider,
   NGrid,
   NGridItem,
   NIcon,
-  NTag,
-  NNumberAnimation,
   NImage,
-  NDivider,
-  NButton
+  NNumberAnimation,
+  NTag
 } from 'naive-ui'
-import type { NumberAnimationInst } from 'naive-ui'
 
 import {
   AlbumsOutline as AlbumsIcon,
+  CloudOutline as CloudOutlineIcon,
   IdCardOutline as IdCardIcon,
   ImageOutline as ImageIcon,
+  RocketOutline as RocketIcon,
   ShieldCheckmarkOutline as ShieldCheckmarkIcon,
-  SpeedometerOutline as SpeedometerIcon,
-  CloudOutline as CloudOutlineIcon,
-  RocketOutline as RocketIcon
+  SpeedometerOutline as SpeedometerIcon
 } from '@vicons/ionicons5'
 import { nextTick, ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -281,6 +329,10 @@ import logo_ydyh from '@/assets/logo-ydyh.png'
 import logo_iro from '@/assets/logo-iro.png'
 import logo_lxtx from '@/assets/logo-lxtx.png'
 import logo_up from '@/assets/logo-up.png'
+import logo_dami from '@/assets/logo-dami.png'
+import logo_wuwei from '@/assets/logo-wuwei.png'
+import logo_cravatar from '@/assets/logo-cravatar.png'
+import logo_bai from '@/assets/logo-bai.png'
 
 const router = useRouter()
 const usage = ref(0)

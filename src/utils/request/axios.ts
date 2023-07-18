@@ -26,6 +26,10 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   <T>(res: AxiosResponse<Response<T>>) => {
     if (res.data.code === 0) return res
+    if (res.data.code === 401) {
+      const userStore = useUserStore()
+      userStore.clearToken()
+    }
 
     return Promise.reject(res.data)
   },
