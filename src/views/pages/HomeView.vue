@@ -136,6 +136,18 @@
       <div class="user-content">
         <NGrid cols="1 s:3 m:4 l:4 xl:4 2xl:4" item-responsive responsive="screen">
           <NGridItem v-motion-slide-visible-bottom>
+            <a class="url" target="_blank" href="https://zmingcx.com/">
+              <NImage
+                :src="logo_zmingcx"
+                alt="知更鸟"
+                height="80"
+                width="180"
+                lazy
+                preview-disabled
+              />
+            </a>
+          </NGridItem>
+          <NGridItem v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://www.ilxtx.com/">
               <NImage
                 :src="logo_lxtx"
@@ -188,18 +200,6 @@
               <NImage
                 :src="logo_ydyh"
                 alt="一点优化"
-                height="80"
-                width="180"
-                lazy
-                preview-disabled
-              />
-            </a>
-          </NGridItem>
-          <NGridItem v-motion-slide-visible-bottom>
-            <a class="url" target="_blank" href="https://cravatar.cn/">
-              <NImage
-                :src="logo_cravatar"
-                alt="Cravatar"
                 height="80"
                 width="180"
                 lazy
@@ -331,8 +331,8 @@ import logo_lxtx from '@/assets/logo-lxtx.png'
 import logo_up from '@/assets/logo-up.png'
 import logo_dami from '@/assets/logo-dami.png'
 import logo_wuwei from '@/assets/logo-wuwei.png'
-import logo_cravatar from '@/assets/logo-cravatar.png'
 import logo_bai from '@/assets/logo-bai.png'
+import logo_zmingcx from '@/assets/logo-zmingcx.png'
 
 const router = useRouter()
 const usage = ref(0)
