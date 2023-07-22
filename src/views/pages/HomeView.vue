@@ -51,7 +51,7 @@
     <div class="product">
       <div class="product-title" v-motion-slide-visible-bottom>
         <h1>为什么选择 WeAvatar</h1>
-        <span>WeAvatar 可作为增强版的 Gravatar，相比原版 Gravatar 具有以下优势</span>
+        <span>WeAvatar 是超越 Gravatar 的新一代头像服务，相比 Gravatar 具有以下优势</span>
       </div>
       <div class="product-content">
         <NGrid x-gap="12" cols="3" item-responsive responsive="screen">
@@ -87,7 +87,7 @@
               </NIcon>
               <h2>WEBP 支持</h2>
               <p>
-                WeAvatar 支持新一代图片格式 WEBP 且默认返回 WEBP 格式的头像，这可减少约
+                WeAvatar 默认采用新一代的图像格式 WEBP，这可减少约
                 <b>80%</b>
                 的流量消耗
               </p>
@@ -109,8 +109,8 @@
               </NIcon>
               <h2>更快的速度</h2>
               <p>
-                WeAvatar 使用 GO 开发，具有无与伦比的速度优势。同时 WeAvatar
-                拥有多级缓存机制，以尽可能提高头像的加载速度
+                WeAvatar 使用 GO 开发，相比同类竞品具有更快的速度。同时 WeAvatar
+                采用多级缓存机制，以尽可能提高头像的加载速度
               </p>
             </div>
           </NGridItem>
@@ -120,7 +120,9 @@
                 <CloudOutlineIcon />
               </NIcon>
               <h2>开放平台（开发中）</h2>
-              <p>WeAvatar 开放平台支持自己的应用无缝对接 WeAvatar，提供配套的 SDK 供开发者使用</p>
+              <p>
+                WeAvatar 未来将为开发者提供开放平台和配套的 SDK，可将自己的应用无缝对接至 WeAvatar
+              </p>
             </div>
           </NGridItem>
         </NGrid>
