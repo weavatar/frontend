@@ -148,6 +148,18 @@
             </a>
           </NGridItem>
           <NGridItem v-motion-slide-visible-bottom>
+            <a class="url" target="_blank" href="https://www.nicetheme.cn/">
+              <NImage
+                :src="logo_nicetheme"
+                alt="nicetheme"
+                height="80"
+                width="180"
+                lazy
+                preview-disabled
+              />
+            </a>
+          </NGridItem>
+          <NGridItem v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://www.ilxtx.com/">
               <NImage
                 :src="logo_lxtx"
@@ -164,18 +176,6 @@
               <NImage
                 :src="logo_iro"
                 alt="Sakurairo"
-                height="80"
-                width="180"
-                lazy
-                preview-disabled
-              />
-            </a>
-          </NGridItem>
-          <NGridItem v-motion-slide-visible-bottom>
-            <a class="url" target="_blank" href="https://hzbk.net/">
-              <NImage
-                :src="logo_hzbk"
-                alt="耗子博客"
                 height="80"
                 width="180"
                 lazy
@@ -324,7 +324,7 @@ import { fetchCdnUsage } from '@/api/system'
 import logo_dunyun from '@/assets/logo-dunyun.png'
 import logo_upyun from '@/assets/logo-upyun.png'
 import logo_jihu from '@/assets/logo-jihu.svg'
-import logo_hzbk from '@/assets/logo-hzbk.png'
+import logo_nicetheme from '@/assets/logo-nicetheme.png'
 import logo_ydyh from '@/assets/logo-ydyh.png'
 import logo_iro from '@/assets/logo-iro.png'
 import logo_lxtx from '@/assets/logo-lxtx.png'
