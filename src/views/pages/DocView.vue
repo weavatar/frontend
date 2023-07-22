@@ -26,6 +26,11 @@
                   WP-China-Plus
                 </a>
                 插件，你可能还需要关闭主题、其他插件中自带的 Gravatar 头像加速功能。
+                <br />
+                如果你不想安装插件，也可以通过添加以下代码到主题的
+                <NCode code="functions.php" language="php" inline />
+                文件中来接入 WeAvatar。
+                <NCode :code="code" language="php" word-wrap />
               </li>
               <li>
                 <b>Typecho : </b>
@@ -86,12 +91,12 @@
         </NCollapseItem>
         <NCollapseItem title="指定图片格式" name="4">
           <div>
-            <p>我们当前支持五种图片返回格式，分别是：jpg、jpeg、png、gif、webp。</p>
+            <p>我们当前支持五种图片返回格式，分别是：webp、jpg、jpeg、png、gif。</p>
             <p>
               你可以简单的通过向图片访问 URL 拼接文件后缀的方式来访问特定格式的图片，完整的请求 URL
               类似如下：
             </p>
-            <p>https://weavatar.com/avatar/ff3dcd55b299b96db5e2ed195af50817.jpg</p>
+            <p>https://weavatar.com/avatar/ff3dcd55b299b96db5e2ed195af50817.png</p>
           </div>
         </NCollapseItem>
         <NCollapseItem title="额外的参数" name="5">
@@ -213,7 +218,58 @@
 </template>
 
 <script setup lang="ts">
-import { NCard, NCode, NText, NCollapse, NCollapseItem, NSpace, NImage } from 'naive-ui'
+import { NCard, NCode, NCollapse, NCollapseItem, NImage, NSpace, NText } from 'naive-ui'
+
+const code = `
+if ( ! function_exists( 'get_weavatar_url' ) ) {
+    /**
+     * 替换 Gravatar 头像为 WeAvatar 头像
+     *
+     * WeAvatar 是新一代头像服务解决方案，可在 https://weavatar.com 修改头像
+     */
+    function get_weavatar_url( $url ) {
+        $sources = array(
+            'www.gravatar.com',
+            '0.gravatar.com',
+            '1.gravatar.com',
+            '2.gravatar.com',
+            'secure.gravatar.com',
+            'cn.gravatar.com',
+            'gravatar.com',
+            'sdn.geekzu.org',
+            'gravatar.duoshuo.com',
+            'gravatar.loli.net',
+            'cravatar.cn',
+        );
+        return str_replace( $sources, 'weavatar.com', $url );
+    }
+    add_filter( 'um_user_avatar_url_filter', 'get_weavatar_url', 1 );
+    add_filter( 'bp_gravatar_url', 'get_weavatar_url', 1 );
+    add_filter( 'get_avatar_url', 'get_weavatar_url', 1 );
+    add_filter( 'um_user_avatar_url_filter', 'get_weavatar_url', PHP_INT_MAX );
+    add_filter( 'bp_gravatar_url', 'get_weavatar_url', PHP_INT_MAX );
+    add_filter( 'get_avatar_url', 'get_weavatar_url', PHP_INT_MAX );
+}
+if ( ! function_exists( 'set_defaults_for_weavatar' ) ) {
+    /**
+     * 替换 WordPress 讨论设置中的默认头像
+     */
+    function set_defaults_for_weavatar( $avatar_defaults ) {
+        $avatar_defaults['gravatar_default'] = 'WeAvatar 头像';
+        return $avatar_defaults;
+    }
+    add_filter( 'avatar_defaults', 'set_defaults_for_weavatar', 1 );
+}
+if ( ! function_exists( 'set_user_profile_picture_for_weavatar' ) ) {
+    /**
+     * 替换个人资料卡中的头像上传地址
+     */
+    function set_user_profile_picture_for_weavatar() {
+        return '<a href="https://weavatar.com" target="_blank">您可以在 WeAvatar 修改您的资料图片</a>';
+    }
+    add_filter( 'user_profile_picture_description', 'set_user_profile_picture_for_weavatar', 1 );
+}
+`
 </script>
 
 <style scoped>
