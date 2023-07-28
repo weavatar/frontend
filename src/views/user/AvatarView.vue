@@ -103,25 +103,25 @@
 </template>
 
 <script setup lang="ts">
+import type { DataTableColumns, UploadFileInfo } from 'naive-ui'
 import {
-  NCard,
   NAlert,
-  NSpace,
   NButton,
+  NCard,
+  NCol,
   NDataTable,
-  NPopconfirm,
-  NModal,
+  NDivider,
   NForm,
   NFormItem,
   NInput,
+  NModal,
+  NPopconfirm,
   NRow,
-  NCol,
-  NDivider
+  NSpace
 } from 'naive-ui'
-import type { DataTableColumns, UploadFileInfo } from 'naive-ui'
-import { computed, h, ref, watch } from 'vue'
 import type { VNode } from 'vue'
-import { fetchAvatarList, deleteAvatar, addAvatar, updateAvatar } from '@/api/avatar'
+import { computed, h, ref, watch } from 'vue'
+import { addAvatar, deleteAvatar, fetchAvatarList, updateAvatar } from '@/api/avatar'
 import { checkBind } from '@/api/system'
 import UploadAvatar from '@/components/avatar/UploadAvatar.vue'
 import CropAvatar from '@/components/avatar/CropAvatar.vue'
@@ -371,7 +371,7 @@ const handleAddAvatar = async () => {
             formData.append('captcha', addModel.value.captcha)
             addAvatar(formData)
               .then((res) => {
-                window.$message.success(res.message)
+                window.$message.success(`添加成功，10 分钟内全网生效`)
                 addModal.value = false
                 addModel.value.raw = ''
                 addModel.value.avatar = new Blob()
@@ -399,7 +399,7 @@ const handleAddAvatar = async () => {
         formData.append('captcha', addModel.value.captcha)
         addAvatar(formData)
           .then((res) => {
-            window.$message.success(res.message)
+            window.$message.success(`添加成功，10 分钟内全网生效`)
             addModal.value = false
             addModel.value.raw = ''
             addModel.value.avatar = new Blob()
@@ -434,7 +434,7 @@ const handleAvatarDelete = (hash: string) => {
   window.$loadingBar.start()
   deleteAvatar(hash)
     .then((res) => {
-      window.$message.success(res.message)
+      window.$message.success(`删除成功，10 分钟内全网生效`)
       fetchAvatarList()
         .then((res) => {
           data.value = res.data as Avatar[]
