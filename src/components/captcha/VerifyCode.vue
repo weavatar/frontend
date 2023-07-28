@@ -13,11 +13,11 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs, ref } from 'vue'
+import { ref, toRefs } from 'vue'
 import { NButton } from 'naive-ui'
-import { phone as phoneCaptcha, email as emailCaptcha } from '@/api/captcha'
+import { email as emailCaptcha, phone as phoneCaptcha } from '@/api/captcha'
 import type { Type } from 'naive-ui/lib/button/src/interface'
-import { isPhone, isEmail } from '@/utils/is'
+import { isEmail, isPhone } from '@/utils/is'
 import { useReCaptcha } from 'vue-recaptcha-v3'
 
 const reCaptchaInstance = useReCaptcha()
@@ -50,7 +50,7 @@ const sendVerifyCode = async () => {
 
     if (isPhone(to.value)) {
       const captcha = await getRecaptcha('sms')
-      phoneCaptcha(to.value, use_for.value, captcha)
+      await phoneCaptcha(to.value, use_for.value, captcha)
         .then((res) => {
           if (res.code == 0) {
             window.$message.success(res.message)
@@ -77,7 +77,7 @@ const sendVerifyCode = async () => {
         })
     } else if (isEmail(to.value)) {
       const captcha = await getRecaptcha('email')
-      emailCaptcha(to.value, use_for.value, captcha)
+      await emailCaptcha(to.value, use_for.value, captcha)
         .then((res) => {
           if (res.code == 0) {
             window.$message.success(res.message)
