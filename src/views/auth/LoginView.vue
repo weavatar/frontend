@@ -25,7 +25,7 @@ import { useUserStore } from '@/stores'
 import { useRouter } from 'vue-router'
 
 import { login } from '@/api/auth'
-import { ref } from 'vue/dist/vue'
+import { ref } from 'vue'
 
 const loading = ref(false)
 const disabled = ref(false)
