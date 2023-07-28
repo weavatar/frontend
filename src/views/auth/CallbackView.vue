@@ -25,7 +25,7 @@ const state = String(route.query.state)
 oauthCallback(code, state)
   .then((res) => {
     if (res.code == 0) {
-      window.$message.success(res.message)
+      window.$message.success('登录成功')
       userStore.updateToken(res.data.token)
       setTimeout(() => {
         router.push({ name: 'home' })
