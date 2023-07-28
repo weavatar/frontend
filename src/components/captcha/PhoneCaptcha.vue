@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs, ref } from 'vue'
+import { ref, toRefs } from 'vue'
 import { NButton } from 'naive-ui'
 import { phone as phoneCaptcha } from '@/api/captcha'
 import type { Type } from 'naive-ui/lib/button/src/interface'
@@ -48,7 +48,7 @@ const sendPhoneCaptcha = async () => {
       return
     }
     const captcha = await getRecaptcha('sms')
-    phoneCaptcha(phone.value, use_for.value, captcha)
+    await phoneCaptcha(phone.value, use_for.value, captcha)
       .then((res) => {
         if (res.code == 0) {
           window.$message.success(res.message)

@@ -21,8 +21,8 @@ const captcha_id = ref('')
 const captcha = ref('')
 const emit = defineEmits(['updateCaptcha'])
 
-const getCaptcha = () => {
-  imageCaptcha()
+const getCaptcha = async () => {
+  await imageCaptcha()
     .then((res) => {
       captcha_id.value = res.data.captcha_id
       captcha.value = res.data.captcha

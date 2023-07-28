@@ -37,14 +37,14 @@ if (userStore.auth.login) {
   router.push({ name: 'user-avatar' })
 }
 
-const handleLogin = () => {
+const handleLogin = async () => {
   // 防止重复点击
   if (disabled.value) {
     return
   }
   loading.value = true
   disabled.value = true
-  login()
+  await login()
     .then((res) => {
       window.location.href = res.data.url
     })

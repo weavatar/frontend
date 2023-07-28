@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs, ref } from 'vue'
+import { ref, toRefs } from 'vue'
 import { NButton } from 'naive-ui'
 import { email as emailCaptcha } from '@/api/captcha'
 import type { Type } from 'naive-ui/lib/button/src/interface'
@@ -48,7 +48,7 @@ const sendEmailCaptcha = async () => {
       return
     }
     const captcha = await getRecaptcha('email')
-    emailCaptcha(email.value, use_for.value, captcha)
+    await emailCaptcha(email.value, use_for.value, captcha)
       .then((res) => {
         if (res.code == 0) {
           window.$message.success(res.message)
