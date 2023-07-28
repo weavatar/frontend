@@ -51,7 +51,7 @@ const sendPhoneCaptcha = async () => {
     await phoneCaptcha(phone.value, use_for.value, captcha)
       .then((res) => {
         if (res.code == 0) {
-          window.$message.success(res.message)
+          window.$message.success('发送成功')
         }
         let time = 60
         let timer = setInterval(() => {

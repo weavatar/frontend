@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { NCard, NImage, NButton, NInput, NFormItem, NForm, NRow, NCol, NSpin } from 'naive-ui'
+import { NButton, NCard, NCol, NForm, NFormItem, NImage, NInput, NRow, NSpin } from 'naive-ui'
 import { ref } from 'vue'
 import { useUserStore } from '@/stores'
 import { useRouter } from 'vue-router'
@@ -93,7 +93,7 @@ function handleSave() {
   updateUserInfo(model.value)
     .then((res) => {
       userStore.freshUserInfo()
-      window.$message.success(res.message)
+      window.$message.success('保存成功')
     })
     .catch((err) => {
       if (err.code === 401) {
