@@ -3,7 +3,15 @@
     <NCard title="登录">
       <NTabs default-value="haozi-login" size="large" justify-content="space-evenly">
         <NTabPane name="haozi-login" tab="耗子通行证">
-          <NButton type="primary" block @click="handleLogin"> 耗子通行证 登录 </NButton>
+          <NButton
+            type="primary"
+            block
+            :loading="loading"
+            :disabled="disabled"
+            @click="handleLogin"
+          >
+            耗子通行证 登录
+          </NButton>
         </NTabPane>
       </NTabs>
     </NCard>
@@ -11,12 +19,16 @@
 </template>
 
 <script setup lang="ts">
-import { NCard, NTabs, NTabPane, NButton } from 'naive-ui'
+import { NButton, NCard, NTabPane, NTabs } from 'naive-ui'
 
 import { useUserStore } from '@/stores'
 import { useRouter } from 'vue-router'
 
 import { login } from '@/api/auth'
+import { ref } from 'vue/dist/vue'
+
+const loading = ref(false)
+const disabled = ref(false)
 
 const userStore = useUserStore()
 const router = useRouter()
@@ -26,12 +38,22 @@ if (userStore.auth.login) {
 }
 
 const handleLogin = () => {
+  // 防止重复点击
+  if (disabled.value) {
+    return
+  }
+  loading.value = true
+  disabled.value = true
   login()
     .then((res) => {
       window.location.href = res.data.url
     })
     .catch((err) => {
-      console.log(err)
+      loading.value = false
+      disabled.value = false
+      if (err.code != 422) {
+        window.$message.error(err.message)
+      }
     })
 }
 </script>
