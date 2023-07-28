@@ -477,7 +477,7 @@ const handleChangeAvatar = async () => {
   formData.append('captcha', changeModel.value.captcha)
   await updateAvatar(changeModel.value.hash, formData)
     .then((res) => {
-      window.$message.success(res.message)
+      window.$message.success(`修改成功，10 分钟内全网生效`)
       changeModal.value = false
       changeModel.value.hash = ''
       changeModel.value.avatar = new Blob()
