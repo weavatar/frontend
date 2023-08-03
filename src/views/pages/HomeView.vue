@@ -265,14 +265,10 @@
             </a>
           </NGridItem>
           <NGridItem v-motion-slide-visible-bottom>
-            <a
-              class="url"
-              target="_blank"
-              href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
-            >
+            <a class="url" target="_blank" href="https://www.anycast.ai">
               <NImage
-                :src="logo_upyun"
-                alt="又拍云"
+                :src="logo_anycast"
+                alt="AnyCast.Ai"
                 height="80"
                 width="180"
                 lazy
@@ -324,7 +320,6 @@ import { nextTick, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { fetchCdnUsage } from '@/api/system'
 import logo_dunyun from '@/assets/logo-dunyun.png'
-import logo_upyun from '@/assets/logo-upyun.png'
 import logo_jihu from '@/assets/logo-jihu.svg'
 import logo_nicetheme from '@/assets/logo-nicetheme.png'
 import logo_ydyh from '@/assets/logo-ydyh.png'
@@ -333,6 +328,7 @@ import logo_lxtx from '@/assets/logo-lxtx.png'
 import logo_up from '@/assets/logo-up.png'
 import logo_dami from '@/assets/logo-dami.png'
 import logo_wuwei from '@/assets/logo-wuwei.png'
+import logo_anycast from '@/assets/logo-anycast.png'
 import logo_bai from '@/assets/logo-bai.png'
 import logo_zmingcx from '@/assets/logo-zmingcx.png'
 
