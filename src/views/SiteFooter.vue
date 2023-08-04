@@ -7,7 +7,7 @@
             <div class="footer-item">
               <img :src="logo" alt="weavatar" />
               <hr />
-              <p>打造多端多元化的统一头像服务</p>
+              <p>多端多元化的统一头像服务</p>
               <NSpace>
                 <NButton type="info" @click="handleJoinGroup">联系我们</NButton>
                 <NButton type="info" @click="handleJoinGroup">加 QQ 群</NButton>
@@ -30,7 +30,7 @@
                     <RouterLink :to="{ name: 'user-avatar' }">头像管理</RouterLink>
                   </li>
                   <li>
-                    <a target="_blank" href="https://stats.uptimerobot.com/EZnOgFlv29">服务状态</a>
+                    <a target="_blank" href="https://status.haozi.net">服务状态</a>
                   </li>
                   <li>
                     <RouterLink :to="{ name: 'about' }">关于我们</RouterLink>
@@ -74,20 +74,20 @@
               <div class="footer-list">
                 <ul>
                   <li>
-                    <a target="_blank" href="https://github.com/HaoZi-Team/WP-China-Plus">
+                    <a target="_blank" href="https://github.com/haozi-team/WP-China-Plus">
                       WP-China-Plus
                     </a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://github.com/HaoZi-Team/Panel"> Linux 面板 </a>
+                    <a target="_blank" href="https://github.com/haozi-team/panel"> Linux 面板 </a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://github.com/HaoZi-Team/Laravel-Installer">
+                    <a target="_blank" href="https://github.com/haozi-team/Laravel-Installer">
                       Laravel-Installer
                     </a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://github.com/HaoZi-Team/wp-setting-api">
+                    <a target="_blank" href="https://github.com/haozi-team/wp-setting-api">
                       WP-Setting-API
                     </a>
                   </li>
@@ -103,7 +103,9 @@
       <a target="_blank" href="https://beian.miit.gov.cn">津ICP备2022009678号-2</a>
     </p>
     <p class="info">
-      自豪地采用 Golang + Vue3 + Vite + Naive UI 驱动
+      由 Goravel + Naive UI 构建 |
+      <a target="_blank" href="https://github.com/haozi-team/panel"> 耗子Linux面板 </a>
+      运维管理
       <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">
         <NImage
           :src="upyun_logo"
@@ -113,7 +115,7 @@
           style="display: inline-block; vertical-align: middle"
         />
       </a>
-      提供 CDN 加速服务
+      提供 CDN 服务
     </p>
   </div>
 </template>
