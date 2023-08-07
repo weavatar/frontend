@@ -3,6 +3,9 @@
   "extends": [
     "config:base"
   ],
+  "labels": [
+    "🤖 Dependencies"
+  ],
   "commitMessagePrefix": "chore(deps): ",
   "postUpdateOptions": [
     "pnpmDedupe"
