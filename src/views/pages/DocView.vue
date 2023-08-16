@@ -91,10 +91,12 @@
         </NCollapseItem>
         <NCollapseItem title="指定图片格式" name="4">
           <div>
-            <p>我们当前支持五种图片返回格式，分别是：webp、jpg、jpeg、png、gif。</p>
             <p>
-              你可以简单的通过向图片访问 URL 拼接文件后缀的方式来访问特定格式的图片，完整的请求 URL
-              类似如下：
+              我们当前支持 8 种图片返回格式，分别是：webp、jpg、jpeg、png、gif、tiff、heif、avif。
+            </p>
+            <p>
+              默认情况下，我们会返回 WEBP 格式的图片，但是你可以通过向图片访问 URL
+              拼接文件后缀的方式来访问特定格式的图片，完整的请求 URL 类似如下：
             </p>
             <p>https://weavatar.com/avatar/ff3dcd55b299b96db5e2ed195af50817.png</p>
           </div>
