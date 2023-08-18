@@ -1,4 +1,4 @@
-import http, { echoMessage } from '@/utils/request'
+import http from '@/utils/request'
 
 // OAuth登录
 export async function login() {
@@ -10,7 +10,7 @@ export async function login() {
       return res.data
     })
     .catch((err) => {
-      echoMessage(err)
+      window.$message.error(err.message)
       return Promise.reject(err)
     })
 }
@@ -26,7 +26,7 @@ export async function oauthCallback(code: string, state: string) {
       return res.data
     })
     .catch((err) => {
-      echoMessage(err)
+      window.$message.error(err.message)
       return Promise.reject(err)
     })
 }
