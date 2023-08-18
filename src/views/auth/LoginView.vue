@@ -48,12 +48,9 @@ const handleLogin = async () => {
     .then((res) => {
       window.location.href = res.data.url
     })
-    .catch((err) => {
+    .catch(() => {
       loading.value = false
       disabled.value = false
-      if (err.code != 422) {
-        window.$message.error(err.message)
-      }
     })
 }
 </script>

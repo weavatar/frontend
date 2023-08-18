@@ -80,27 +80,18 @@ fetchUserInfo()
     show.value = false
   })
   .catch((err) => {
-    if (err.code === 401) {
-      userStore.clearToken()
-      router.push({ name: 'login' })
-    }
     console.log(err)
   })
 
-function handleSave() {
+const handleSave = async () => {
   loading.value = true
   disabled.value = true
-  updateUserInfo(model.value)
-    .then((res) => {
+  await updateUserInfo(model.value)
+    .then(() => {
       userStore.freshUserInfo()
       window.$message.success('保存成功')
     })
     .catch((err) => {
-      if (err.code === 401) {
-        window.$message.error(err.message)
-        userStore.clearToken()
-        router.push({ name: 'login' })
-      }
       console.log(err)
     })
   loading.value = false

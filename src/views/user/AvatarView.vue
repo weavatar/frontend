@@ -156,7 +156,6 @@ const router = useRouter()
 
 const reCaptchaInstance = useReCaptcha()
 
-// recaptcha
 async function getRecaptcha() {
   await reCaptchaInstance?.recaptchaLoaded()
   return reCaptchaInstance?.executeRecaptcha('avatar') as Promise<string>
@@ -172,8 +171,7 @@ fetchAvatarList()
     data.value = res.data as Avatar[]
     loading.value = false
   })
-  .catch((res) => {
-    window.$message.error(res.message)
+  .catch(() => {
     loading.value = false
   })
 

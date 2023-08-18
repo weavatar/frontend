@@ -16,22 +16,22 @@
 import SiteLayout from '@/views/SiteLayout.vue'
 
 import {
+  darkTheme,
+  dateZhCN,
   NConfigProvider,
+  NDialogProvider,
   NLoadingBarProvider,
   NMessageProvider,
   NNotificationProvider,
-  NDialogProvider
+  useOsTheme,
+  zhCN
 } from 'naive-ui'
-import { zhCN, dateZhCN } from 'naive-ui'
 import hljs from 'highlight.js/lib/core'
 import php from 'highlight.js/lib/languages/php'
+import { computed } from 'vue'
 
 hljs.registerLanguage('php', php)
 
-//import { computed } from 'vue'
-//import { useOsTheme, darkTheme } from 'naive-ui'
-
-//const osTheme = useOsTheme()
-//const theme = computed(() => (osTheme.value === 'dark' ? darkTheme : null))
-const theme = null
+const osTheme = useOsTheme()
+const theme = computed(() => (osTheme.value === 'dark' ? darkTheme : null))
 </script>

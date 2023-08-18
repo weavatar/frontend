@@ -1,4 +1,4 @@
-import http, { echoMessage } from '@/utils/request'
+import http from '@/utils/request'
 
 // 获取头像列表
 export async function fetchAvatarList() {
@@ -10,7 +10,7 @@ export async function fetchAvatarList() {
       return res.data
     })
     .catch((err) => {
-      echoMessage(err)
+      window.$message.error(err.message)
       return Promise.reject(err)
     })
 }
@@ -25,7 +25,7 @@ export async function fetchAvatar(hash: string) {
       return res.data
     })
     .catch((err) => {
-      echoMessage(err)
+      window.$message.error(err.message)
       return Promise.reject(err)
     })
 }
@@ -41,7 +41,7 @@ export async function addAvatar(data: FormData) {
       return res.data
     })
     .catch((err) => {
-      echoMessage(err)
+      window.$message.error(err.message)
       return Promise.reject(err)
     })
 }
@@ -56,7 +56,7 @@ export async function deleteAvatar(hash: string) {
       return res.data
     })
     .catch((err) => {
-      echoMessage(err)
+      window.$message.error(err.message)
       return Promise.reject(err)
     })
 }
@@ -72,7 +72,7 @@ export async function updateAvatar(hash: string, data: FormData) {
       return res.data
     })
     .catch((err) => {
-      echoMessage(err)
+      window.$message.error(err.message)
       return Promise.reject(err)
     })
 }

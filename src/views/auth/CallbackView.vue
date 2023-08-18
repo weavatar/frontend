@@ -24,15 +24,11 @@ const state = String(route.query.state)
 
 oauthCallback(code, state)
   .then((res) => {
-    if (res.code == 0) {
-      window.$message.success('登录成功')
-      userStore.updateToken(res.data.token)
-      setTimeout(() => {
-        router.push({ name: 'home' })
-      }, 1000)
-    } else {
-      window.$message.error(res.message)
-    }
+    window.$message.success('登录成功')
+    userStore.updateToken(res.data.token)
+    setTimeout(() => {
+      router.push({ name: 'home' })
+    }, 1000)
   })
   .catch((err) => {
     console.log(err)
