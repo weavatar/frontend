@@ -25,6 +25,7 @@ export const useUserStore = defineStore('user-store', {
     updateToken(token: string) {
       this.auth.token = token
       this.auth.login = true
+      this.recordState()
     },
 
     clearToken() {

@@ -16,7 +16,7 @@ interface Response<T = any> {
 service.interceptors.request.use(
   async (config) => {
     const userStore = useUserStore()
-    config.headers['Authorization'] = userStore.auth.token
+    config.headers['Authorization'] = `Bearer ${userStore.auth.token}`
     return config
   },
   async (error) => {
@@ -28,7 +28,8 @@ service.interceptors.response.use(
   async <T>(res: AxiosResponse<Response<T>>) => {
     const userStore = useUserStore()
     if (isString(res.headers.authorization)) {
-      userStore.updateToken(res.headers.authorization)
+      console.log(res.headers.authorization.slice(7))
+      userStore.updateToken(res.headers.authorization.slice(7))
     }
 
     if (res.data.code === 0) return res

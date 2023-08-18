@@ -25,7 +25,7 @@ const state = String(route.query.state)
 oauthCallback(code, state)
   .then((res) => {
     window.$message.success('登录成功')
-    userStore.updateToken('Bearer ' + res.data.token)
+    userStore.updateToken(res.data.token)
     setTimeout(() => {
       router.push({ name: 'home' })
     }, 1000)
