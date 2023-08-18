@@ -16,7 +16,7 @@ interface Response<T = any> {
 service.interceptors.request.use(
   async (config) => {
     const userStore = useUserStore()
-    config.headers['Authorization'] = `Bearer ${userStore.auth.token} `
+    config.headers['Authorization'] = userStore.auth.token
     return config
   },
   async (error) => {
