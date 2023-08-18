@@ -12,9 +12,6 @@ export const useUserStore = defineStore('user-store', {
           this.info = { ...this.info, ...res.data }
         })
         .catch((err) => {
-          if (err.code === 401) {
-            this.clearToken()
-          }
           console.log(err)
         })
       this.recordState()
