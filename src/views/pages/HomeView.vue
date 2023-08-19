@@ -414,7 +414,6 @@ const handleStartUse = () => {
 }
 
 .product {
-  background: #f1f4f8;
   padding-top: 80px;
 }
 
