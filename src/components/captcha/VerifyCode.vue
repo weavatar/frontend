@@ -103,9 +103,11 @@ const sendVerifyCode = async () => {
           console.log(err)
         })
     } else {
+      loading.value = false
       window.$message.error('请输入正确的手机号或邮箱')
     }
   } else {
+    loading.value = false
     window.$message.error('参数错误')
   }
 }
