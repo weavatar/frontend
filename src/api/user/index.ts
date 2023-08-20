@@ -30,3 +30,21 @@ export async function updateUserInfo(data: any) {
       return Promise.reject(err)
     })
 }
+
+// 获取QQ头像
+export async function fetchQQAvatar(qq: string) {
+  return http({
+    url: '/user/qqAvatar',
+    method: 'GET',
+    data: {
+      qq
+    }
+  })
+    .then((res) => {
+      return res.data
+    })
+    .catch((err) => {
+      window.$message.error(err.message)
+      return Promise.reject(err)
+    })
+}

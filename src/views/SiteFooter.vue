@@ -103,9 +103,6 @@
       <a target="_blank" href="https://beian.miit.gov.cn">津ICP备2022009678号-2</a>
     </p>
     <p class="info">
-      由 Goravel + Naive UI 构建 |
-      <a target="_blank" href="https://github.com/haozi-team/panel"> 耗子Linux面板 </a>
-      运维管理
       <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">
         <NImage
           :src="upyun_logo"
@@ -115,7 +112,7 @@
           style="display: inline-block; vertical-align: middle"
         />
       </a>
-      提供 CDN 服务
+      提供 CDN 加速服务
     </p>
   </div>
 </template>
