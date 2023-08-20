@@ -71,11 +71,10 @@ const sendPhoneCaptcha = async () => {
       })
       .catch((err) => {
         loading.value = false
-        if (err.code != 422) {
-          window.$message.error(err.message)
-        }
+        console.log(err)
       })
   } else {
+    loading.value = false
     window.$message.error('参数错误')
   }
 }

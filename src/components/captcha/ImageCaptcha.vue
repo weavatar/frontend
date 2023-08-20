@@ -29,9 +29,7 @@ const getCaptcha = async () => {
       emit('updateCaptcha', res.data.captcha_id)
     })
     .catch((err) => {
-      if (err.code != 422) {
-        window.$message.error(err.message)
-      }
+      console.log(err)
     })
 }
 
