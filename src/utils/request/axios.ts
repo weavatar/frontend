@@ -28,7 +28,6 @@ service.interceptors.response.use(
   async <T>(res: AxiosResponse<Response<T>>) => {
     const userStore = useUserStore()
     if (isString(res.headers.authorization)) {
-      console.log(res.headers.authorization.slice(7))
       userStore.updateToken(res.headers.authorization.slice(7))
     }
 

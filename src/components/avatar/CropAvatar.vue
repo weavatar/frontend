@@ -6,7 +6,7 @@
         :mask-closable="false"
         @close="handleClose"
         title="裁剪头像"
-        style="width: 60vh; height: 60vh"
+        style="width: 40vh; height: 40vh"
       >
         <div style="width: 100%; height: 80%">
           <VueCropper
@@ -90,9 +90,8 @@ const setShow = (value: boolean) => {
   showModal.value = value
 }
 
-const setImage = (value: File) => {
-  const blob: Blob = new Blob([value], { type: value.type })
-  option.value.img = URL.createObjectURL(blob)
+const setImage = (value: Blob) => {
+  option.value.img = URL.createObjectURL(value)
 }
 
 defineExpose({

@@ -5,9 +5,9 @@
         <NAlert type="info" class="avatar-notice">
           你可以通过
           <b>https://weavatar.com/avatar/地址MD5值</b> 的方式访问自己的头像。
-          <RouterLink :to="{ name: 'help' }"> 查看帮助 </RouterLink>
+          <RouterLink :to="{ name: 'help' }"> 查看帮助</RouterLink>
           /
-          <RouterLink :to="{ name: 'doc' }"> 查看文档 </RouterLink>
+          <RouterLink :to="{ name: 'doc' }"> 查看文档</RouterLink>
         </NAlert>
         <NDataTable
           striped
@@ -21,7 +21,12 @@
             type="primary"
             size="large"
             style="display: block; margin-left: auto; margin-right: auto"
-            @click="() => (addModal = true)"
+            @click="
+              () => {
+                uploadType = 'add'
+                addModal = true
+              }
+            "
           >
             添加头像
           </NButton>
@@ -29,7 +34,7 @@
       </NSpace>
     </NCard>
     <NModal v-model:show="addModal" title="添加头像">
-      <NCard closable @close="() => (addModal = false)" title="添加头像" style="width: 60vh">
+      <NCard closable @close="() => (addModal = false)" title="添加头像" style="width: 40vh">
         <NForm :model="addModel">
           <NFormItem path="raw" label="地址">
             <NInput
@@ -38,11 +43,6 @@
               @keydown.enter.prevent
               placeholder="手机号 / 邮箱"
             />
-          </NFormItem>
-          <NFormItem path="avatar" label="头像">
-            <NButton type="info" block @click="handleSetAvatar('add')">
-              {{ addSetAvatar }}
-            </NButton>
           </NFormItem>
           <NFormItem path="verify_code" label="验证码">
             <NRow :gutter="[0, 24]">
@@ -55,37 +55,122 @@
               </NCol>
             </NRow>
           </NFormItem>
-        </NForm>
-        <NDivider />
-        <NRow :gutter="[0, 24]">
-          <NCol :span="24">
+          <NDivider>上传头像或获取QQ头像</NDivider>
+          <NFormItem path="avatar" label="上传头像">
+            <NUpload
+              ref="upload"
+              directory-dnd
+              :default-upload="false"
+              :show-file-list="false"
+              @change="handleUploadAvatar"
+              @before-upload="sanitizeAvatar"
+              v-show="addModel.avatar.size == 0"
+            >
+              <NUploadDragger>
+                <div style="margin-bottom: 12px">
+                  <NIcon size="48" :depth="3">
+                    <ArchiveIcon />
+                  </NIcon>
+                </div>
+                <NText style="font-size: 16px"> 点击或者拖动图片到该区域来上传</NText>
+                <NP depth="3" style="margin: 8px 0 0 0">
+                  上传的图片需符合中华人民共和国相关法律法规要求
+                </NP>
+              </NUploadDragger>
+            </NUpload>
             <NButton
               type="primary"
               block
-              :loading="buttonLoading"
-              :disabled="buttonDisabled"
-              @click="handleAddAvatar"
+              @click="handleClearUploadAdd"
+              v-show="addModel.avatar.size != 0"
             >
-              添加
+              重新上传
             </NButton>
-          </NCol>
-        </NRow>
-      </NCard>
-    </NModal>
-    <NModal v-model:show="changeModal" title="修改头像">
-      <NCard closable @close="() => (changeModal = false)" title="修改头像" style="width: 60vh">
-        <NForm :model="changeModel">
-          <NFormItem path="avatar" label="头像">
-            <NButton type="info" block @click="handleSetAvatar('change')">
-              {{ changeSetAvatar }}
-            </NButton>
+          </NFormItem>
+          <NFormItem path="qq" label="获取QQ头像">
+            <NRow :gutter="[0, 24]">
+              <NCol :span="14">
+                <NInput v-model:value="qq" type="text" @keydown.enter.prevent />
+              </NCol>
+              <NCol :span="2"></NCol>
+              <NCol :span="8">
+                <NButton block type="primary" :loading="loading" @click="handleGetQQAvatar">
+                  一键获取
+                </NButton>
+              </NCol>
+            </NRow>
           </NFormItem>
         </NForm>
         <NDivider />
         <NRow :gutter="[0, 24]">
           <NCol :span="24">
             <NButton
+              type="info"
+              block
+              :loading="buttonLoading"
+              :disabled="buttonDisabled"
+              @click="handleAddAvatar"
+            >
+              提交
+            </NButton>
+          </NCol>
+        </NRow>
+      </NCard>
+    </NModal>
+    <NModal v-model:show="changeModal" title="修改头像">
+      <NCard closable @close="() => (changeModal = false)" title="修改头像" style="width: 40vh">
+        <NForm :model="changeModel">
+          <NDivider>上传头像或获取QQ头像</NDivider>
+          <NFormItem path="avatar" label="上传头像">
+            <NUpload
+              ref="upload"
+              directory-dnd
+              :default-upload="false"
+              :show-file-list="false"
+              @change="handleUploadAvatar"
+              @before-upload="sanitizeAvatar"
+              v-show="changeModel.avatar.size == 0"
+            >
+              <NUploadDragger>
+                <div style="margin-bottom: 12px">
+                  <NIcon size="48" :depth="3">
+                    <ArchiveIcon />
+                  </NIcon>
+                </div>
+                <NText style="font-size: 16px"> 点击或者拖动图片到该区域来上传</NText>
+                <NP depth="3" style="margin: 8px 0 0 0">
+                  上传的图片需符合中华人民共和国相关法律法规要求
+                </NP>
+              </NUploadDragger>
+            </NUpload>
+            <NButton
               type="primary"
+              block
+              @click="handleClearUploadChange"
+              v-show="changeModel.avatar.size != 0"
+            >
+              重新上传
+            </NButton>
+          </NFormItem>
+          <NFormItem path="qq" label="获取QQ头像">
+            <NRow :gutter="[0, 24]">
+              <NCol :span="14">
+                <NInput v-model:value="qq" type="text" @keydown.enter.prevent />
+              </NCol>
+              <NCol :span="2"></NCol>
+              <NCol :span="8">
+                <NButton block type="primary" :loading="loading" @click="handleGetQQAvatar">
+                  一键获取
+                </NButton>
+              </NCol>
+            </NRow>
+          </NFormItem>
+        </NForm>
+        <NDivider />
+        <NRow :gutter="[0, 24]">
+          <NCol :span="24">
+            <NButton
+              type="info"
               block
               :loading="buttonLoading"
               :disabled="buttonDisabled"
@@ -97,7 +182,6 @@
         </NRow>
       </NCard>
     </NModal>
-    <UploadAvatar ref="uploadAvatarRef" @changeAvatar="handleUploadAvatar" />
     <CropAvatar ref="cropAvatarRef" @cropAvatar="handleCropAvatar" />
   </div>
 </template>
@@ -113,23 +197,29 @@ import {
   NDivider,
   NForm,
   NFormItem,
+  NIcon,
   NInput,
   NModal,
+  NP,
   NPopconfirm,
   NRow,
-  NSpace
+  NSpace,
+  NText,
+  NUpload,
+  NUploadDragger
 } from 'naive-ui'
+import { ArchiveOutline as ArchiveIcon } from '@vicons/ionicons5'
 import type { VNode } from 'vue'
-import { computed, h, ref, watch } from 'vue'
+import { h, ref } from 'vue'
 import { addAvatar, deleteAvatar, fetchAvatarList, updateAvatar } from '@/api/avatar'
 import { checkBind } from '@/api/system'
-import UploadAvatar from '@/components/avatar/UploadAvatar.vue'
 import CropAvatar from '@/components/avatar/CropAvatar.vue'
 import VerifyCode from '@/components/captcha/VerifyCode.vue'
 import { isEmail, isPhone } from '@/utils/is'
 import { useUserStore } from '@/stores'
 import { useRouter } from 'vue-router'
 import { useReCaptcha } from 'vue-recaptcha-v3'
+import { fetchQQAvatar } from '@/api/user'
 
 interface Avatar {
   hash: string
@@ -147,9 +237,6 @@ const addModal = ref(false)
 const changeModal = ref(false)
 const buttonLoading = ref(false)
 const buttonDisabled = ref(false)
-
-const addSetAvatar = ref('设置头像')
-const changeSetAvatar = ref('设置头像')
 
 const userStore = useUserStore()
 const router = useRouter()
@@ -211,6 +298,7 @@ const columns: DataTableColumns<Avatar> = [
             size: 'small',
             type: 'info',
             onClick: () => {
+              uploadType.value = 'change'
               changeModal.value = true
               changeModel.value.hash = row.hash
             }
@@ -257,7 +345,7 @@ const columns: DataTableColumns<Avatar> = [
 ]
 
 // 用来记录正在上传哪种头像
-const uploadAt = ref('add')
+const uploadType = ref('add')
 
 const addModel = ref({
   raw: '',
@@ -270,54 +358,42 @@ const changeModel = ref({
   avatar: new Blob(),
   captcha: ''
 })
+const qq = ref('')
 
-const addAvatarSize = computed(() => addModel.value.avatar.size)
-const changeAvatarSize = computed(() => changeModel.value.avatar.size)
-
-watch(
-  () => addAvatarSize,
-  (size) => {
-    if (size.value === 0) {
-      addSetAvatar.value = '设置头像'
-    } else {
-      addSetAvatar.value = '重新设置头像'
-    }
-  },
-  {
-    immediate: true,
-    deep: true
-  }
-)
-watch(
-  () => changeAvatarSize,
-  (size) => {
-    if (size.value === 0) {
-      changeSetAvatar.value = '设置头像'
-    } else {
-      changeSetAvatar.value = '重新设置头像'
-    }
-  },
-  {
-    immediate: true,
-    deep: true
-  }
-)
-
-const uploadAvatarRef = ref()
 const cropAvatarRef = ref()
 
-const handleSetAvatar = (type: string) => {
-  uploadAt.value = type
-  uploadAvatarRef.value.setShow(true)
+const sanitizeAvatar = (data: { file: UploadFileInfo; fileList: UploadFileInfo[] }) => {
+  const isJPG = data.file.file?.type === 'image/jpeg'
+  const isPNG = data.file.file?.type === 'image/png'
+  const isGIF = data.file.file?.type === 'image/gif'
+  const isWEBP = data.file.file?.type === 'image/webp'
+  const isLt5M = data.file.file?.size! / 1024 / 1024 < 5
+
+  if (!isJPG && !isPNG && !isGIF && !isWEBP) {
+    window.$message.error('上传头像图片只能是 JPG / PNG / GIF / WEBP 格式')
+  }
+  if (!isLt5M) {
+    window.$message.error('上传头像图片大小不能超过 5 MB')
+  }
+  return (isJPG || isPNG || isGIF) && isLt5M
 }
 
-const handleUploadAvatar = (avatar: UploadFileInfo) => {
+const handleUploadAvatar = (options: { file: UploadFileInfo; fileList: UploadFileInfo[] }) => {
   cropAvatarRef.value.setShow(true)
-  cropAvatarRef.value.setImage(avatar.file as File)
+  console.log(options.file.file)
+  cropAvatarRef.value.setImage(options.file.file as Blob)
+}
+
+const handleClearUploadAdd = () => {
+  addModel.value.avatar = new Blob()
+}
+
+const handleClearUploadChange = () => {
+  changeModel.value.avatar = new Blob()
 }
 
 const handleCropAvatar = (avatar: any) => {
-  switch (uploadAt.value) {
+  switch (uploadType.value) {
     case 'add':
       addModel.value.avatar = avatar
       break
@@ -496,6 +572,28 @@ const handleChangeAvatar = async () => {
   buttonDisabled.value = false
   loading.value = false
   window.$loadingBar.finish()
+}
+
+const handleGetQQAvatar = async () => {
+  if (qq.value === '') {
+    window.$message.error('请输入QQ号')
+    return
+  }
+  fetchQQAvatar(qq.value)
+    .then((res) => {
+      window.$message.success('获取成功')
+      let binaryData = atob(res.data)
+      let uint8Array = new Uint8Array(binaryData.length)
+      for (let i = 0; i < binaryData.length; i++) {
+        uint8Array[i] = binaryData.charCodeAt(i)
+      }
+      let blob = new Blob([uint8Array], { type: 'image/png' })
+      cropAvatarRef.value.setShow(true)
+      cropAvatarRef.value.setImage(blob)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 }
 </script>
 
