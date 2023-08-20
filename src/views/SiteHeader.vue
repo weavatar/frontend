@@ -36,17 +36,17 @@
 </template>
 
 <script setup lang="ts">
-import { h, computed, watch, ref } from 'vue'
 import type { Component } from 'vue'
+import { computed, h, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { NMenu, NIcon, NImage, NText, NAvatar, NSpace, NDropdown, NLayoutHeader } from 'naive-ui'
+import { NAvatar, NDropdown, NIcon, NImage, NLayoutHeader, NMenu, NSpace, NText } from 'naive-ui'
 import {
-  Menu as MenuIcon,
-  HomeOutline as HomeIcon,
-  LogInOutline as LoginIcon,
-  PersonCircleOutline as PersonCircleIcon,
   DocumentTextOutline as DocumentTextIcon,
-  InformationCircleOutline as InformationCircleIcon
+  HomeOutline as HomeIcon,
+  InformationCircleOutline as InformationCircleIcon,
+  LogInOutline as LoginIcon,
+  Menu as MenuIcon,
+  PersonCircleOutline as PersonCircleIcon
 } from '@vicons/ionicons5'
 
 import logo from '@/assets/logo.png'
@@ -175,9 +175,6 @@ function handleSelect(key: string): void {
   align-items: center;
   --side-padding: 32px;
   grid-template-columns: calc(272px - var(--side-padding)) 1fr auto;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(30px);
-  --n-border-color: rgba(0, 0, 0, 0) !important;
 }
 
 .nav-end {
