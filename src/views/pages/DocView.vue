@@ -1,226 +1,332 @@
 <template>
   <div class="doc">
     <NCard title="文档">
-      <NCollapse>
-        <NCollapseItem title="基本概念" name="1">
-          <div>
-            <p>
-              WeAvatar 头像服务可以像普通的图片 URL
-              一样请求，具体格式是：https://weavatar.com/avatar/HASH
-            </p>
-            <p>
-              其中 HASH 部分是 邮箱/手机号 的 MD5 哈希值，此电子邮箱/手机号必须在 weavatar.com
-              上添加头像，否则会尝试返回 Gravatar 头像和 QQ 头像，如果都不存在，则返回默认头像。
-            </p>
-          </div>
-        </NCollapseItem>
-        <NCollapseItem title="在 CMS 中使用 WeAvatar" name="2">
-          <div>
-            <p>对于常见的 CMS 系统，可通过以下方式轻松地接入 WeAvatar。</p>
-            <ul>
-              <li>
-                <b>WordPress : </b>
-                <br />
-                安装启用
-                <a target="_blank" href="https://github.com/HaoZi-Team/WP-China-Plus">
-                  WP-China-Plus
-                </a>
-                插件，你可能还需要关闭主题、其他插件中自带的 Gravatar 头像加速功能。
-                <br />
-                如果你不想安装插件，也可以通过添加以下代码到主题的
-                <NCode code="functions.php" language="php" inline />
-                文件中来接入 WeAvatar。
-                <NCode :code="code" language="php" word-wrap />
-              </li>
-              <li>
-                <b>Typecho : </b>
-                <br />
-                添加
-                <NCode
-                  code="define('__TYPECHO_GRAVATAR_PREFIX__', 'https://weavatar.com/avatar/');"
-                  language="php"
-                  inline
-                />
-                到站点根目录的 <NCode code="config.inc.php" inline /> 中
-              </li>
-              <li>
-                <b>Emlog : </b>
-                <br />
-                <b>Pro之前(5.x 6.x民间): </b> 通过修改
-                <NText code>include/lib/function.base.php</NText>
-                中
-                <NText code>getGravatar</NText>
-                函数中的
-                <NText code>http://www.gravatar.com</NText>
-                为
-                <NText code>https://weavatar.com</NText>
-                接入 WeAvatar，你可以参考下方 额外的参数 部分来修改默认头像
-                <br />
-                <b>Pro之后(2.x): </b> 修改
-                <NText code>include/lib/common.php</NText>
-                中
-                <NText code>getGravatar</NText>
-                函数中的
-                <NText code>cravatar.cn</NText>
-                为
-                <NText code>weavatar.com</NText>
-                接入 WeAvatar，你可以参考下方 <b>额外的参数</b> 部分来修改默认头像
-              </li>
-              <li>
-                <b>Z-Blog : </b>
-                <br />
-                后台应用中心搜索 "WeAvatar" 安装插件或前往
-                <a target="_blank" href="https://app.zblogcn.com/?id=38455">
-                  https://app.zblogcn.com/?id=38455
-                </a>
-                下载插件并手动安装
-              </li>
-              <li><b>Discuz : </b>待更新</li>
-              <li><b>Flarum : </b>待更新</li>
-            </ul>
-          </div>
-        </NCollapseItem>
-        <NCollapseItem title="邮箱 / 手机号的哈希方法" name="3">
-          <div>
-            <ul>
-              <li>去除首位两边的空格</li>
-              <li>所有字母转小写</li>
-              <li>计算 MD5 值</li>
-            </ul>
-          </div>
-        </NCollapseItem>
-        <NCollapseItem title="指定图片格式" name="4">
-          <div>
-            <p>
-              我们当前支持 8 种图片返回格式，分别是：webp、jpg、jpeg、png、gif、tiff、heif、avif。
-            </p>
-            <p>
-              默认情况下，我们会返回 WEBP 格式的图片，但是你可以通过向图片访问 URL
-              拼接文件后缀的方式来访问特定格式的图片，完整的请求 URL 类似如下：
-            </p>
-            <p>https://weavatar.com/avatar/ff3dcd55b299b96db5e2ed195af50817.png</p>
-          </div>
-        </NCollapseItem>
-        <NCollapseItem title="额外的参数" name="5">
-          <div>
-            <h3><b>调整头像大小</b></h3>
-            <p>
-              默认情况下，我们会返回 80×80 尺寸的头像，但是你可以通过 <code>s</code> 或
-              <code>size</code> 参数来指定要获取的头像大小
-            </p>
-            <hr />
-            <h3><b>自定义默认头像</b></h3>
-            <p>
-              如果你提供的哈希无法匹配到任何头像，则将会返回我们的默认头像。
-              <br />
-              <NImage
-                src="https://weavatar.com/avatar/?f=y&s=60"
-                alt="默认头像"
-                width="60"
-                height="60"
-              />
-              <br />
-              当然，你也可以通过
-              <code>d</code> 或 <code>default</code> 参数指定需要返回的默认头像：
-            </p>
-            <p>https://weavatar.com/avatar/ff3dcd55b299b96db5e2ed195af50817.jpg?d=你的URL</p>
-            <p>需要注意的是，传递的默认头像地址必须经过 URL 编码。</p>
-            <p>
-              除了允许你自己指定默认头像外，我们还准备了一组内置的默认头像，只需要传入
-              <code>d=默认头像ID</code> 即可调用：
-            </p>
-            <ul>
-              <li><code>d=404</code>：返回 404 错误</li>
-              <li><code>d=mp</code>：一个简单的卡通风格的人物轮廓</li>
-              <li><code>d=identicon</code>：一个几何图案（随机生成）</li>
-              <li><code>d=monsterid</code>：具有不同颜色、面孔的 "人头" 1（随机生成）</li>
-              <li><code>d=wavatar</code>：具有不同特征和背景的人脸（随机生成）</li>
-              <li><code>d=retro</code>：8位色的像素人脸（随机生成）</li>
-              <li><code>d=robohash</code>：具有不同颜色、面孔的 "人头" 2（随机生成）</li>
-              <li>
-                <code>d=letter&letter=X</code>：返回给定 letter 组成的字母头像（最多支持 4
-                位，自动裁切）
-              </li>
-              <li><code>d=blank</code>：返回一个透明的 PNG 图片</li>
-            </ul>
-            <NSpace>
-              <NImage
-                src="https://weavatar.com/avatar/?d=mp&f=y&s=60"
-                alt="人物轮廓"
-                width="60"
-                height="60"
-              />
-              <NImage
-                src="https://weavatar.com/avatar/?d=identicon&f=y&s=60"
-                alt="几何图案"
-                width="60"
-                height="60"
-              />
-              <NImage
-                src="https://weavatar.com/avatar/?d=monsterid&f=y&s=60"
-                alt="人头1"
-                width="60"
-                height="60"
-              />
-              <NImage
-                src="https://weavatar.com/avatar/?d=wavatar&f=y&s=60"
-                alt="人脸"
-                width="60"
-                height="60"
-              />
-              <NImage
-                src="https://weavatar.com/avatar/?d=retro&f=y&s=60"
-                alt="像素人脸"
-                width="60"
-                height="60"
-              />
-              <NImage
-                src="https://weavatar.com/avatar/?d=robohash&f=y&s=60"
-                alt="人头2"
-                width="60"
-                height="60"
-              />
-              <NImage
-                src="https://weavatar.com/avatar/demo?d=letter&letter=WeAvatar&f=y&s=60"
-                alt="字母头像"
-                width="60"
-                height="60"
-              />
-              <NImage
-                src="https://weavatar.com/avatar/?d=blank&f=y&s=60"
-                alt="透明图片"
-                width="60"
-                height="60"
-              />
-            </NSpace>
-            <p>为方便演示，以上图片均通过 CSS 添加了边框</p>
-            <hr />
-            <h3><b>强制加载默认头像</b></h3>
-            <p>
-              如果由于某种原因你想强制始终返回默认头像，您可以使用 <code>f</code> 或
-              <code>forcedefault</code> 参数并将其值设置为 <code>y</code>。
-            </p>
-            <hr />
-            <h3><b>指定要显示的头像级别</b></h3>
-            <p>为符合中国法律要求，该参数暂不提供支持。</p>
-            <hr />
-            <h3><b>组合参数</b></h3>
-            <p>
-              以上所介绍的所有关于 WeAvatar 的参数都可以自由组合，比如你可以提供这样的一个头像URL：
-            </p>
-            <p>
+      <NLayout has-sider>
+        <NLayoutSider
+          bordered
+          collapse-mode="width"
+          :collapsed-width="64"
+          :collapsed="collapsed"
+          show-trigger
+          @collapse="collapsed = true"
+          @expand="collapsed = false"
+        >
+          <NMenu
+            :collapsed="collapsed"
+            :collapsed-width="64"
+            :collapsed-icon-size="22"
+            :options="menuOptions"
+            :on-update:value="onUpdate"
+            :value="value"
+          />
+        </NLayoutSider>
+
+        <div class="cont" v-if="value == 'basic'">
+          <p>
+            <NTag type="info">WeAvatar</NTag> 头像 API 可以像普通的图片 URL 一样请求，具体格式是:
+            <NText code>https://weavatar.com/avatar/HASH</NText>
+          </p>
+          <p>
+            其中 <NTag type="primary">HASH</NTag> 部分是 邮箱/手机号 的
+            <NTag type="primary">MD5</NTag> 哈希值，此电子邮箱 / 手机号必须在
+            <NText code>weavatar.com</NText> 上添加头像，否则会尝试返回
+            <NTag type="warning">Gravatar</NTag> 头像和
+            <NTag type="error">QQ</NTag>
+            头像，如果都不存在，则返回默认头像
+          </p>
+        </div>
+        <div class="cont" v-if="value == 'wordpress'">
+          <p>
+            安装启用
+            <a target="_blank" href="https://github.com/HaoZi-Team/WP-China-Plus">
+              WP-China-Plus
+            </a>
+            插件，你可能还需要关闭主题、其他插件中自带的
+            <NTag type="warning">Gravatar</NTag> 头像加速功能
+          </p>
+          <p>
+            如果你不想安装插件，也可以通过添加以下代码到主题的
+            <NTag type="error">functions.php</NTag>
+            文件中来接入 <NTag type="info">WeAvatar</NTag>。
+          </p>
+          <NCode :code="code" language="php" word-wrap />
+        </div>
+        <div class="cont" v-if="value == 'typecho'">
+          <p>
+            添加
+            <NCode
+              code="define('__TYPECHO_GRAVATAR_PREFIX__', 'https://weavatar.com/avatar/');"
+              language="php"
+              inline
+            />
+            到站点根目录的
+            <NTag type="error">config.inc.php</NTag>
+            中来接入 <NTag type="info">WeAvatar</NTag>
+          </p>
+        </div>
+        <div class="cont" v-if="value == 'emlog'">
+          <p>
+            <b>Pro之前(5.x 6.x民间): </b> 通过修改
+            <NTag type="error">include/lib/function.base.php</NTag>
+            中
+            <NText code>getGravatar</NText>
+            函数中的
+            <NText code>http://www.gravatar.com</NText>
+            为
+            <NText code>https://weavatar.com</NText>
+            接入 <NTag type="info">WeAvatar</NTag>，你可以参考左侧
+            <b>额外的参数</b> 部分来修改默认头像
+          </p>
+          <p>
+            <b>Pro之后(2.x): </b> 修改
+            <NTag type="error">include/lib/common.php</NTag>
+            中
+            <NText code>getGravatar</NText>
+            函数中的
+            <NText code>cravatar.cn</NText>
+            为
+            <NText code>weavatar.com</NText>
+            接入 <NTag type="info">WeAvatar</NTag>，你可以参考左侧
+            <b>额外的参数</b> 部分来修改默认头像
+          </p>
+        </div>
+        <div class="cont" v-if="value == 'zblog'">
+          <p>
+            后台应用中心搜索 <NTag type="info">WeAvatar</NTag> 安装插件或前往
+            <a target="_blank" href="https://app.zblogcn.com/?id=38455">
+              https://app.zblogcn.com/?id=38455
+            </a>
+            下载插件并手动安装
+          </p>
+        </div>
+        <div class="cont" v-if="value == 'hash'">
+          <ul>
+            <li>
+              <p>去除首位两边的空格</p>
+            </li>
+            <li>
+              <p>所有字母转小写</p>
+            </li>
+            <li>
+              <p>计算 <NTag type="primary">MD5</NTag> 值</p>
+            </li>
+          </ul>
+        </div>
+        <div class="cont" v-if="value == 'format'">
+          <p>
+            我们当前支持
+            <NTag type="info">8</NTag>
+            种图片返回格式，分别是:
+            <NTag type="primary">webp</NTag> | <NTag type="primary">jpg</NTag> |
+            <NTag type="primary">jpeg</NTag> | <NTag type="primary">png</NTag> |
+            <NTag type="primary">gif</NTag> | <NTag type="primary">tiff</NTag> |
+            <NTag type="primary">heif</NTag> | <NTag type="primary">avif</NTag>。
+          </p>
+          <p>
+            默认情况下，我们会返回
+            <NTag type="info">WEBP</NTag> 格式的图片，但是你可以通过向图片访问
+            <NTag type="primary">URL</NTag> 拼接文件后缀的方式来访问特定格式的图片，完整的请求
+            <NTag type="primary">URL</NTag> 类似如下:
+          </p>
+          <NText code>https://weavatar.com/avatar/ff3dcd55b299b96db5e2ed195af50817.png</NText>
+        </div>
+        <div class="cont" v-if="value == 'resize'">
+          <p>
+            默认情况下，我们会返回 <NTag type="info">80×80</NTag> 尺寸的头像，但是你可以通过
+            <NText code>s</NText> 或 <NText code>size</NText> 参数来指定要获取的头像大小
+          </p>
+        </div>
+        <div class="cont" v-if="value == 'default'">
+          <p>如果提供的哈希无法匹配到任何头像，则将会返回我们的 Logo 作为默认头像。</p>
+          <p>
+            <NImage
+              src="https://weavatar.com/avatar/?f=y&s=60"
+              alt="默认头像"
+              width="60"
+              height="60"
+            />
+          </p>
+          <p>
+            当然，你也可以通过
+            <NText code>d</NText> 或 <NText code>default</NText> 参数指定需要返回的默认头像:
+          </p>
+          <NText code>
+            https://weavatar.com/avatar/ff3dcd55b299b96db5e2ed195af50817.jpg?d=你的URL
+          </NText>
+          <p>需要注意的是，传递的默认头像地址必须经过 <NTag type="primary">URL</NTag> 编码</p>
+          <p>
+            除了允许你自己指定默认头像外，我们还准备了一组内置的默认头像，只需要传入
+            <NText code>d=默认头像ID</NText> 即可调用:
+          </p>
+          <ul>
+            <li>
+              <p><NText code>d=404</NText>: 返回 <NTag type="primary">404</NTag> 错误</p>
+            </li>
+            <li>
+              <p>
+                <NText code>d=mp</NText>: 一个简单的卡通风格的
+                <NTag type="primary">人物轮廓</NTag>
+              </p>
+            </li>
+            <li>
+              <p>
+                <NText code>d=identicon</NText>: 一个
+                <NTag type="primary">几何图案</NTag>（随机生成）
+              </p>
+            </li>
+            <li>
+              <p>
+                <NText code>d=monsterid</NText>: 具有不同颜色、面孔的
+                <NTag type="primary">人头1</NTag>（随机生成）
+              </p>
+            </li>
+            <li>
+              <p>
+                <NText code>d=wavatar</NText>: 具有不同特征和背景的
+                <NTag type="primary">人脸</NTag>（随机生成）
+              </p>
+            </li>
+            <li>
+              <p>
+                <NText code>d=retro</NText>: <NTag type="info">8</NTag> 位色的像素
+                <NTag type="primary">人脸</NTag>（随机生成）
+              </p>
+            </li>
+            <li>
+              <p>
+                <NText code>d=robohash</NText>: 具有不同颜色、面孔的
+                <NTag type="primary">人头2</NTag>（随机生成）
+              </p>
+            </li>
+            <li>
+              <p>
+                <NText code>d=letter&letter=X</NText>: 返回给定
+                <NTag type="primary">letter</NTag> 组成的字母头像（最多支持
+                <NTag type="info">4</NTag> 位，自动裁切）
+              </p>
+            </li>
+            <li>
+              <p>
+                <NText code>d=blank</NText>: 返回一个透明的 <NTag type="primary">PNG</NTag> 图片
+              </p>
+            </li>
+          </ul>
+          <NSpace>
+            <NImage
+              src="https://weavatar.com/avatar/?d=mp&f=y&s=60"
+              alt="人物轮廓"
+              width="60"
+              height="60"
+            />
+            <NImage
+              src="https://weavatar.com/avatar/?d=identicon&f=y&s=60"
+              alt="几何图案"
+              width="60"
+              height="60"
+            />
+            <NImage
+              src="https://weavatar.com/avatar/?d=monsterid&f=y&s=60"
+              alt="人头1"
+              width="60"
+              height="60"
+            />
+            <NImage
+              src="https://weavatar.com/avatar/?d=wavatar&f=y&s=60"
+              alt="人脸"
+              width="60"
+              height="60"
+            />
+            <NImage
+              src="https://weavatar.com/avatar/?d=retro&f=y&s=60"
+              alt="像素人脸"
+              width="60"
+              height="60"
+            />
+            <NImage
+              src="https://weavatar.com/avatar/?d=robohash&f=y&s=60"
+              alt="人头2"
+              width="60"
+              height="60"
+            />
+            <NImage
+              src="https://weavatar.com/avatar/demo?d=letter&letter=WeAvatar&f=y&s=60"
+              alt="字母头像"
+              width="60"
+              height="60"
+            />
+            <NImage
+              src="https://weavatar.com/avatar/?d=blank&f=y&s=60"
+              alt="透明图片"
+              width="60"
+              height="60"
+            />
+          </NSpace>
+          <p>为方便演示，以上图片均通过 <NTag type="warning">CSS</NTag> 添加了边框</p>
+        </div>
+        <div class="cont" v-if="value == 'forcedefault'">
+          <p>
+            如果由于某种原因你想强制始终返回默认头像，您可以使用 <NText code>f</NText> 或
+            <NText code>forcedefault</NText> 参数并将其值设置为 <NText code>y</NText>
+          </p>
+        </div>
+        <div class="cont" v-if="value == 'rating'">
+          <p>为符合中国法律要求，该参数暂不提供支持</p>
+        </div>
+        <div class="cont" v-if="value == 'combination'">
+          <p>
+            以上所介绍的所有关于
+            <NTag type="info">WeAvatar</NTag>
+            的参数都可以自由组合，比如你可以提供这样的一个头像
+            <NTag type="primary">URL</NTag>:
+          </p>
+          <p>
+            <NText code>
               https://weavatar.com/avatar/ff3dcd55b299b96db5e2ed195af50817.png?d=letter&letter=WeAvatar&s=200&f=y
-            </p>
-            <p>以上头像URL将始终返回格式为 png、尺寸为 200 的字母头像，字母自动裁切为 WeAv。</p>
-          </div>
-        </NCollapseItem>
-      </NCollapse>
+            </NText>
+          </p>
+          <p>
+            该头像 <NTag type="primary">URL</NTag>
+            将始终返回格式为
+            <NTag type="primary">PNG</NTag>、尺寸为
+            <NTag type="primary">200</NTag>
+            的字母头像，字母自动裁切为 <NTag type="primary">WeAv</NTag>
+          </p>
+        </div>
+      </NLayout>
     </NCard>
   </div>
 </template>
 
 <script setup lang="ts">
-import { NCard, NCode, NCollapse, NCollapseItem, NImage, NSpace, NText } from 'naive-ui'
+import type { MenuOption } from 'naive-ui'
+import {
+  NCard,
+  NCode,
+  NIcon,
+  NImage,
+  NLayout,
+  NLayoutSider,
+  NMenu,
+  NSpace,
+  NTag,
+  NText
+} from 'naive-ui'
+import type { Component } from 'vue'
+import { h, ref } from 'vue'
+import {
+  BrowsersOutline,
+  CodeSlashSharp,
+  CogOutline,
+  CropOutline,
+  ExtensionPuzzleOutline,
+  EyeOutline,
+  GridOutline,
+  ImageOutline,
+  LayersOutline,
+  LogoWordpress,
+  RocketOutline,
+  ServerOutline
+} from '@vicons/ionicons5'
 
 const code = `
 if ( ! function_exists( 'get_weavatar_url' ) ) {
@@ -272,6 +378,93 @@ if ( ! function_exists( 'set_user_profile_picture_for_weavatar' ) ) {
     add_filter( 'user_profile_picture_description', 'set_user_profile_picture_for_weavatar', 1 );
 }
 `
+const menuOptions: MenuOption[] = [
+  {
+    label: '基本概念',
+    key: 'basic',
+    icon: renderIcon(RocketOutline)
+  },
+  {
+    label: '在 CMS 中使用',
+    key: 'cms-use',
+    icon: renderIcon(LayersOutline),
+    children: [
+      {
+        label: 'WordPress',
+        key: 'wordpress',
+        icon: renderIcon(LogoWordpress)
+      },
+      {
+        label: 'Typecho',
+        key: 'typecho',
+        icon: renderIcon(ServerOutline)
+      },
+      {
+        label: 'Emlog',
+        key: 'emlog',
+        icon: renderIcon(ServerOutline)
+      },
+      {
+        label: 'Z-Blog',
+        key: 'zblog',
+        icon: renderIcon(ServerOutline)
+      }
+    ]
+  },
+  {
+    label: '邮箱 / 手机号的哈希',
+    key: 'hash',
+    icon: renderIcon(CodeSlashSharp)
+  },
+  {
+    label: '指定图片格式',
+    key: 'format',
+    icon: renderIcon(ImageOutline)
+  },
+  {
+    label: '额外的参数',
+    key: 'additional',
+    icon: renderIcon(ExtensionPuzzleOutline),
+    children: [
+      {
+        label: '调整头像大小',
+        key: 'resize',
+        icon: renderIcon(CropOutline)
+      },
+      {
+        label: '自定义默认头像',
+        key: 'default',
+        icon: renderIcon(BrowsersOutline)
+      },
+      {
+        label: '强制加载默认头像',
+        key: 'forcedefault',
+        icon: renderIcon(CogOutline)
+      },
+      {
+        label: '指定要显示的头像级别',
+        key: 'rating',
+        icon: renderIcon(EyeOutline)
+      },
+      {
+        label: '组合参数',
+        key: 'combination',
+        icon: renderIcon(GridOutline)
+      }
+    ]
+  }
+]
+
+const collapsed = ref(true)
+let value = ref('basic')
+
+const onUpdate = (key: string) => {
+  value.value = key
+}
+
+function renderIcon(icon: Component) {
+  return () => h(NIcon, null, { default: () => h(icon) })
+}
 </script>
 
 <style scoped>
@@ -292,5 +485,21 @@ a {
   .doc {
     padding: 100px 0 100px 0;
   }
+
+  .show-menu {
+    display: flex !important;
+  }
+}
+
+.cont {
+  padding: 0 20px 20px;
+}
+
+:deep(.n-layout-toggle-button) {
+  top: 25px;
+}
+
+.n-layout-sider {
+  z-index: 0;
 }
 </style>
