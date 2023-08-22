@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { NResult, NButton } from 'naive-ui'
+import { NButton, NResult } from 'naive-ui'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -19,6 +19,7 @@ const goHome = () => {
 
 <style scoped>
 .not-found {
+  padding: 100px;
   height: 100%;
   display: flex;
   flex-direction: column;
