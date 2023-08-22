@@ -6,6 +6,7 @@ export interface Info {
   id: number
   avatar: string
   nickname: string
+  real_name: boolean
   created_at: string
 }
 
@@ -25,6 +26,7 @@ export function defaultSetting(): UserState {
       id: 0,
       avatar: 'https://weavatar.com/avatar/?d=mp',
       nickname: '未登录',
+      real_name: false,
       created_at: ''
     },
     auth: {

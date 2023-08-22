@@ -5,7 +5,12 @@
         <NImage width="50" :src="userStore.info.avatar" preview-disabled lazy />
       </div>
       <div>
-        <h1 style="font-size: 23px">{{ userStore.info.nickname }}</h1>
+        <h1 style="font-size: 23px">
+          {{ userStore.info.nickname }}
+          <NTag type="success">
+            {{ userStore.info.real_name ? '已实名' : '未实名' }}
+          </NTag>
+        </h1>
         <h4 style="margin: 0 20px">
           <small>ID: {{ userStore.info.id }}</small>
         </h4>
@@ -48,7 +53,7 @@
 </template>
 
 <script setup lang="ts">
-import { NButton, NCard, NCol, NForm, NFormItem, NImage, NInput, NRow, NSpin } from 'naive-ui'
+import { NButton, NCard, NCol, NForm, NFormItem, NImage, NInput, NRow, NSpin, NTag } from 'naive-ui'
 import { ref } from 'vue'
 import { useUserStore } from '@/stores'
 import { useRouter } from 'vue-router'

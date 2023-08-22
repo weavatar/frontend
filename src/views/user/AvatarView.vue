@@ -11,10 +11,14 @@
         </NAlert>
         <NDataTable
           striped
+          remote
           :columns="columns"
           :data="data"
           :loading="loading"
+          :pagination="pagination"
           :row-key="(row) => row.id"
+          @update:page="handlePageChange"
+          @update:page-size="handlePageSizeChange"
         />
         <NCard :bordered="false">
           <NButton
@@ -210,7 +214,7 @@ import {
 } from 'naive-ui'
 import { ArchiveOutline as ArchiveIcon } from '@vicons/ionicons5'
 import type { VNode } from 'vue'
-import { h, ref } from 'vue'
+import { h, reactive, ref } from 'vue'
 import { addAvatar, deleteAvatar, fetchAvatarList, updateAvatar } from '@/api/avatar'
 import { checkBind } from '@/api/system'
 import CropAvatar from '@/components/avatar/CropAvatar.vue'
@@ -233,6 +237,15 @@ interface Avatar {
 
 const loading = ref(true)
 const data = ref([] as Avatar[])
+const pagination = reactive({
+  page: 1,
+  pageCount: 1,
+  pageSize: 10,
+  itemCount: 0,
+  showQuickJumper: true,
+  showSizePicker: true,
+  pageSizes: [10, 20, 50, 100]
+})
 const addModal = ref(false)
 const changeModal = ref(false)
 const buttonLoading = ref(false)
@@ -253,14 +266,29 @@ if (!userStore.auth.login) {
   router.push({ name: 'login' })
 }
 
-fetchAvatarList()
-  .then((res) => {
-    data.value = res.data as Avatar[]
-    loading.value = false
-  })
-  .catch(() => {
-    loading.value = false
-  })
+const handlePageSizeChange = (pageSize: number) => {
+  pagination.pageSize = pageSize
+  handlePageChange(1)
+}
+
+const handlePageChange = async (page: number) => {
+  loading.value = true
+
+  fetchAvatarList(page, pagination.pageSize)
+    .then((res) => {
+      data.value = res.data.items as Avatar[]
+      pagination.page = page
+      pagination.itemCount = res.data.total
+      pagination.pageCount = res.data.total / pagination.pageSize + 1
+    })
+    .catch((res) => {
+      console.log(res)
+    })
+
+  loading.value = false
+}
+
+handlePageChange(1)
 
 const columns: DataTableColumns<Avatar> = [
   {
@@ -451,13 +479,7 @@ const handleAddAvatar = async () => {
                 addModel.value.avatar = new Blob()
                 addModel.value.verify_code = ''
                 addModel.value.captcha = ''
-                fetchAvatarList()
-                  .then((res) => {
-                    data.value = res.data as Avatar[]
-                  })
-                  .catch((res) => {
-                    console.log(res)
-                  })
+                handlePageChange(1)
               })
               .catch((err) => {
                 console.log(err)
@@ -479,13 +501,7 @@ const handleAddAvatar = async () => {
             addModel.value.avatar = new Blob()
             addModel.value.verify_code = ''
             addModel.value.captcha = ''
-            fetchAvatarList()
-              .then((res) => {
-                data.value = res.data as Avatar[]
-              })
-              .catch((res) => {
-                console.log(res)
-              })
+            handlePageChange(1)
           })
           .catch((err) => {
             console.log(err)
@@ -503,29 +519,21 @@ const handleAddAvatar = async () => {
 }
 
 // 删除头像
-const handleAvatarDelete = (hash: string) => {
+const handleAvatarDelete = async (hash: string) => {
   loading.value = true
   window.$loadingBar.start()
-  deleteAvatar(hash)
+
+  await deleteAvatar(hash)
     .then((res) => {
       window.$message.success(`删除成功，10 分钟内全网生效`)
-      fetchAvatarList()
-        .then((res) => {
-          data.value = res.data as Avatar[]
-          loading.value = false
-          window.$loadingBar.finish()
-        })
-        .catch((res) => {
-          console.log(res)
-          loading.value = false
-          window.$loadingBar.finish()
-        })
+      handlePageChange(1)
     })
     .catch((res) => {
       console.log(res)
-      loading.value = false
-      window.$loadingBar.finish()
     })
+
+  loading.value = false
+  window.$loadingBar.finish()
 }
 
 // 修改头像
@@ -556,13 +564,7 @@ const handleChangeAvatar = async () => {
       changeModel.value.hash = ''
       changeModel.value.avatar = new Blob()
       changeModel.value.captcha = ''
-      fetchAvatarList()
-        .then((res) => {
-          data.value = res.data as Avatar[]
-        })
-        .catch((res) => {
-          console.log(res)
-        })
+      handlePageChange(1)
     })
     .catch((res) => {
       console.log(res)

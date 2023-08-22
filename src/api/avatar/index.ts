@@ -1,10 +1,14 @@
 import http from '@/utils/request'
 
 // 获取头像列表
-export async function fetchAvatarList() {
+export async function fetchAvatarList(page: number, limit: number) {
   return http({
     url: '/avatars',
-    method: 'GET'
+    method: 'GET',
+    data: {
+      page,
+      limit
+    }
   })
     .then((res) => {
       return res.data
