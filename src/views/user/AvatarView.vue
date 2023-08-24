@@ -296,7 +296,7 @@ const columns: DataTableColumns<Avatar> = [
     key: 'hash',
     render({ hash }) {
       return h('img', {
-        src: `https://weavatar.com/api/avatar/${hash}?s=50`,
+        src: `https://weavatar.com/api/avatar/${hash}?s=50&t=` + new Date().getTime(),
         style: {
           borderRadius: '10%'
         }
