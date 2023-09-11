@@ -408,7 +408,6 @@ const sanitizeAvatar = (data: { file: UploadFileInfo; fileList: UploadFileInfo[]
 
 const handleUploadAvatar = (options: { file: UploadFileInfo; fileList: UploadFileInfo[] }) => {
   cropAvatarRef.value.setShow(true)
-  console.log(options.file.file)
   cropAvatarRef.value.setImage(options.file.file as Blob)
 }
 
