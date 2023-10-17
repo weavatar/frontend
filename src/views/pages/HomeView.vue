@@ -198,10 +198,10 @@
             </a>
           </NGridItem>
           <NGridItem v-motion-slide-visible-bottom>
-            <a class="url" target="_blank" href="http://www.seoyh.net/">
+            <a class="url" target="_blank" href="https://hzbk.net/">
               <NImage
-                :src="logo_ydyh"
-                alt="一点优化"
+                :src="logo_hzbk"
+                alt="耗子博客"
                 height="80"
                 width="180"
                 lazy
@@ -239,7 +239,7 @@
         <span>作为公益性质的项目，WeAvatar 的稳定运行离不开它们的帮助</span>
       </div>
       <div class="sponsor-content">
-        <NGrid cols="1 s:3 m:4 l:4 xl:4 2xl:4" item-responsive responsive="screen">
+        <NGrid cols="1 s:3 m:3 l:3 xl:3 2xl:3" item-responsive responsive="screen">
           <NGridItem v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://www.ddunyun.com/aff/PNYAXMKI">
               <NImage
@@ -257,18 +257,6 @@
               <NImage
                 :src="logo_wuwei"
                 alt="无畏云科技"
-                height="80"
-                width="180"
-                lazy
-                preview-disabled
-              />
-            </a>
-          </NGridItem>
-          <NGridItem v-motion-slide-visible-bottom>
-            <a class="url" target="_blank" href="https://www.anycast.ai">
-              <NImage
-                :src="logo_anycast"
-                alt="AnyCast.Ai"
                 height="80"
                 width="180"
                 lazy
@@ -322,13 +310,12 @@ import { fetchCdnUsage } from '@/api/system'
 import logo_dunyun from '@/assets/logo-dunyun.png'
 import logo_jihu from '@/assets/logo-jihu.svg'
 import logo_nicetheme from '@/assets/logo-nicetheme.png'
-import logo_ydyh from '@/assets/logo-ydyh.png'
+import logo_hzbk from '@/assets/logo-hzbk.png'
 import logo_iro from '@/assets/logo-iro.png'
 import logo_lxtx from '@/assets/logo-lxtx.png'
 import logo_up from '@/assets/logo-up.png'
 import logo_dami from '@/assets/logo-dami.png'
 import logo_wuwei from '@/assets/logo-wuwei.png'
-import logo_anycast from '@/assets/logo-anycast.png'
 import logo_bai from '@/assets/logo-bai.png'
 import logo_zmingcx from '@/assets/logo-zmingcx.png'
 

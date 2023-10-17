@@ -9,5 +9,14 @@
   "commitMessagePrefix": "chore(deps): ",
   "postUpdateOptions": [
     "pnpmDedupe"
+  ],
+  "packageRules": [
+    {
+      "groupName": "all dependencies",
+      "groupSlug": "all",
+      "matchPackagePatterns": [
+        "*"
+      ]
+    }
   ]
 }
