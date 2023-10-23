@@ -102,25 +102,12 @@
       Copyright &copy; 2022 - 2023 WeAvatar
       <a target="_blank" href="https://beian.miit.gov.cn">津ICP备2022009678号-2</a>
     </p>
-    <p class="info">
-      <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">
-        <NImage
-          :src="upyun_logo"
-          alt="又拍云"
-          height="30"
-          preview-disabled
-          style="display: inline-block; vertical-align: middle"
-        />
-      </a>
-      提供 CDN 加速服务
-    </p>
   </div>
 </template>
 
 <script setup lang="ts">
-import { NButton, NGrid, NGridItem, NImage, NSpace } from 'naive-ui'
+import { NButton, NGrid, NGridItem, NSpace } from 'naive-ui'
 import logo from '@/assets/logo-white.png'
-import upyun_logo from '@/assets/logo-upyun.png'
 
 const handleJoinGroup = () => {
   window.open('https://jq.qq.com/?_wv=1027&k=I1oJKSTH')
@@ -141,8 +128,7 @@ const handleJoinGroup = () => {
   text-decoration: none;
 }
 
-.copyright,
-.info {
+.copyright {
   text-align: center;
 }
 
