@@ -7,7 +7,7 @@
             <div class="footer-item">
               <img :src="logo" alt="weavatar" />
               <hr />
-              <p>多端多元化的统一头像服务</p>
+              <p>WeAvatar 是注册商标，受国家有关法律保护</p>
               <NSpace>
                 <NButton type="info" @click="handleJoinGroup">联系我们</NButton>
                 <NButton type="info" @click="handleJoinGroup">加 QQ 群</NButton>
@@ -98,16 +98,33 @@
         </NGridItem>
       </NGrid>
     </div>
-    <p class="copyright">
-      Copyright &copy; 2022 - 2023 WeAvatar
-      <a target="_blank" href="https://beian.miit.gov.cn">津ICP备2022009678号-2</a>
+    <p class="copyright">Copyright &copy; 2022 - 2023 WeAvatar All Rights Reserved.</p>
+    <p class="beian" style="display: flex; justify-content: center; align-items: center">
+      <a target="_blank" href="https://beian.miit.gov.cn" rel="noreferrer">津ICP备2022009678号-2</a>
+      <NImage
+        :src="beian_gongan"
+        width="16"
+        alt="备案图标"
+        lazy
+        preview-disabled
+        style="padding-left: 10px"
+      />
+      <a
+        target="_blank"
+        href="https://beian.mps.gov.cn/#/query/webSearch?code=12011502000847"
+        rel="noreferrer"
+        style="padding-left: 4px"
+      >
+        津公网安备12011502000847
+      </a>
     </p>
   </div>
 </template>
 
 <script setup lang="ts">
-import { NButton, NGrid, NGridItem, NSpace } from 'naive-ui'
+import { NButton, NGrid, NGridItem, NImage, NSpace } from 'naive-ui'
 import logo from '@/assets/logo-white.png'
+import beian_gongan from '@/assets/beian-gongan.png'
 
 const handleJoinGroup = () => {
   window.open('https://jq.qq.com/?_wv=1027&k=I1oJKSTH')
@@ -128,7 +145,8 @@ const handleJoinGroup = () => {
   text-decoration: none;
 }
 
-.copyright {
+.copyright,
+.beian {
   text-align: center;
 }
 
