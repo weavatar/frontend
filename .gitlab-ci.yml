@@ -66,7 +66,7 @@ deploy_development:
   dependencies:
     - build_development
   before_script:
-    - sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
+    - sed -i 's/dl-cdn.alpinelinux.org/mirror.sjtu.edu.cn/g' /etc/apk/repositories
     - apk add --no-cache openssh-client sshpass zip
   script:
     - zip -r $OUTPUT_NAME.zip $OUTPUT_NAME@development/
@@ -87,7 +87,7 @@ deploy_production:
   dependencies:
     - build_production
   before_script:
-    - sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
+    - sed -i 's/dl-cdn.alpinelinux.org/mirror.sjtu.edu.cn/g' /etc/apk/repositories
     - apk add --no-cache openssh-client sshpass zip
   script:
     - zip -r $OUTPUT_NAME.zip $OUTPUT_NAME@production/
