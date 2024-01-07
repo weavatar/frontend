@@ -115,12 +115,13 @@
         <div class="cont" v-if="value == 'format'">
           <p>
             我们当前支持
-            <NTag type="info">8</NTag>
+            <NTag type="info">10</NTag>
             种图片返回格式，分别是:
             <NTag type="primary">webp</NTag> | <NTag type="primary">jpg</NTag> |
             <NTag type="primary">jpeg</NTag> | <NTag type="primary">png</NTag> |
             <NTag type="primary">gif</NTag> | <NTag type="primary">tiff</NTag> |
-            <NTag type="primary">heif</NTag> | <NTag type="primary">avif</NTag>。
+            <NTag type="primary">heif</NTag> | <NTag type="primary">heic</NTag> |
+            <NTag type="primary">avif</NTag> | <NTag type="primary">jxl</NTag>。
           </p>
           <p>
             默认情况下，我们会返回
@@ -129,11 +130,14 @@
             <NTag type="primary">URL</NTag> 类似如下:
           </p>
           <NText code>https://weavatar.com/avatar/ff3dcd55b299b96db5e2ed195af50817.png</NText>
+          <p>
+            如无必要，请保持使用默认 <NTag type="info">WEBP</NTag> 格式，这是当下兼容性、速度、大小之间的最佳选择。
+          </p>
         </div>
         <div class="cont" v-if="value == 'resize'">
           <p>
             默认情况下，我们会返回 <NTag type="info">80×80</NTag> 尺寸的头像，但是你可以通过
-            <NText code>s</NText> 或 <NText code>size</NText> 参数来指定要获取的头像大小
+            <NText code>s</NText> 或 <NText code>size</NText> 参数来指定要获取的头像大小（支持 10 - 2000）
           </p>
         </div>
         <div class="cont" v-if="value == 'default'">
@@ -298,21 +302,10 @@
 </template>
 
 <script setup lang="ts">
-import type { MenuOption } from 'naive-ui'
-import {
-  NCard,
-  NCode,
-  NIcon,
-  NImage,
-  NLayout,
-  NLayoutSider,
-  NMenu,
-  NSpace,
-  NTag,
-  NText
-} from 'naive-ui'
-import type { Component } from 'vue'
-import { h, ref } from 'vue'
+import type { MenuOption } from "naive-ui";
+import { NCard, NCode, NIcon, NImage, NLayout, NLayoutSider, NMenu, NSpace, NTag, NText } from "naive-ui";
+import type { Component } from "vue";
+import { h, ref } from "vue";
 import {
   BrowsersOutline,
   CodeSlashSharp,
@@ -326,7 +319,7 @@ import {
   LogoWordpress,
   RocketOutline,
   ServerOutline
-} from '@vicons/ionicons5'
+} from "@vicons/ionicons5";
 
 const code = `
 if ( ! function_exists( 'get_weavatar_url' ) ) {
