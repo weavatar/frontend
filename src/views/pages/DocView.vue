@@ -27,8 +27,9 @@
             <NText code>https://weavatar.com/avatar/HASH</NText>
           </p>
           <p>
-            其中 <NTag type="primary">HASH</NTag> 部分是 邮箱/手机号 的
-            <NTag type="primary">MD5</NTag> 哈希值，此电子邮箱 / 手机号必须在
+            其中 <NTag type="primary">HASH</NTag> 部分是 邮箱 / 手机号 的
+            <NTag type="primary">SHA256</NTag> 或 <NTag type="primary">MD5</NTag> 哈希值，推荐使用
+            <NTag type="primary">SHA256</NTag>，此电子邮箱 / 手机号须在
             <NText code>weavatar.com</NText> 上添加头像，否则会尝试返回
             <NTag type="warning">Gravatar</NTag> 头像和
             <NTag type="error">QQ</NTag>
@@ -38,9 +39,7 @@
         <div class="cont" v-if="value == 'wordpress'">
           <p>
             安装启用
-            <a target="_blank" href="https://github.com/HaoZi-Team/WP-China-Plus">
-              WP-China-Plus
-            </a>
+            <a target="_blank" href="https://github.com/TheTNB/wp-china-plus"> WP-China-Plus </a>
             插件，你可能还需要关闭主题、其他插件中自带的
             <NTag type="warning">Gravatar</NTag> 头像加速功能
           </p>
@@ -108,7 +107,7 @@
               <p>所有字母转小写</p>
             </li>
             <li>
-              <p>计算 <NTag type="primary">MD5</NTag> 值</p>
+              <p>计算 <NTag type="primary">SHA256</NTag> 值</p>
             </li>
           </ul>
         </div>
@@ -131,13 +130,15 @@
           </p>
           <NText code>https://weavatar.com/avatar/ff3dcd55b299b96db5e2ed195af50817.png</NText>
           <p>
-            如无必要，请保持使用默认 <NTag type="info">WEBP</NTag> 格式，这是当下兼容性、速度、大小之间的最佳选择。
+            如无必要，请保持使用默认
+            <NTag type="info">WEBP</NTag> 格式，这是当下兼容性、速度、大小之间的最佳选择。
           </p>
         </div>
         <div class="cont" v-if="value == 'resize'">
           <p>
             默认情况下，我们会返回 <NTag type="info">80×80</NTag> 尺寸的头像，但是你可以通过
-            <NText code>s</NText> 或 <NText code>size</NText> 参数来指定要获取的头像大小（支持 10 - 2000）
+            <NText code>s</NText> 或 <NText code>size</NText> 参数来指定要获取的头像大小（支持 10 -
+            2000）
           </p>
         </div>
         <div class="cont" v-if="value == 'default'">
@@ -302,10 +303,21 @@
 </template>
 
 <script setup lang="ts">
-import type { MenuOption } from "naive-ui";
-import { NCard, NCode, NIcon, NImage, NLayout, NLayoutSider, NMenu, NSpace, NTag, NText } from "naive-ui";
-import type { Component } from "vue";
-import { h, ref } from "vue";
+import type { MenuOption } from 'naive-ui'
+import {
+  NCard,
+  NCode,
+  NIcon,
+  NImage,
+  NLayout,
+  NLayoutSider,
+  NMenu,
+  NSpace,
+  NTag,
+  NText
+} from 'naive-ui'
+import type { Component } from 'vue'
+import { h, ref } from 'vue'
 import {
   BrowsersOutline,
   CodeSlashSharp,
@@ -319,7 +331,7 @@ import {
   LogoWordpress,
   RocketOutline,
   ServerOutline
-} from "@vicons/ionicons5";
+} from '@vicons/ionicons5'
 
 const code = `
 if ( ! function_exists( 'get_weavatar_url' ) ) {
