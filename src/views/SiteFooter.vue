@@ -74,20 +74,20 @@
               <div class="footer-list">
                 <ul>
                   <li>
-                    <a target="_blank" href="https://github.com/haozi-team/WP-China-Plus">
+                    <a target="_blank" href="https://github.com/TheTNB/wp-china-plus">
                       WP-China-Plus
                     </a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://github.com/haozi-team/panel"> Linux 面板 </a>
+                    <a target="_blank" href="https://github.com/TheTNB/panel"> Linux 面板 </a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://github.com/haozi-team/Laravel-Installer">
+                    <a target="_blank" href="https://github.com/TheTNB/Laravel-Installer">
                       Laravel-Installer
                     </a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://github.com/haozi-team/wp-setting-api">
+                    <a target="_blank" href="https://github.com/TheTNB/wp-setting-api">
                       WP-Setting-API
                     </a>
                   </li>

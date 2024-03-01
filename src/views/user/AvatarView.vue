@@ -4,10 +4,10 @@
       <NSpace vertical>
         <NAlert type="info" class="avatar-notice">
           你可以通过
-          <b>https://weavatar.com/avatar/地址MD5值</b> 的方式访问自己的头像。
-          <RouterLink :to="{ name: 'help' }"> 查看帮助</RouterLink>
+          <b>https://weavatar.com/avatar/地址 SHA256 或 MD5 值</b> 的方式访问自己的头像。
+          <RouterLink :to="{ name: 'help' }">查看帮助</RouterLink>
           /
-          <RouterLink :to="{ name: 'doc' }"> 查看文档</RouterLink>
+          <RouterLink :to="{ name: 'doc' }">查看文档</RouterLink>
         </NAlert>
         <NDataTable
           striped
