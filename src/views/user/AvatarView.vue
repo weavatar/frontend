@@ -226,11 +226,10 @@ import { useReCaptcha } from 'vue-recaptcha-v3'
 import { fetchQQAvatar } from '@/api/user'
 
 interface Avatar {
-  hash: string
+  sha256: string
+  md5: string
   raw: string
   user_id: number
-  ban: boolean
-  check: boolean
   created_at: string
   updated_at: string
 }
@@ -294,9 +293,9 @@ const columns: DataTableColumns<Avatar> = [
   {
     title: '头像',
     key: 'hash',
-    render({ hash }) {
+    render({ sha256 }) {
       return h('img', {
-        src: `https://weavatar.com/api/avatar/${hash}?s=50&t=` + new Date().getTime(),
+        src: `https://weavatar.com/api/avatar/${sha256}?s=50&t=` + new Date().getTime(),
         style: {
           borderRadius: '10%'
         }
@@ -328,7 +327,7 @@ const columns: DataTableColumns<Avatar> = [
             onClick: () => {
               uploadType.value = 'change'
               changeModal.value = true
-              changeModel.value.hash = row.hash
+              changeModel.value.hash = row.sha256
             }
           },
           { default: () => '修改图片' }
@@ -338,7 +337,7 @@ const columns: DataTableColumns<Avatar> = [
         h(
           NPopconfirm,
           {
-            onPositiveClick: () => handleAvatarDelete(row.hash),
+            onPositiveClick: () => handleAvatarDelete(row.sha256),
             onNegativeClick: () => {
               window.$message.info('取消删除')
             }
