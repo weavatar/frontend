@@ -10,8 +10,8 @@
   ],
   "compilerOptions": {
     "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "baseUrl": ".",
-    "moduleResolution": "node",
     "paths": {
       "@/*": [
         "./src/*"
