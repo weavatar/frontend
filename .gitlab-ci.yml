@@ -1,4 +1,4 @@
-image: node:latest
+image: node:lts-alpine
 
 # 在每个任务执行前运行
 before_script:
