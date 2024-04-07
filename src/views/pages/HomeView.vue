@@ -222,8 +222,15 @@
             </a>
           </NGridItem>
           <NGridItem v-motion-slide-visible-bottom>
-            <a class="url" target="_blank" href="https://jq.qq.com/?_wv=1027&k=I1oJKSTH">
-              <NImage :src="logo_up" alt="我要上榜" height="80" width="180" lazy preview-disabled />
+            <a class="url" target="_blank" href="https://www.liblog.cn/">
+              <NImage
+                :src="logo_liyang"
+                alt="李洋博客"
+                height="80"
+                width="180"
+                lazy
+                preview-disabled
+              />
             </a>
           </NGridItem>
         </NGrid>
@@ -325,7 +332,7 @@ import logo_nicetheme from '@/assets/logo-nicetheme.png'
 import logo_hzbk from '@/assets/logo-hzbk.png'
 import logo_iro from '@/assets/logo-iro.png'
 import logo_lxtx from '@/assets/logo-lxtx.png'
-import logo_up from '@/assets/logo-up.png'
+import logo_liyang from '@/assets/logo-liyang.png'
 import logo_dami from '@/assets/logo-dami.png'
 import logo_wuwei from '@/assets/logo-wuwei.png'
 import logo_anycast from '@/assets/logo-anycast.png'
