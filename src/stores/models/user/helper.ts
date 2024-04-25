@@ -3,7 +3,7 @@ import { ss } from '@/utils/storage'
 const LOCAL_NAME = 'userStorage'
 
 export interface Info {
-  id: number
+  id: string
   avatar: string
   nickname: string
   real_name: boolean
@@ -23,7 +23,7 @@ export interface UserState {
 export function defaultSetting(): UserState {
   return {
     info: {
-      id: 0,
+      id: '',
       avatar: 'https://weavatar.com/avatar/?d=mp',
       nickname: '未登录',
       real_name: false,
