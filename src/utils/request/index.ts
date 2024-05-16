@@ -1,5 +1,6 @@
 import type { AxiosProgressEvent, GenericAbortSignal } from 'axios'
 import request from './axios'
+import { isObject } from '@/utils/is'
 
 export interface HttpOption {
   url: string
@@ -82,4 +83,18 @@ function http({
   }
 }
 
+// 处理输出错误信息
+function echoMessage(err: any) {
+  if (isObject(err.message)) {
+    for (const key in err.message) {
+      for (const subKey in err.message[key]) {
+        window.$message.error(err.message[key][subKey])
+      }
+    }
+  } else {
+    window.$message.error(err.message)
+  }
+}
+
 export default http
+export { echoMessage }

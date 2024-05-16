@@ -46,6 +46,8 @@ build_development:
 build_production:
   stage: build
   extends: .cache
+  only:
+    - main
   script:
     - echo VITE_API_URL=https://weavatar.com/api > .env
     - pnpm build
