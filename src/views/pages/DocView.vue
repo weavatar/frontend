@@ -8,8 +8,8 @@
           :collapsed-width="64"
           :collapsed="collapsed"
           show-trigger
-          @collapse="collapsed = true"
-          @expand="collapsed = false"
+          @collapse="() => (collapsed = !collapsed)"
+          @expand="() => (collapsed = !collapsed)"
         >
           <NMenu
             :collapsed="collapsed"

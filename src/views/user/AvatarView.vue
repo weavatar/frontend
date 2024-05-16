@@ -187,6 +187,7 @@
       </NCard>
     </NModal>
     <CropAvatar ref="cropAvatarRef" @cropAvatar="handleCropAvatar" />
+    <GeetestCaptcha :config="config" @initialized="getCaptcha" />
   </div>
 </template>
 
@@ -222,8 +223,8 @@ import VerifyCode from '@/components/captcha/VerifyCode.vue'
 import { isEmail, isPhone } from '@/utils/is'
 import { useUserStore } from '@/stores'
 import { useRouter } from 'vue-router'
-import { useReCaptcha } from 'vue-recaptcha-v3'
 import { fetchQQAvatar } from '@/api/user'
+import { type CaptchaConfig, GeetestCaptcha } from 'vue3-geetest'
 
 interface Avatar {
   sha256: string
@@ -234,8 +235,27 @@ interface Avatar {
   updated_at: string
 }
 
+const config: CaptchaConfig = {
+  product: 'bind'
+}
+let captcha: any
+const getCaptcha = (instance: any) => {
+  captcha = instance
+  captcha
+    .onError(function (e: any) {
+      window.$message.error(e.msg)
+    })
+    .onSuccess(function () {
+      if (uploadType.value === 'add') {
+        doAddAvatar(captcha.getValidate())
+      } else {
+        doChangeAvatar(captcha.getValidate())
+      }
+    })
+}
+
 const loading = ref(true)
-const data = ref([] as Avatar[])
+const data = ref<Avatar[]>([])
 const pagination = reactive({
   page: 1,
   pageCount: 1,
@@ -253,13 +273,6 @@ const buttonDisabled = ref(false)
 const userStore = useUserStore()
 const router = useRouter()
 
-const reCaptchaInstance = useReCaptcha()
-
-async function getRecaptcha() {
-  await reCaptchaInstance?.recaptchaLoaded()
-  return reCaptchaInstance?.executeRecaptcha('avatar') as Promise<string>
-}
-
 if (!userStore.auth.login) {
   userStore.clearToken()
   router.push({ name: 'login' })
@@ -275,7 +288,7 @@ const handlePageChange = async (page: number) => {
 
   fetchAvatarList(page, pagination.pageSize)
     .then((res) => {
-      data.value = res.data.items as Avatar[]
+      data.value = res.data.items
       pagination.page = page
       pagination.itemCount = res.data.total
       pagination.pageCount = res.data.total / pagination.pageSize + 1
@@ -337,7 +350,7 @@ const columns: DataTableColumns<Avatar> = [
         h(
           NPopconfirm,
           {
-            onPositiveClick: () => handleAvatarDelete(row.sha256),
+            onPositiveClick: () => handleDeleteAvatar(row.sha256),
             onNegativeClick: () => {
               window.$message.info('取消删除')
             }
@@ -418,6 +431,28 @@ const handleClearUploadChange = () => {
   changeModel.value.avatar = new Blob()
 }
 
+const handleGetQQAvatar = async () => {
+  if (qq.value === '') {
+    window.$message.error('请输入QQ号')
+    return
+  }
+  fetchQQAvatar(qq.value)
+    .then((res) => {
+      window.$message.success('获取成功')
+      let binaryData = atob(res.data)
+      let uint8Array = new Uint8Array(binaryData.length)
+      for (let i = 0; i < binaryData.length; i++) {
+        uint8Array[i] = binaryData.charCodeAt(i)
+      }
+      let blob = new Blob([uint8Array], { type: 'image/png' })
+      cropAvatarRef.value.setShow(true)
+      cropAvatarRef.value.setImage(blob)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
 const handleCropAvatar = (avatar: any) => {
   switch (uploadType.value) {
     case 'add':
@@ -429,7 +464,6 @@ const handleCropAvatar = (avatar: any) => {
   }
 }
 
-// 添加头像
 const handleAddAvatar = async () => {
   if (addModel.value.avatar.size === 0) {
     window.$message.error('请先上传头像')
@@ -448,12 +482,46 @@ const handleAddAvatar = async () => {
     return
   }
 
+  captcha.showCaptcha()
+}
+
+const handleChangeAvatar = async () => {
+  if (changeModel.value.avatar.size === 0) {
+    window.$message.error('请先选择头像')
+    return
+  }
+  if (changeModel.value.hash === '') {
+    window.$message.error('头像哈希为空')
+    return
+  }
+
+  captcha.showCaptcha()
+}
+
+const handleDeleteAvatar = async (hash: string) => {
+  loading.value = true
+  window.$loadingBar.start()
+
+  await deleteAvatar(hash)
+    .then(() => {
+      window.$message.success(`删除成功，5 分钟内全网生效`)
+      handlePageChange(1)
+    })
+    .catch((res) => {
+      console.log(res)
+    })
+
+  loading.value = false
+  window.$loadingBar.finish()
+}
+
+const doAddAvatar = async (captcha: any) => {
   buttonLoading.value = true
   buttonDisabled.value = true
   loading.value = true
   window.$loadingBar.start()
 
-  addModel.value.captcha = await getRecaptcha()
+  addModel.value.captcha = captcha
 
   await checkBind(addModel.value.raw)
     .then((res) => {
@@ -468,9 +536,9 @@ const handleAddAvatar = async () => {
             formData.append('raw', addModel.value.raw)
             formData.append('avatar', addModel.value.avatar, 'avatar.png')
             formData.append('verify_code', addModel.value.verify_code)
-            formData.append('captcha', addModel.value.captcha)
+            formData.append('captcha', JSON.stringify(addModel.value.captcha))
             addAvatar(formData)
-              .then((res) => {
+              .then(() => {
                 window.$message.success(`添加成功，5 分钟内全网生效`)
                 addModal.value = false
                 addModel.value.raw = ''
@@ -490,9 +558,9 @@ const handleAddAvatar = async () => {
         formData.append('raw', addModel.value.raw)
         formData.append('avatar', addModel.value.avatar, 'avatar.png')
         formData.append('verify_code', addModel.value.verify_code)
-        formData.append('captcha', addModel.value.captcha)
+        formData.append('captcha', JSON.stringify(addModel.value.captcha))
         addAvatar(formData)
-          .then((res) => {
+          .then(() => {
             window.$message.success(`添加成功，5 分钟内全网生效`)
             addModal.value = false
             addModel.value.raw = ''
@@ -516,47 +584,20 @@ const handleAddAvatar = async () => {
   window.$loadingBar.finish()
 }
 
-// 删除头像
-const handleAvatarDelete = async (hash: string) => {
-  loading.value = true
-  window.$loadingBar.start()
-
-  await deleteAvatar(hash)
-    .then((res) => {
-      window.$message.success(`删除成功，5 分钟内全网生效`)
-      handlePageChange(1)
-    })
-    .catch((res) => {
-      console.log(res)
-    })
-
-  loading.value = false
-  window.$loadingBar.finish()
-}
-
-// 修改头像
-const handleChangeAvatar = async () => {
-  if (changeModel.value.avatar.size === 0) {
-    window.$message.error('请先选择头像')
-    return
-  }
-  if (changeModel.value.hash === '') {
-    window.$message.error('头像哈希为空')
-    return
-  }
-
+const doChangeAvatar = async (captcha: any) => {
   buttonLoading.value = true
   buttonDisabled.value = true
   loading.value = true
   window.$loadingBar.start()
 
-  changeModel.value.captcha = await getRecaptcha()
+  changeModel.value.captcha = captcha
 
   const formData = new FormData()
   formData.append('avatar', changeModel.value.avatar, 'avatar.png')
-  formData.append('captcha', changeModel.value.captcha)
+  formData.append('captcha', JSON.stringify(changeModel.value.captcha))
+  console.log(formData)
   await updateAvatar(changeModel.value.hash, formData)
-    .then((res) => {
+    .then(() => {
       window.$message.success(`修改成功，5 分钟内全网生效`)
       changeModal.value = false
       changeModel.value.hash = ''
@@ -572,28 +613,6 @@ const handleChangeAvatar = async () => {
   buttonDisabled.value = false
   loading.value = false
   window.$loadingBar.finish()
-}
-
-const handleGetQQAvatar = async () => {
-  if (qq.value === '') {
-    window.$message.error('请输入QQ号')
-    return
-  }
-  fetchQQAvatar(qq.value)
-    .then((res) => {
-      window.$message.success('获取成功')
-      let binaryData = atob(res.data)
-      let uint8Array = new Uint8Array(binaryData.length)
-      for (let i = 0; i < binaryData.length; i++) {
-        uint8Array[i] = binaryData.charCodeAt(i)
-      }
-      let blob = new Blob([uint8Array], { type: 'image/png' })
-      cropAvatarRef.value.setShow(true)
-      cropAvatarRef.value.setImage(blob)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
 }
 </script>
 

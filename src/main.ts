@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { MotionPlugin } from '@vueuse/motion'
 import VueGtag from 'vue-gtag'
-import { VueReCaptcha } from 'vue-recaptcha-v3'
+import { Geetest } from 'vue3-geetest'
 
 import App from './App.vue'
 import router from './router'
@@ -25,14 +25,8 @@ app.use(
   },
   router
 )
-app.use(VueReCaptcha, {
-  siteKey: '6Le4F_ElAAAAAC5kj2DWj6XPT3oFiKwLHSX4ZD7T',
-  loaderOptions: {
-    useEnterprise: true,
-    useRecaptchaNet: true,
-    autoHideBadge: true,
-    customUrl: 'https://recaptcha.net/recaptcha/enterprise.js'
-  }
+app.use(Geetest, {
+  captchaId: 'dda5bf0b265affca8bddca9b647ce16b'
 })
 
 app.mount('#app')
