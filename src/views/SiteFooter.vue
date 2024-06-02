@@ -44,21 +44,21 @@
           <div class="footer-nav">
             <div class="footer-item">
               <div class="footer-title">
-                <h2>WePublish</h2>
+                <h2>相关项目</h2>
               </div>
               <div class="footer-list">
                 <ul>
                   <li>
-                    <a target="_blank" href="https://wepublish.cn/forums">社区论坛</a>
+                    <a target="_blank" href="https://account.haozi.net/">耗子通行证</a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://wepublish.cn/stores">应用市场</a>
+                    <a target="_blank" href="https://tom.moe/">Moe Tom</a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://wepublish.cn/translates">协同翻译</a>
+                    <a target="_blank" href="https://twikoo.js.org/">Twikoo</a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://wepublish.cn/">帮助文档</a>
+                    <a target="_blank" href="https://wp-china-yes.com/">WP-China-Yes</a>
                   </li>
                 </ul>
               </div>
@@ -98,7 +98,7 @@
         </NGridItem>
       </NGrid>
     </div>
-    <p class="copyright">Copyright &copy; 2022 - 2023 WeAvatar All Rights Reserved.</p>
+    <p class="copyright">Copyright &copy; 2022 - 2024 WeAvatar All Rights Reserved.</p>
     <p class="beian" style="display: flex; justify-content: center; align-items: center">
       <a target="_blank" href="https://beian.miit.gov.cn" rel="noreferrer">津ICP备2022009678号-2</a>
       <NImage

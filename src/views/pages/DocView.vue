@@ -98,6 +98,16 @@
             下载插件并手动安装
           </p>
         </div>
+        <div class="cont" v-if="value == 'twikoo'">
+          <n-alert type="success">
+            Twikoo 已默认接入 WeAvatar，无需额外设置。
+          </n-alert>
+        </div>
+        <div class="cont" v-if="value == 'artalk'">
+          <p>
+            参考官方文档 <a target="_blank" href="https://artalk.js.org/guide/frontend/config.html">artalk.js.org/guide/frontend/config.html</a> 中的 <NTag>头像</NTag> 部分，将镜像地址修改为 <NText code>https://weavatar.com/avatar/</NText> 即可接入 <NTag type="info">WeAvatar</NTag>
+          </p>
+        </div>
         <div class="cont" v-if="value == 'hash'">
           <ul>
             <li>
@@ -305,6 +315,7 @@
 <script setup lang="ts">
 import type { MenuOption } from 'naive-ui'
 import {
+  NAlert,
   NCard,
   NCode,
   NIcon,
@@ -330,7 +341,9 @@ import {
   LayersOutline,
   LogoWordpress,
   RocketOutline,
-  ServerOutline
+  ServerOutline,
+  ChatbubblesOutline,
+  ChatboxOutline
 } from '@vicons/ionicons5'
 
 const code = `
@@ -417,6 +430,23 @@ const menuOptions: MenuOption[] = [
     ]
   },
   {
+    label: '在评论系统中使用',
+    key: 'comment-use',
+    icon: renderIcon(ChatbubblesOutline),
+    children: [
+      {
+        label: 'Twikoo',
+        key: 'twikoo',
+        icon: renderIcon(ChatboxOutline)
+      },
+      {
+        label: 'Artalk',
+        key: 'artalk',
+        icon: renderIcon(ChatboxOutline)
+      },
+    ]
+  },
+  {
     label: '邮箱 / 手机号的哈希',
     key: 'hash',
     icon: renderIcon(CodeSlashSharp)
@@ -498,6 +528,7 @@ a {
 
 .cont {
   padding: 0 20px 20px;
+  width: 100%;
 }
 
 :deep(.n-layout-toggle-button) {
