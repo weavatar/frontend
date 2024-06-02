@@ -13,6 +13,12 @@
         }
       }"
     >
+      <h2>
+        WeAvatar
+        <span style="display: inline-block; vertical-align: middle">
+          <NTag type="warning"> 2.0 </NTag>
+        </span>
+      </h2>
       <h1>多端多元化的统一头像服务</h1>
       <p>WeAvatar — 每个人的头像</p>
       <div class="home-button">
@@ -239,7 +245,7 @@
         <span>作为公益性质的项目，WeAvatar 的稳定运行离不开它们的帮助</span>
       </div>
       <div class="sponsor-content">
-        <NGrid cols="1 s:3 m:4 l:4 xl:4 2xl:4" item-responsive responsive="screen">
+        <NGrid cols="1 s:3 m:3 l:3 xl:3 2xl:3" item-responsive responsive="screen">
           <NGridItem v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://www.ddunyun.com/aff/PNYAXMKI">
               <NImage
@@ -269,18 +275,6 @@
               <NImage
                 :src="logo_anycast"
                 alt="AnyCast.Ai"
-                height="80"
-                width="180"
-                lazy
-                preview-disabled
-              />
-            </a>
-          </NGridItem>
-          <NGridItem v-motion-slide-visible-bottom>
-            <a class="url" target="_blank" href="https://www.jihulab.com/">
-              <NImage
-                :src="logo_jihu"
-                alt="极狐GitLab"
                 height="80"
                 width="180"
                 lazy
@@ -320,7 +314,6 @@ import { nextTick, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { fetchCdnUsage } from '@/api/system'
 import logo_dunyun from '@/assets/logo-dunyun.png'
-import logo_jihu from '@/assets/logo-jihu.svg'
 import logo_nicetheme from '@/assets/logo-nicetheme.png'
 import logo_hzbk from '@/assets/logo-hzbk.png'
 import logo_iro from '@/assets/logo-iro.png'
