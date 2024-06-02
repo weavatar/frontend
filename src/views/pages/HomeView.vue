@@ -13,12 +13,6 @@
         }
       }"
     >
-      <h2>
-        WeAvatar
-        <span style="display: inline-block; vertical-align: middle">
-          <NTag type="warning"> 一周年 </NTag>
-        </span>
-      </h2>
       <h1>多端多元化的统一头像服务</h1>
       <p>WeAvatar — 每个人的头像</p>
       <div class="home-button">
@@ -76,7 +70,7 @@
               <h2>手机号、字母头像</h2>
               <p>
                 WeAvatar
-                首家支持手机号头像及字母默认头像，手机号头像更符合国内用户的使用习惯，字母头像可为没有头像的用户提供更好的体验
+                首家支持手机号头像及字母默认头像，手机号头像更符合国内的使用习惯，字母头像可为没有头像的用户提供更好的体验
               </p>
             </div>
           </NGridItem>
@@ -87,7 +81,7 @@
               </NIcon>
               <h2>WEBP 支持</h2>
               <p>
-                WeAvatar 默认采用新一代的图像格式 WEBP，这可减少约
+                WeAvatar 默认使用新一代的图像格式 WEBP，这可减少约
                 <b>80%</b>
                 的流量消耗
               </p>
@@ -99,7 +93,7 @@
                 <ShieldCheckmarkIcon />
               </NIcon>
               <h2>安全</h2>
-              <p>WeAvatar 对每张头像均进行 AI 自动化审核，确保不会有违规内容被输出</p>
+              <p>WeAvatar 拥有 AI 自动化审核，确保不会有违规内容被输出</p>
             </div>
           </NGridItem>
           <NGridItem span="3 s:1">
@@ -109,8 +103,7 @@
               </NIcon>
               <h2>更快的速度</h2>
               <p>
-                WeAvatar 使用 GO 开发，相比同类竞品具有更快的速度。同时 WeAvatar
-                采用多级缓存机制，以尽可能提高头像的加载速度
+                WeAvatar 使用 Go 开发，比同类产品速度更快。WeAvatar 还采用多级缓存机制，以尽可能提高头像的加载速度
               </p>
             </div>
           </NGridItem>
@@ -119,7 +112,7 @@
               <NIcon size="60">
                 <CloudOutlineIcon />
               </NIcon>
-              <h2>开放平台（开发中）</h2>
+              <h2>开放平台（规划中）</h2>
               <p>
                 WeAvatar 未来将为开发者提供开放平台和配套的 SDK，可将自己的应用无缝对接至 WeAvatar
               </p>
@@ -210,10 +203,10 @@
             </a>
           </NGridItem>
           <NGridItem v-motion-slide-visible-bottom>
-            <a class="url" target="_blank" href="https://justmyblog.net/">
+            <a class="url" target="_blank" href="https://twikoo.js.org/">
               <NImage
-                :src="logo_bai"
-                alt="白の博客"
+                :src="logo_twikoo"
+                alt="Twikoo"
                 height="80"
                 width="180"
                 lazy
@@ -333,10 +326,10 @@ import logo_hzbk from '@/assets/logo-hzbk.png'
 import logo_iro from '@/assets/logo-iro.png'
 import logo_lxtx from '@/assets/logo-lxtx.png'
 import logo_liyang from '@/assets/logo-liyang.png'
+import logo_twikoo from '@/assets/logo-twikoo.png'
 import logo_dami from '@/assets/logo-dami.png'
 import logo_wuwei from '@/assets/logo-wuwei.png'
 import logo_anycast from '@/assets/logo-anycast.png'
-import logo_bai from '@/assets/logo-bai.png'
 import logo_zmingcx from '@/assets/logo-zmingcx.png'
 
 const router = useRouter()

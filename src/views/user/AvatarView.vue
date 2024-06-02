@@ -504,7 +504,7 @@ const handleDeleteAvatar = async (hash: string) => {
 
   await deleteAvatar(hash)
     .then(() => {
-      window.$message.success(`删除成功，5 分钟内全网生效`)
+      window.$message.success(`删除成功，3 小时内全网生效`)
       handlePageChange(1)
     })
     .catch((res) => {
@@ -539,7 +539,7 @@ const doAddAvatar = async (captcha: any) => {
             formData.append('captcha', JSON.stringify(addModel.value.captcha))
             addAvatar(formData)
               .then(() => {
-                window.$message.success(`添加成功，5 分钟内全网生效`)
+                window.$message.success(`添加成功，3 小时内全网生效`)
                 addModal.value = false
                 addModel.value.raw = ''
                 addModel.value.avatar = new Blob()
@@ -561,7 +561,7 @@ const doAddAvatar = async (captcha: any) => {
         formData.append('captcha', JSON.stringify(addModel.value.captcha))
         addAvatar(formData)
           .then(() => {
-            window.$message.success(`添加成功，5 分钟内全网生效`)
+            window.$message.success(`添加成功，3 小时内全网生效`)
             addModal.value = false
             addModel.value.raw = ''
             addModel.value.avatar = new Blob()
@@ -598,7 +598,7 @@ const doChangeAvatar = async (captcha: any) => {
   console.log(formData)
   await updateAvatar(changeModel.value.hash, formData)
     .then(() => {
-      window.$message.success(`修改成功，5 分钟内全网生效`)
+      window.$message.success(`修改成功，3 小时内全网生效`)
       changeModal.value = false
       changeModel.value.hash = ''
       changeModel.value.avatar = new Blob()
