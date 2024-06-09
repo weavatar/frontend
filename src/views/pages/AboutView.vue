@@ -33,7 +33,21 @@
         路虽远行则将至，事虽难做则必成。期待 WeAvatar 的未来更加精彩！
       </NText>
       <NDivider />
-      未完待续
+      <NH4>赞助 WeAvatar</NH4>
+      <NText>
+        可以前往我们的 <a target="_blank" href="https://afdian.net/a/TheTNB">爱发电主页</a> 赞助我们。
+        <br />
+        同时感谢以下支持者们：
+      </NText>
+      <n-image
+        src="https://mirror.ghproxy.com/https://raw.githubusercontent.com/TheTNB/sponsor/main/sponsors.svg"
+        width="100%"
+        style="display: block"
+        preview-disabled
+        lazy
+        @click="toSponsor"
+      />
+      <NDivider />
       <div style="float: right">
         <br />
         耗子
@@ -45,10 +59,19 @@
 </template>
 
 <script setup lang="ts">
-import { NCard, NDivider, NH4, NText } from 'naive-ui'
+import { NCard, NDivider, NH4, NText, NImage } from 'naive-ui'
+
+const toSponsor = () => {
+  window.open('https://afdian.net/a/TheTNB')
+}
 </script>
 
 <style scoped>
+a {
+  text-decoration: none;
+  color: #409eff;
+}
+
 .about {
   padding: 100px;
 }

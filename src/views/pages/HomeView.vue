@@ -132,7 +132,7 @@
     <div class="user">
       <div class="user-title" v-motion-slide-visible-bottom>
         <h1>他们都在用</h1>
-        <span>一些你可能认识的人也在使用 WeAvatar，不妨来试试？</span>
+        <span>一些你可能认识的 TA 也在使用 WeAvatar，不妨来试试？</span>
       </div>
       <div class="user-content">
         <NGrid cols="1 s:3 m:4 l:4 xl:4 2xl:4" item-responsive responsive="screen">
@@ -197,10 +197,10 @@
             </a>
           </NGridItem>
           <NGridItem v-motion-slide-visible-bottom>
-            <a class="url" target="_blank" href="https://hzbk.net/">
+            <a class="url" target="_blank" href="https://artalk.js.org/">
               <NImage
-                :src="logo_hzbk"
-                alt="耗子博客"
+                :src="logo_artalk"
+                alt="Artalk"
                 height="80"
                 width="180"
                 lazy
@@ -315,7 +315,7 @@ import { useRouter } from 'vue-router'
 import { fetchCdnUsage } from '@/api/system'
 import logo_dunyun from '@/assets/logo-dunyun.png'
 import logo_nicetheme from '@/assets/logo-nicetheme.png'
-import logo_hzbk from '@/assets/logo-hzbk.png'
+import logo_artalk from '@/assets/logo-artalk.png'
 import logo_iro from '@/assets/logo-iro.png'
 import logo_lxtx from '@/assets/logo-lxtx.png'
 import logo_liyang from '@/assets/logo-liyang.png'
