@@ -58,7 +58,7 @@
                     <a target="_blank" href="https://twikoo.js.org/">Twikoo</a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://wp-china-yes.com/">WP-China-Yes</a>
+                    <a target="_blank" href="https://artalk.js.org/">Artalk</a>
                   </li>
                 </ul>
               </div>
@@ -82,8 +82,8 @@
                     <a target="_blank" href="https://github.com/TheTNB/panel"> Linux 面板 </a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://github.com/TheTNB/Laravel-Installer">
-                      Laravel-Installer
+                    <a target="_blank" href="https://github.com/TheTNB/LaravelInstaller">
+                      LaravelInstaller
                     </a>
                   </li>
                   <li>
