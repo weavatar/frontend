@@ -8,7 +8,7 @@
         之后由于意见不合无法继续便开始着手筹备新项目，在随后的几个月里完成了 WeAvatar 域名及商标注册，2022 年 6 月下旬启动开发。于
         2022 年 7 月 25 日 Cravatar 成立 1 周年之际灰度上线。
         <br />
-        由于琐事繁多加上仍对 LitePress 抱有期望， WeAvatar 在几个月内一直未能完善控制台抢占市场，算是一个最大的遗憾。
+        由于琐事繁多加上仍对 LitePress 抱有期望，在之后的几个月内 WeAvatar 没有继续完善开发。
       </NText>
       <NDivider />
       <NH4>WeAvatar 的今世</NH4>
@@ -47,13 +47,6 @@
         lazy
         @click="toSponsor"
       />
-      <NDivider />
-      <div style="float: right">
-        <br />
-        耗子
-        <br />
-        2024 年 6 月 1 日
-      </div>
     </NCard>
   </div>
 </template>
