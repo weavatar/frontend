@@ -104,9 +104,9 @@
           </n-alert>
         </div>
         <div class="cont" v-if="value == 'artalk'">
-          <p>
-            参考官方文档 <a target="_blank" href="https://artalk.js.org/guide/frontend/config.html">artalk.js.org/guide/frontend/config.html</a> 中的 <NTag>头像</NTag> 部分，将镜像地址修改为 <NText code>https://weavatar.com/avatar/</NText> 即可接入 <NTag type="info">WeAvatar</NTag>
-          </p>
+          <n-alert type="success">
+            Artalk 已默认接入 WeAvatar，无需额外设置。
+          </n-alert>
         </div>
         <div class="cont" v-if="value == 'hash'">
           <ul>
