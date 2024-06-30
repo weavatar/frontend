@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  setup:
+  build:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -41,3 +41,7 @@ jobs:
           name: ${{ matrix.environment }}
           path: |
             ${{ matrix.environment }}
+      - name: Deploy to ${{ matrix.environment }}
+        uses: ./.github/workflows/deploy.yml
+        with:
+          environment: ${{ matrix.environment }}
