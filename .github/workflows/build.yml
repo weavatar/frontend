@@ -35,8 +35,7 @@ jobs:
           echo VITE_API_URL=${{ secrets.API_URL }} > .env
           pnpm build
           mv dist ${{ matrix.environment }}
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.environment }}
           path: |
