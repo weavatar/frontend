@@ -41,7 +41,19 @@ jobs:
           name: ${{ matrix.environment }}
           path: |
             ${{ matrix.environment }}
-      - name: Deploy to ${{ matrix.environment }}
-        uses: ./.github/workflows/deploy.yml
-        with:
-          environment: ${{ matrix.environment }}
+  deploy:
+    strategy:
+      fail-fast: false
+      matrix:
+        isMain:
+          - ${{ github.ref == 'refs/heads/main' }}
+        environment: [ development, production ]
+        exclude:
+          - isMain: false
+            environment: production
+    name: ${{ matrix.environment }}
+    needs: build
+    uses: ./.github/workflows/deploy.yml
+    with:
+      environment: ${{ matrix.environment }}
+    secrets: inherit
