@@ -12,11 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ inputs.environment }}
-          path: .
+      - uses: actions/download-artifact@v4
       - name: Set up SSH
         run: |
           sudo apt-get update
@@ -26,7 +22,7 @@ jobs:
           SSHPASS: ${{ secrets.SERVER_PASSWORD }}
         run: |
           ls -a
-          zip -r ${{ inputs.environment }}.zip ${{ inputs.environment }}/*
+          zip -r ${{ inputs.environment }}.zip *
           sshpass -e ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "rm -rf ${{ secrets.SERVER_PATH }}/*" || true
           sshpass -e scp -o StrictHostKeyChecking=no -P ${{ secrets.SERVER_PORT }} -r ${{ inputs.environment }}.zip ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.SERVER_PATH }}
           sshpass -e ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "cd ${{ secrets.SERVER_PATH }} && unzip -o ${{ inputs.environment }}.zip && rm -f ${{ inputs.environment }}.zip"
