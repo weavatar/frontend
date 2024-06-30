@@ -22,5 +22,4 @@ jobs:
         with:
           node-version: 20
           cache: 'pnpm'
-      - name: Run unit tests
-        run: pnpm test:unit --run
+      - run: pnpm test:unit --run
