@@ -25,6 +25,7 @@ jobs:
         env:
           SSHPASS: ${{ secrets.SERVER_PASSWORD }}
         run: |
+          ls -a
           zip -r ${{ inputs.environment }}.zip ${{ inputs.environment }}/*
           sshpass -e ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "rm -rf ${{ secrets.SERVER_PATH }}/*" || true
           sshpass -e scp -o StrictHostKeyChecking=no -P ${{ secrets.SERVER_PORT }} -r ${{ inputs.environment }}.zip ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.SERVER_PATH }}
