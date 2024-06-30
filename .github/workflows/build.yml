@@ -39,3 +39,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.environment }}
+          path: |
+            ${{ matrix.environment }}
