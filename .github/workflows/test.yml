@@ -22,7 +22,5 @@ jobs:
         with:
           node-version: 20
           cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install
-      - name: Test
+      - name: Run unit tests
         run: pnpm test:unit --run
