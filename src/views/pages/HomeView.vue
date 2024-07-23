@@ -135,7 +135,7 @@
         <span>一些你可能认识的 TA 也在使用 WeAvatar，不妨来试试？</span>
       </div>
       <div class="user-content">
-        <NGrid cols="1 s:3 m:4 l:4 xl:4 2xl:4" item-responsive responsive="screen">
+        <NGrid cols="1 s:2 m:4 l:4 xl:4 2xl:4" item-responsive responsive="screen">
           <NGridItem v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://zmingcx.com/">
               <NImage
@@ -245,12 +245,24 @@
         <span>作为公益性质的项目，WeAvatar 的稳定运行离不开它们的帮助</span>
       </div>
       <div class="sponsor-content">
-        <NGrid cols="1 s:3 m:3 l:3 xl:3 2xl:3" item-responsive responsive="screen">
+        <NGrid cols="1 s:2 m:4 l:4 xl:4 2xl:4" item-responsive responsive="screen">
           <NGridItem v-motion-slide-visible-bottom>
             <a class="url" target="_blank" href="https://www.ddunyun.com/aff/PNYAXMKI">
               <NImage
                 :src="logo_dunyun"
                 alt="盾云安全"
+                height="80"
+                width="180"
+                lazy
+                preview-disabled
+              />
+            </a>
+          </NGridItem>
+          <NGridItem v-motion-slide-visible-bottom>
+            <a class="url" target="_blank" href="https://waf.pro/">
+              <NImage
+                :src="logo_wafpro"
+                alt="WAFPRO"
                 height="80"
                 width="180"
                 lazy
@@ -322,6 +334,7 @@ import logo_liyang from '@/assets/logo-liyang.png'
 import logo_twikoo from '@/assets/logo-twikoo.png'
 import logo_dami from '@/assets/logo-dami.png'
 import logo_wuwei from '@/assets/logo-wuwei.png'
+import logo_wafpro from '@/assets/logo-wafpro.png'
 import logo_anycast from '@/assets/logo-anycast.png'
 import logo_zmingcx from '@/assets/logo-zmingcx.png'
 
