@@ -39,8 +39,8 @@
         <div class="cont" v-if="value == 'wordpress'">
           <p>
             安装启用
-            <a target="_blank" href="https://github.com/TheTNB/wp-china-plus"> WP-China-Plus </a>
-            插件，你可能还需要关闭主题、其他插件中自带的
+            <a target="_blank" href="https://wp-china-yes.com"> WP-China-Yes </a>
+            插件并选择头像备用源，你可能还需要关闭主题、其他插件中自带的
             <NTag type="warning">Gravatar</NTag> 头像加速功能
           </p>
           <p>
