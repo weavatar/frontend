@@ -16,7 +16,7 @@
       <h2>
         WeAvatar
         <span style="display: inline-block; vertical-align: middle">
-          <NTag type="warning"> 2.0 </NTag>
+          <NTag type="warning"> 二周年 </NTag>
         </span>
       </h2>
       <h1>多端多元化的统一头像服务</h1>

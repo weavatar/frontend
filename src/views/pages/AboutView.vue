@@ -35,7 +35,7 @@
       <NDivider />
       <NH4>赞助 WeAvatar</NH4>
       <NText>
-        可以前往我们的 <a target="_blank" href="https://afdian.net/a/TheTNB">爱发电主页</a> 赞助我们。
+        可以前往我们的 <a target="_blank" href="https://afdian.com/a/TheTNB">爱发电主页</a> 赞助我们。
         <br />
         同时感谢以下支持者们：
       </NText>
@@ -55,7 +55,7 @@
 import { NCard, NDivider, NH4, NText, NImage } from 'naive-ui'
 
 const toSponsor = () => {
-  window.open('https://afdian.net/a/TheTNB')
+  window.open('https://afdian.com/a/TheTNB')
 }
 </script>
 
