@@ -4,7 +4,7 @@
     "config:base"
   ],
   "labels": [
-    "dependencies"
+    "🤖 Dependencies"
   ],
   "lockFileMaintenance": {
     "enabled": true,
