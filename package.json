@@ -14,7 +14,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@vueuse/motion": "^2.1.0",
+    "@vueuse/motion": "^3.0.0",
     "axios": "^1.7.7",
     "highlight.js": "^11.9.0",
     "pinia": "^3.0.0",
