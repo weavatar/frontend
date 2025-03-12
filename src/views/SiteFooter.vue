@@ -74,20 +74,20 @@
               <div class="footer-list">
                 <ul>
                   <li>
-                    <a target="_blank" href="https://github.com/TheTNB/wp-china-plus">
+                    <a target="_blank" href="https://github.com/tnb-labs/wp-china-plus">
                       WP-China-Plus
                     </a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://github.com/TheTNB/panel"> Linux 面板 </a>
+                    <a target="_blank" href="https://github.com/tnb-labs/panel"> Linux 面板 </a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://github.com/TheTNB/LaravelInstaller">
+                    <a target="_blank" href="https://github.com/tnb-labs/LaravelInstaller">
                       LaravelInstaller
                     </a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://github.com/TheTNB/wp-setting-api">
+                    <a target="_blank" href="https://github.com/tnb-labs/wp-setting-api">
                       WP-Setting-API
                     </a>
                   </li>

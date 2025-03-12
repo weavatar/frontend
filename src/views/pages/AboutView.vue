@@ -24,23 +24,27 @@
         2023 年 7 月 25 日，WeAvatar 度过首个生日。
         <br />
         2024 年 3 月，WeAvatar 日请求数达 500 万次。
+        <br />
+        2024 年 12 月，WeAvatar 日请求数达 700 万次。
+        <br />
+        2025 年 3 月，WeAvatar 3.0 上线。
       </NText>
       <NDivider />
       <NH4>WeAvatar 的未来</NH4>
       <NText>
-        WeAvatar 的目标市场不仅仅是网站，它将尝试进入 桌面App 、 移动App 、小程序 等领域。
+        WeAvatar 的目标市场不仅仅是网站，它将尝试进入桌面App 、 移动App 、小程序等领域。
         <br />
         路虽远行则将至，事虽难做则必成。期待 WeAvatar 的未来更加精彩！
       </NText>
       <NDivider />
       <NH4>赞助 WeAvatar</NH4>
       <NText>
-        可以前往我们的 <a target="_blank" href="https://afdian.com/a/TheTNB">爱发电主页</a> 赞助我们。
+        可以前往我们的 <a target="_blank" href="https://afdian.com/a/tnblabs">爱发电主页</a> 赞助我们。
         <br />
         同时感谢以下支持者们：
       </NText>
       <n-image
-        src="https://mirror.ghproxy.com/https://raw.githubusercontent.com/TheTNB/sponsor/main/sponsors.svg"
+        src="https://raw.githubusercontent.com/tnb-labs/sponsor/main/sponsors.svg"
         width="100%"
         style="display: block"
         preview-disabled
@@ -55,7 +59,7 @@
 import { NCard, NDivider, NH4, NText, NImage } from 'naive-ui'
 
 const toSponsor = () => {
-  window.open('https://afdian.com/a/TheTNB')
+  window.open('https://afdian.com/a/tnblabs')
 }
 </script>
 
