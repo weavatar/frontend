@@ -14,22 +14,7 @@ export async function fetchAvatarList(page: number, limit: number) {
       return res.data
     })
     .catch((err) => {
-      window.$message.error(err.message)
-      return Promise.reject(err)
-    })
-}
-
-// 获取头像
-export async function fetchAvatar(hash: string) {
-  return http({
-    url: `/avatars/${hash}`,
-    method: 'GET'
-  })
-    .then((res) => {
-      return res.data
-    })
-    .catch((err) => {
-      window.$message.error(err.message)
+      window.$message.error(err.msg)
       return Promise.reject(err)
     })
 }
@@ -45,7 +30,7 @@ export async function addAvatar(data: FormData) {
       return res.data
     })
     .catch((err) => {
-      window.$message.error(err.message)
+      window.$message.error(err.msg)
       return Promise.reject(err)
     })
 }
@@ -60,7 +45,7 @@ export async function deleteAvatar(hash: string) {
       return res.data
     })
     .catch((err) => {
-      window.$message.error(err.message)
+      window.$message.error(err.msg)
       return Promise.reject(err)
     })
 }
@@ -76,7 +61,7 @@ export async function updateAvatar(hash: string, data: FormData) {
       return res.data
     })
     .catch((err) => {
-      window.$message.error(err.message)
+      window.$message.error(err.msg)
       return Promise.reject(err)
     })
 }

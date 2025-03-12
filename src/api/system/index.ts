@@ -3,14 +3,14 @@ import http from '@/utils/request'
 // 获取CDN用量
 export async function fetchCdnUsage() {
   return http({
-    url: '/system/cdnUsage',
+    url: '/system/count',
     method: 'GET'
   })
     .then((res) => {
       return res.data
     })
     .catch((err) => {
-      window.$message.error(err.message)
+      window.$message.error(err.msg)
       return Promise.reject(err)
     })
 }
@@ -18,7 +18,7 @@ export async function fetchCdnUsage() {
 // 检查绑定
 export async function checkBind(raw: string) {
   return http({
-    url: `/system/checkBind`,
+    url: `/avatars/check`,
     data: { raw },
     method: 'GET'
   })
@@ -26,7 +26,7 @@ export async function checkBind(raw: string) {
       return res.data
     })
     .catch((err) => {
-      window.$message.error(err.message)
+      window.$message.error(err.msg)
       return Promise.reject(err)
     })
 }

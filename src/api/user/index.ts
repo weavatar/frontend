@@ -10,7 +10,7 @@ export async function fetchUserInfo() {
       return res.data
     })
     .catch((err) => {
-      window.$message.error(err.message)
+      window.$message.error(err.msg)
       return Promise.reject(err)
     })
 }
@@ -26,7 +26,7 @@ export async function updateUserInfo(data: any) {
       return res.data
     })
     .catch((err) => {
-      window.$message.error(err.message)
+      window.$message.error(err.msg)
       return Promise.reject(err)
     })
 }
@@ -34,7 +34,7 @@ export async function updateUserInfo(data: any) {
 // 获取QQ头像
 export async function fetchQQAvatar(qq: string) {
   return http({
-    url: '/user/qqAvatar',
+    url: '/avatars/qq',
     method: 'GET',
     data: {
       qq
@@ -44,7 +44,7 @@ export async function fetchQQAvatar(qq: string) {
       return res.data
     })
     .catch((err) => {
-      window.$message.error(err.message)
+      window.$message.error(err.msg)
       return Promise.reject(err)
     })
 }

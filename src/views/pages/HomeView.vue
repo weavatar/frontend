@@ -351,7 +351,7 @@ fetchCdnUsage()
   })
   .catch((err) => {
     if (err.code != 422) {
-      window.$message.error(err.message)
+      window.$message.error(err.msg)
     }
     console.log(err)
   })

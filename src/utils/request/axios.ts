@@ -9,8 +9,7 @@ const service = axios.create({
 
 interface Response<T = any> {
   data: T
-  message: T
-  code: number
+  msg: T
 }
 
 service.interceptors.request.use(
@@ -27,18 +26,16 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   async <T>(res: AxiosResponse<Response<T>>) => {
     const userStore = useUserStore()
-    if (isString(res.headers.authorization)) {
-      userStore.updateToken(res.headers.authorization.slice(7))
-    }
 
-    if (res.data.code === 0) return res
-    if (res.data.code === 401) {
-      userStore.clearToken()
-    }
+    if (res.status === 200) return res
 
     return Promise.reject(res.data)
   },
   async (error) => {
+    const userStore = useUserStore()
+    if (error.status === 401) {
+      userStore.clearToken()
+    }
     return Promise.reject(error.response.data)
   }
 )

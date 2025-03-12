@@ -3,14 +3,14 @@ import http from '@/utils/request'
 // OAuth登录
 export async function login() {
   return http({
-    url: '/user/oauthLogin',
-    method: 'POST'
+    url: '/user/login',
+    method: 'GET'
   })
     .then((res) => {
       return res.data
     })
     .catch((err) => {
-      window.$message.error(err.message)
+      window.$message.error(err.msg)
       return Promise.reject(err)
     })
 }
@@ -18,7 +18,7 @@ export async function login() {
 // OAuth回调
 export async function oauthCallback(code: string, state: string) {
   return http({
-    url: '/user/oauthCallback',
+    url: '/user/callback',
     method: 'POST',
     data: { code, state }
   })
@@ -26,7 +26,7 @@ export async function oauthCallback(code: string, state: string) {
       return res.data
     })
     .catch((err) => {
-      window.$message.error(err.message)
+      window.$message.error(err.msg)
       return Promise.reject(err)
     })
 }

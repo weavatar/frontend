@@ -215,9 +215,16 @@
             </li>
             <li>
               <p>
-                <NText code>d=letter&letter=X</NText>: 返回给定
-                <NTag type="primary">letter</NTag> 组成的字母头像（最多支持
-                <NTag type="info">4</NTag> 位，自动裁切）
+                <NText code>d=initials&initials=X</NText>: 返回给定
+                <NTag type="primary">initials</NTag> 组成的字母头像（最多支持
+                <NTag type="info">2</NTag> 位，自动裁切）
+              </p>
+            </li>
+            <li>
+              <p>
+                <NText code>d=initials&name=X</NText>: 返回给定
+                <NTag type="primary">name</NTag> 组成的首字母头像（最多支持
+                <NTag type="info">1</NTag> 位，自动裁切）
               </p>
             </li>
             <li>
@@ -264,7 +271,7 @@
               height="60"
             />
             <NImage
-              src="https://weavatar.com/avatar/demo?d=letter&letter=WeAvatar&f=y&s=60"
+              src="https://weavatar.com/avatar/demo?d=initials&initials=WeAvatar&f=y&s=60"
               alt="字母头像"
               width="60"
               height="60"
@@ -296,7 +303,7 @@
           </p>
           <p>
             <NText code>
-              https://weavatar.com/avatar/ff3dcd55b299b96db5e2ed195af50817.png?d=letter&letter=WeAvatar&s=200&f=y
+              https://weavatar.com/avatar/ff3dcd55b299b96db5e2ed195af50817.png?d=initials&initials=WeAvatar&s=200&f=y
             </NText>
           </p>
           <p>
@@ -304,7 +311,7 @@
             将始终返回格式为
             <NTag type="primary">PNG</NTag>、尺寸为
             <NTag type="primary">200</NTag>
-            的字母头像，字母自动裁切为 <NTag type="primary">WeAv</NTag>
+            的字母头像，字母自动裁切为 <NTag type="primary">WE</NTag>
           </p>
         </div>
       </NLayout>

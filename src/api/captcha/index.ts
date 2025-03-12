@@ -18,7 +18,7 @@ export async function image() {
 // 手机验证码
 export async function phone(phone: string, use_for: string, captcha: string): Promise<any> {
   return http({
-    url: '/captcha/sms',
+    url: '/verify_code/sms',
     method: 'POST',
     data: { phone, use_for, captcha }
   })
@@ -34,7 +34,7 @@ export async function phone(phone: string, use_for: string, captcha: string): Pr
 // 邮箱验证码
 export async function email(email: string, use_for: string, captcha: string): Promise<any> {
   return http({
-    url: '/captcha/email',
+    url: '/verify_code/email',
     method: 'POST',
     data: { email, use_for, captcha }
   })
